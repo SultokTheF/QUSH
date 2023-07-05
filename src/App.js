@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 
 import ObjectPage from './pages/ObjectPage';
 import ObjectsPage from './pages/ObjectsPage';
+import Field from './components/Field';
 
 import './css/main.css';
 
@@ -13,6 +14,7 @@ export default class App extends Component {
       <div>
         <Navbar/>
         {/* <ObjectsPage/> */}
+        <Field/>
       </div>
     )
   }
