@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Hisroty from "../components/History";
+import History from "../components/History";
 
 export default function ObjectPage() {
     const objs = {
@@ -31,7 +31,7 @@ export default function ObjectPage() {
                     </div>
                 </div>
             </div>
-            <Hisroty {...objs} />
+            <History {...objs} />
         </div>
     )
 }
