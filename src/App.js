@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <ObjectsPage />
+        <Login/>
         {/* <UserField/> */}
         {/* <FieldList/> */}
         {/* <Api/> */}
