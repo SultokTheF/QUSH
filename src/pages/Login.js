@@ -37,7 +37,7 @@ const Login = () => {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              <Button variant="outline-primary" type="submit">
                 Войти
               </Button>
 

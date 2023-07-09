@@ -8,7 +8,7 @@ import choice from '../static/images/icons/choice.png';
 
 export default function Object( props ) {
   return (
-    <a>
+    <a href='/object'>
       <div className='object'>
         <div className='object-title'>
           Объект: {props.name} 
