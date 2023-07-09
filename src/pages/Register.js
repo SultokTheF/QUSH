@@ -6,12 +6,35 @@ const Register = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [agreeToPolicy, setAgreeToPolicy] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Ваша логика для отправки данных формы на сервер
+    const formData = {
+      email:email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName
   };
+
+  fetch('http://localhost:8082/auth/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(response => response)
+    .then(data => {
+      // Обработка ответа от сервера
+      console.log(data);
+    })
+    .catch(error => {
+      // Обработка ошибок
+      console.error(error);
+    });
+  }
 
   return (
     <div className="register-container">
@@ -57,15 +80,6 @@ const Register = () => {
                   placeholder="Пароль"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
-
-              <Form.Group controlId="agreeToPolicy" style={{ marginBottom: '15px' }}>
-                <Form.Check
-                  type="checkbox"
-                  label="I agree to the policy"
-                  checked={agreeToPolicy}
-                  onChange={(e) => setAgreeToPolicy(e.target.checked)}
                 />
               </Form.Group>
 

@@ -7,7 +7,29 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+  
+    const formData = {
+      email:email,
+      password: password
+  };
+  fetch('http://localhost:8082/auth', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(formData)
+})
+  .then(response => response.text()) // вызываем response.text() для получения текстового содержимого
+  .then(data => {
+    // Обработка ответа от сервера
+    console.log(data);
+    // Сохранение токена в localStorage
+    localStorage.setItem('token', data);
+  })
+  .catch(error => {
+    // Обработка ошибок
+    console.error(error);
+  });
   };
 
   return (
