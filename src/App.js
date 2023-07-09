@@ -16,11 +16,14 @@ export default class App extends Component {
     return (
       <>
         <Navbar/>
-        <ObjectsPage />
-        {/* <UserField/> */}
-        {/* <FieldList/> */}
-        {/* <Api/> */}
-      </div>
+        <Routes>
+          <Route path='/' element={<ObjectsPage/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/object' element={<ObjectPage/>}/>
+          <Route path='/field' element={<Field/>}/>
+        </Routes>
+      </>
     )
   }
 }

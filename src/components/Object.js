@@ -9,28 +9,30 @@ import choice from '../static/images/icons/choice.png';
 export default function Object( props ) {
   return (
     <a href='/object'>
-      <div className='object'>
-        <div className='object-title'>
-          Объект: {props.name} 
-          <Status status = {props.status}/>
+      <navtext>
+        <div className='object'>
+          <div className='object-title'>
+            Объект: {props.name} 
+            <Status status = {props.status}/>
+          </div>
+          <div className='object-body'>
+            <ul>
+              <div className='item'>
+                <img src={location} width={40}/>
+                Локация: <span className='listContent'>{props.location}</span>
+              </div>
+              <div className='item'>
+                <img src={shedule} width={40}/>
+                График работы: <span className='listContent'>{props.time_from}-{props.time_to}</span>
+              </div>
+              <div className='item'>
+                <img src={choice} width={40}/>
+                Тип поля: <span className='listContent'>{props.category_sport}</span>
+              </div>
+            </ul>
+          </div>
         </div>
-        <div className='object-body'>
-          <ul>
-            <div className='item'>
-              <img src={location} width={40}/>
-              Локация: <span className='listContent'>{props.location}</span>
-            </div>
-            <div className='item'>
-              <img src={shedule} width={40}/>
-              График работы: <span className='listContent'>{props.time_from}-{props.time_to}</span>
-            </div>
-            <div className='item'>
-              <img src={choice} width={40}/>
-              Тип поля: <span className='listContent'>{props.category_sport}</span>
-            </div>
-          </ul>
-        </div>
-      </div>
+      </navtext>
     </a>
   )
 }
