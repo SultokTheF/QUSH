@@ -171,6 +171,9 @@ navtext:not(:hover) {
 }
 
 .statusTrue {
+    float: right;
+    margin-top: .5%;
+    margin-right: 1%;
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: bold;
@@ -182,6 +185,9 @@ navtext:not(:hover) {
 }
 
 .statusFalse {
+    float: right;
+    margin-top: .5%;
+    margin-right: 1%;
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: bold;

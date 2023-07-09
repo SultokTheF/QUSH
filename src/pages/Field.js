@@ -1,6 +1,53 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function Field() {
+    const [name, setName] = useState( '' );
+    const [description, setDescription] = useState( '' );
+    // const [category, setCategory] = useState( '' );
+    // const [timeFrom, setTimeFrom] = useState( '' );
+    // const [timeTo, setTimeTo] = useState( '' );
+
+    const handleSubmit = async ( e ) => {
+        e.preventDefault();
+        try {
+            const res = await fetch( 'http://localhost:8000/field/fields/', {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify( {
+                    owner_id: 1,
+                    name: name,
+                    category_sport: 2,
+                    location: 1.25,
+                    time_from: 10,
+                    time_to: 22,
+                    description: description,
+                    price: "25000tg/h",
+                    image: null,
+                    dimensions: "15x16",
+                    surface_type: 2,
+                    capacity: null,
+                    facilities: null,
+                    lighting: null,
+                    rules: null
+                } ),
+            } );
+
+            const resJson = await res.json();
+
+            if( res.status === 200 ) {
+                setName( '' );
+                setDescription( '' );
+                // setCategory( '' );
+                // setTimeFrom( '' );
+                // setTimeTo( '' );
+            }
+        } catch( err ) {
+            console.log( err )
+        }
+    }
+
     return (
         <div className='content'>
             <div className='row mt-5'>
@@ -13,13 +60,24 @@ export default function Field() {
             <div className='row mt-3'>
                 <div className='col-1'></div>
                 <div className='col-6'>
-                    <form className='form-control'>
+                    <form className='form-control' onSubmit={handleSubmit}>
                         <h3>Общяя информация</h3>
                         <label className='mt-2'>Название</label>
-                        <input className='form-control' placeholder='Введите название поля' name='name'></input>
+                        <input 
+                        type='text'
+                        className='form-control'
+                        placeholder='Введите название поля' 
+                        value={name}
+                        onChange={(e) => setName( e.target.value )}
+                        ></input>
                         
                         <label className='mt-2'>Описание</label>
-                        <textarea className='form-control' placeholder='Введите описание поля'></textarea>
+                        <textarea
+                        className='form-control'
+                        placeholder='Введите описание поля'
+                        value={description}
+                        onChange={(e) => setDescription( e.target.value )}
+                        />
 
                         <label className='mt-2'>Адрес</label>
                         <input className='form-control' placeholder='Введите адрес поля' name='name'></input>
@@ -27,12 +85,12 @@ export default function Field() {
                         <div className='row'>
                             <div className='col-8'></div>
                             <div className='col-4'>
-                                <button type='submit' className='btn btn-primary mt-3'>Сохранить</button>
+                                <button type='submit' className='btn btn-outline-primary mt-3'>Сохранить</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div className='col-4'>
+                {/* <div className='col-4'>
                     <form className='form-control'>
                         <h3>Категория</h3>
                         <label className='mt-2'>Тип поля</label>
@@ -52,7 +110,7 @@ export default function Field() {
                         <div className='row'>
                             <div className='col-8'></div>
                             <div className='col-4'>
-                                <button type='submit' className='btn btn-primary mt-3'>Сохранить</button>
+                                <button type='submit' className='btn btn-outline-primary mt-3'>Сохранить</button>
                             </div>
                         </div>
                     </form>
@@ -91,12 +149,12 @@ export default function Field() {
                         <div className='row'>
                             <div className='col-8'></div>
                             <div className='col-4'>
-                                <button type='submit' className='btn btn-primary mt-3'>Сохранить</button>
+                                <button type='submit' className='btn btn-outline-primary mt-3'>Сохранить</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div className='col-1'></div>
+                <div className='col-1'></div> */}
             </div>
         </div>
     )
