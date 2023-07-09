@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 import Object from '../components/Object';
 
 export default function ObjectsPage() {
+    const [fields, setFields] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/field/fields');
+            const data = await response.json();
+            setFields(data.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchData();
+    }, []);
+
     const objectInfo = {
         title: 'Сайран',
         location: 'Туран 56',
@@ -22,36 +38,18 @@ export default function ObjectsPage() {
                 <ul>
                     Футбольные поля
                     <ul>
-                        <div className='objectList'>
+                        {/* <div className='objectList'>
                             <Object {...objectInfo}/>
                         </div>
                         <div className='objectList'>
                             <Object {...objectInfo}/>
-                        </div>
-                    </ul>
-                </ul>
-                <h2>Сайран Арена</h2>
-                <ul>
-                    Футбольные поля
-                    <ul>
-                        <div className='objectList'>
-                            <Object {...objectInfo}/>
-                        </div>
-                        <div className='objectList'>
-                            <Object {...objectInfo}/>
-                        </div>
-                    </ul>
-                </ul>
-                <h2>Сайран Арена</h2>
-                <ul>
-                    Футбольные поля
-                    <ul>
-                        <div className='objectList'>
-                            <Object {...objectInfo}/>
-                        </div>
-                        <div className='objectList'>
-                            <Object {...objectInfo}/>
-                        </div>
+                        </div> */}
+
+                        {fields.map( field => (
+                            <div className="objectList" key={field.id}>
+                                <Object {...field}/>
+                            </div>
+                        ) )}
                     </ul>
                 </ul>
             </div>

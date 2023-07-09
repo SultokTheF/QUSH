@@ -1,6 +1,7 @@
 import React from 'react'
 
 import History from "../components/History";
+import FieldUser from './UserField';
 
 export default function ObjectPage() {
     const objs = {

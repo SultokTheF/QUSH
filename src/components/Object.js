@@ -11,7 +11,7 @@ export default function Object( props ) {
     <a>
       <div className='object'>
         <div className='object-title'>
-          Объект: {props.title} 
+          Объект: {props.name} 
           <Status status = {props.status}/>
         </div>
         <div className='object-body'>
@@ -22,11 +22,11 @@ export default function Object( props ) {
             </div>
             <div className='item'>
               <img src={shedule} width={40}/>
-              График работы: <span className='listContent'>{props.shedule}</span>
+              График работы: <span className='listContent'>{props.time_from}-{props.time_to}</span>
             </div>
             <div className='item'>
               <img src={choice} width={40}/>
-              Тип поля: <span className='listContent'>{props.category}</span>
+              Тип поля: <span className='listContent'>{props.category_sport}</span>
             </div>
           </ul>
         </div>

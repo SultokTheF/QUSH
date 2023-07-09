@@ -11,6 +11,8 @@ import Profile from './pages/Profile';
 import FieldList from './pages/FieldList';
 import UserField from './pages/UserField';
 
+import Api from './components/Api';
+
 import './css/main.css';
 
 export default class App extends Component {
@@ -18,9 +20,10 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        {/* <ObjectsPage/> */}
+        <ObjectsPage />
         {/* <UserField/> */}
-        <FieldList/>
+        {/* <FieldList/> */}
+        {/* <Api/> */}
       </div>
     )
   }
