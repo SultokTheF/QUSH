@@ -19,12 +19,18 @@ const Login = () => {
   },
   body: JSON.stringify(formData)
 })
-  .then(response => response.text()) // вызываем response.text() для получения текстового содержимого
-  .then(data => {
-    // Обработка ответа от сервера
-    console.log(data);
-    // Сохранение токена в localStorage
+    .then(response => {
+      console.log(response.status);
+      if (response.status === 200) {
+        return response.text();
+      } else {
+        throw new Error('Ошибка: ' + response.status);
+      }
+    })
+   // вызываем response.text() для получения текстового содержимого
+   .then(data => {
     localStorage.setItem('token', data);
+    window.location.href = '/field';
   })
   .catch(error => {
     // Обработка ошибок
