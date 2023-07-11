@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
-import History from "../../components/Calendar";
 import { useParams } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+
+import Spinner from '../../components/Spinner';
 
 export default function ObjectPage( {} ) {
+    const categoryOptions = [
+        { value: '1', text: 'Футбол' },
+        { value: '2', text: 'Баскетбол' },
+        { value: '3', text: 'Волейбол' },
+    ];
+  
+    const surfaceOptions = [
+        { value: '1', text: 'Газон' },
+        { value: '2', text: 'Паркет' },
+        { value: '3', text: 'ПВХ' },
+    ];
+
     const  params = useParams();
     const fieldId = parseInt( params.id );
     
@@ -12,7 +25,7 @@ export default function ObjectPage( {} ) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/field/fields');
+                const response = await fetch( 'http://localhost:8000/field/fields' );
                 const data = await response.json();
                 const foundField = data.data.find( field => field.id === fieldId );
 
@@ -26,31 +39,49 @@ export default function ObjectPage( {} ) {
     }, []);
 
     if ( !field ) {
-        return <div className='content'>Loading...</div>; // Render loading state
+        return (
+            <Spinner/>
+        ); // Render loading state
     }
+
+    const category = categoryOptions.find( ( obj ) => parseInt( obj.value ) === field.category_sport )
+    const surface = surfaceOptions.find( ( obj ) => parseInt( obj.value ) === field.surface_type )
 
     return (
         <div className='content'>
-            <div className='row'>
-                <div className='col-3'></div>
-                <div className='col-6'>
-                    <div className='objectContent'>
-                        <div className='row'>
-                            <div className='col-7 objDesc'>
-                                <div className='mainText'>{field.description}</div>
-                            </div>
-                            <div className='col-5 objImg'>
-                                <img
-                                    src='https://sxodim.com/uploads/images/2022/11/21/optimized/e1636aa8e4060e4f35f988ec21123cd8_800xauto-q-85.jpg'
-                                    width={300}
-                                    height={400}
-                                />
-                            </div>
+            <Container>
+                <Row>
+                    <Col md={6} className="text-md-start">
+                        <h1 className="mb-4 display-4 text-color-black">{field.name}</h1>
+                        <p className="mb-4 lead">{field.description}</p>
+                        <p className="mb-2 h5">
+                        <strong className='text-color-blue'>Адрес:</strong> Уральск. Ул. Ватутина 53
+                        </p>
+                        <p className="mb-2 h5">
+                        <strong className='text-color-blue'>Стоимость аренды:</strong> {field.price}
+                        </p>
+                        <p className="mb-2 h5">
+                        <strong className='text-color-blue'>Тип:</strong> {category.text}
+                        </p>
+                        <p className="mb-2 h5">
+                        <strong className='text-color-blue'>Покрытие:</strong> {surface.text}
+                        </p>
+                        <p className="mb-2 h5">
+                        <strong className='text-color-blue'>Размеры:</strong> {field.dimensions}
+                        </p>
+
+                        <a className='btn btn-outline-primary form-control'>Аренда</a>
+                    </Col>
+                    <Col md={6} className="text-md-end">
+                        <div className="field-image-container">
+                        <div className="field-image-ratio">
+                            <img src='https://fcastana.kz/img/stadion_g1.jpg' alt="Field" className="field-image" />
                         </div>
-                    </div>
-                </div>
-            </div>
-            <History {...field} />
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
+      
     );
 }

@@ -42,7 +42,7 @@ export default function Field() {
                     time_from: parseInt( timeFrom ),
                     time_to: timeTo,
                     description: description,
-                    price: price,
+                    price: price.toString() + ' тг/час',
                     image: null,
                     dimensions: dimension,
                     surface_type: parseInt( surface ),
@@ -142,7 +142,7 @@ export default function Field() {
                             </select>
                             
                             <label className='mt-2'>Покрытие</label>
-                            <select value={surface} onChange={(e) => setCategory( e.target.value )} className='form-select'>
+                            <select value={surface} onChange={(e) => setSurface( e.target.value )} className='form-select'>
                                 {surfaceOptions.map( option => (
                                     <option key={option.value} value={option.value}>
                                         {option.text}
@@ -159,6 +159,8 @@ export default function Field() {
                                         placeholder='Время начала'
                                         value={timeFrom}
                                         onChange={(e) => setTimeFrom( e.target.value )}
+                                        min={0}
+                                        max={23}
                                         required
                                     />
                                 </div>
@@ -169,6 +171,8 @@ export default function Field() {
                                         placeholder='Время начала'
                                         value={timeTo}
                                         onChange={(e) => setTimeTo( e.target.value )}
+                                        min={0}
+                                        max={23}
                                         required
                                     />
                                 </div>

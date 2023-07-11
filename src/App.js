@@ -23,7 +23,7 @@ export default class App extends Component {
       <>
         <Navbar/>
         <Routes>
-          <Route path='/main' element={<Main/>}/>
+          <Route index element={<Main/>}/>
           <Route path='/about' element={<About/>}/>
           
           <Route path='/object/:id/' element={<ObjectPage/>}/>

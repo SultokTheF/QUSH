@@ -5,7 +5,7 @@ export default function Navbar() {
         <header>
         <div className="nav">
             <a className="logo"></a>
-            <a href="/main"><navtext>Главная</navtext></a>
+            <a href="/"><navtext>Главная</navtext></a>
             <a href="/about"><navtext>О нас</navtext></a>
             <a href="/objects"><navtext>Мои объекты</navtext></a>
             {/* <div className="nav-profile">
