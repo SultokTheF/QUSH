@@ -20,7 +20,7 @@ export default class App extends Component {
           <Route path='/' element={<ObjectsPage/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/object' element={<ObjectPage/>}/>
+          <Route path='/object/:id/' element={<ObjectPage/>}/>
           <Route path='/field' element={<Field/>}/>
         </Routes>
       </>

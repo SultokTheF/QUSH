@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 export default function Field() {
     const [name, setName] = useState( '' );
     const [description, setDescription] = useState( '' );
+    const [location, setLocation] = useState( '' );
     // const [category, setCategory] = useState( '' );
     // const [timeFrom, setTimeFrom] = useState( '' );
     // const [timeTo, setTimeTo] = useState( '' );
@@ -19,7 +20,7 @@ export default function Field() {
                     owner_id: 1,
                     name: name,
                     category_sport: 2,
-                    location: 1.25,
+                    location: location,
                     time_from: 10,
                     time_to: 22,
                     description: description,
@@ -39,6 +40,7 @@ export default function Field() {
             if( res.status === 200 ) {
                 setName( '' );
                 setDescription( '' );
+                setLocation( '' );
                 // setCategory( '' );
                 // setTimeFrom( '' );
                 // setTimeTo( '' );
@@ -69,7 +71,7 @@ export default function Field() {
                         placeholder='Введите название поля' 
                         value={name}
                         onChange={(e) => setName( e.target.value )}
-                        ></input>
+                        />
                         
                         <label className='mt-2'>Описание</label>
                         <textarea
@@ -80,7 +82,13 @@ export default function Field() {
                         />
 
                         <label className='mt-2'>Адрес</label>
-                        <input className='form-control' placeholder='Введите адрес поля' name='name'></input>
+                        <input 
+                        type='number'
+                        className='form-control' 
+                        placeholder='Введите адрес поля' 
+                        value={location}
+                        onChange={(e) => setLocation( e.target.value )}
+                        />
 
                         <div className='row'>
                             <div className='col-8'></div>

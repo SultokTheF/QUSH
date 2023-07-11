@@ -8,7 +8,7 @@ import choice from '../static/images/icons/choice.png';
 
 export default function Object( props ) {
   return (
-    <a href='/object'>
+    <a href={`object/${props.id}`}>
       <navtext>
         <div className='object'>
           <div className='object-title'>
