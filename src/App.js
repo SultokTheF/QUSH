@@ -3,11 +3,17 @@ import {Route, Routes} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ObjectsPage from './pages/ObjectsPage';
-import ObjectPage from './pages/ObjectPage';
-import Field from './pages/Field';
+import Login from './pages/Fields/Login';
+import Register from './pages/Fields/Register'
+;
+import ObjectsPage from './pages/Objects/ObjectsPage';
+import ObjectPage from './pages/Objects/ObjectPage';
+
+import AddField from './pages/Fields/AddField';
+import EditField from './pages/Fields/EditField';
+
+import About from './pages/About';
+import Main from './pages/Main';
 
 import './css/main.css';
 
@@ -17,11 +23,17 @@ export default class App extends Component {
       <>
         <Navbar/>
         <Routes>
-          <Route path='/' element={<ObjectsPage/>}/>
+          <Route path='/main' element={<Main/>}/>
+          <Route path='/about' element={<About/>}/>
+          
+          <Route path='/object/:id/' element={<ObjectPage/>}/>
+          <Route path='/objects' element={<ObjectsPage/>}/>
+
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/object/:id/' element={<ObjectPage/>}/>
-          <Route path='/field' element={<Field/>}/>
+          
+          <Route path='/addField' element={<AddField/>}/>
+          <Route path='/editField' element={<EditField/>}/>
         </Routes>
       </>
     )
