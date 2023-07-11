@@ -70,7 +70,7 @@ export default function ObjectPage( {} ) {
                         <strong className='text-color-blue'>Размеры:</strong> {field.dimensions}
                         </p>
 
-                        <a className='btn btn-outline-primary form-control'>Аренда</a>
+                        <a className='btn btn-outline-primary form-control' href='/time'>Аренда</a>
                     </Col>
                     <Col md={6} className="text-md-end">
                         <div className="field-image-container">

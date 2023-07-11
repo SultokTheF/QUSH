@@ -15,6 +15,8 @@ import EditField from './pages/Fields/EditField';
 import About from './pages/About';
 import Main from './pages/Main';
 
+import Calendar from './components/Calendar';
+
 import './css/main.css';
 
 export default class App extends Component {
@@ -34,6 +36,8 @@ export default class App extends Component {
           
           <Route path='/addField' element={<AddField/>}/>
           <Route path='/editField' element={<EditField/>}/>
+
+          <Route path='time' element={<Calendar/>}/>
         </Routes>
       </>
     )

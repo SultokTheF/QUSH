@@ -33,11 +33,11 @@ export default function ObjectsPage() {
                     <h1>Здраствуйте [Имя пользователя] </h1>
                 </div>
                 <div className="row">
-                    <div className='col-2'></div>
-                    <div className='col-10'>
-                        <h5>Здесь вы можете управлять своими объектами <a href="/addField">Добавить</a> | <a href="/editField">Редактировать</a> объект</h5>
+                    <div className='col-1'></div>
+                    <div className='col-10 text-center'>
+                        <h4>Здесь вы можете <a href="/addField">Добавить</a> | <a href="/editField">Редактировать</a> объект</h4>
                     </div>
-                    <div className='col-2'></div>
+                    <div className='col-1'></div>
                 </div>
                 <Spinner/>
             </div>
@@ -50,11 +50,11 @@ export default function ObjectsPage() {
                 <h1>Здраствуйте [Имя пользователя] </h1>
             </div>
             <div className="row">
-                <div className='col-2'></div>
-                <div className='col-10'>
-                    <h5>Здесь вы можете управлять своими объектами <a href="/addField">Добавить</a> | <a href="/editField">Редактировать</a> объект</h5>
+                <div className='col-1'></div>
+                <div className='col-10 text-center '>
+                    <h4>Здесь вы можете <a href="/addField">Добавить</a> | <a href="/editField">Редактировать</a> объект</h4>
                 </div>
-                <div className='col-2'></div>
+                <div className='col-1'></div>
             </div>
             <div className="row mt-5">
                 <div className='col-2'></div>

@@ -206,7 +206,10 @@ navtext:not(:hover) {
 }
 
 .statusRow {
-    margin-left: 25%;
+    /* border: 5px solid; */
+    margin: auto;
+    width: 30%;
+    /* padding: 10px; */
 }
 
 .action {
