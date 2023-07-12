@@ -34,7 +34,7 @@ export default function Object( props ) {
             <ul>
               <div className='item'>
                 <img src={location} width={40}/>
-                Локация: <span className='listContent'>Уральск. Ул.Ватутина 53</span>
+                Локация: <span className='listContent'>{props.location}</span>
               </div>
               <div className='item'>
                 <img src={shedule} width={40}/>

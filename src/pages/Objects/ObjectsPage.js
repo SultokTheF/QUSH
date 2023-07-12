@@ -4,13 +4,8 @@ import Object from '../../components/Object';
 import Spinner from "../../components/Spinner";
 
 export default function ObjectsPage() {
-    const categoryOptions = [
-        { value: '1', text: 'Футболые поля' },
-        { value: '2', text: 'Баскетбольные поля' },
-        { value: '3', text: 'Волейбольные поля' },
-    ];
-
     const [fields, setFields] = useState( null );
+    const [selectedCategory, setSelectedCategory] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,14 +54,23 @@ export default function ObjectsPage() {
             <div className="row mt-5">
                 <div className='col-2'></div>
                 <div className='col-10'>
-                    <h2>Футбольные поля</h2>
+                    <h2>Спортивные поля</h2>
+                    <strong className='text-color-blue m-2'>Выберите тип поля:</strong>
+                    <select value={selectedCategory} onChange={event => setSelectedCategory(parseInt( event.target.value ))} className="mb-3">
+                        <option value={0}>Все</option>
+                        <option value={1}>Футбол</option>
+                        <option value={2}>Баскетбол</option>
+                        <option value={3}>Волейбол</option>
+                    </select>
                     <ul>
                         <ul>
-                            {fields.map( field => (
+                        {fields
+                            .filter(field => selectedCategory === 0 || field.category_sport === selectedCategory)
+                            .map(field => (
                                 <div className="objectList" key={field.id}>
-                                    <Object {...field}/>
+                                <Object {...field}/>
                                 </div>
-                            ) )}
+                            ))}
                         </ul>
                     </ul>
                 </div>

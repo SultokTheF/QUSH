@@ -55,7 +55,7 @@ export default function ObjectPage( {} ) {
                         <h1 className="mb-4 display-4 text-color-black">{field.name}</h1>
                         <p className="mb-4 lead">{field.description}</p>
                         <p className="mb-2 h5">
-                        <strong className='text-color-blue'>Адрес:</strong> Уральск. Ул. Ватутина 53
+                        <strong className='text-color-blue'>Адрес:</strong> {field.location}
                         </p>
                         <p className="mb-2 h5">
                         <strong className='text-color-blue'>Стоимость аренды:</strong> {field.price}

@@ -39,6 +39,8 @@ export default function Field() {
                     name: name,
                     category_sport: parseInt( category ),
                     location: location,
+                    longitude: null,
+                    latitude: null,
                     time_from: parseInt( timeFrom ),
                     time_to: timeTo,
                     description: description,
@@ -56,7 +58,6 @@ export default function Field() {
             const resJson = await res.json();
 
             if( res.status === 200 ) {
-                console.log( timeFrom );
                 setName( '' );
                 setCategory(  );
                 setLocation( '' );
@@ -110,7 +111,7 @@ export default function Field() {
 
                             <label className='mt-2'>Адрес</label>
                             <input 
-                                type='number'
+                                type='text'
                                 className='form-control' 
                                 placeholder='Введите адрес поля' 
                                 value={location}
