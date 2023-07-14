@@ -71,13 +71,10 @@ export default function ObjectPage( {} ) {
                         </p>
 
                         <Row className='mt-5'>
-                            <Col md={4} className="text-md-end">
-                                <a className='btn btn-outline-danger form-control' href='/time'>Удалить</a>
-                            </Col>
-                            <Col md={4} className="text-md-end">
+                            <Col md={6} className="text-md-end">
                                 <a className='btn btn-outline-success form-control' href={`/edit/${field.id}`}>Редактировать</a>
                             </Col>
-                            <Col md={4} className="text-md-end">
+                            <Col md={6} className="text-md-end">
                                 <a className='btn btn-outline-primary form-control' href='/time'>Аренда</a>
                             </Col>
                         </Row>
