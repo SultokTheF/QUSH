@@ -3,9 +3,8 @@ import {Route, Routes} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 
-import Login from './pages/Fields/Login';
-import Register from './pages/Fields/Register'
-;
+// import Login from './pages/Fields/Login';
+// import Register from './pages/Fields/Register';
 import ObjectsPage from './pages/Objects/ObjectsPage';
 import ObjectPage from './pages/Objects/ObjectPage';
 
@@ -31,8 +30,8 @@ export default class App extends Component {
           <Route path='/object/:id/' element={<ObjectPage/>}/>
           <Route path='/objects' element={<ObjectsPage/>}/>
 
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/register' element={<Register/>}/>
+          {/* <Route path='/login' element={<Login/>}/> */}
+          {/* <Route path='/register' element={<Register/>}/> */}
           
           <Route path='/add' element={<AddField/>}/>
           <Route path='/edit/:id' element={<EditField/>}/>
