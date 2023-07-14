@@ -89,15 +89,17 @@ export default function EditField() {
             } );
 
             if( res.status === 200 ) {
-                setName( '' );
-                setCategory(  );
-                setLocation( '' );
-                setTimeFrom( '' );
-                setTimeTo( '' );
-                setDescription( '' );
-                setPrice( '' );
-                setDimension( '' );
-                setSurface( '' );
+                window.location.reload(false);
+
+                setName( name );
+                setCategory( category );
+                setLocation( location );
+                setTimeFrom( timeFrom );
+                setTimeTo( timeTo );
+                setDescription( description );
+                setPrice( price );
+                setDimension( dimension );
+                setSurface( surface );
                 // setFacility( '' );
             }
         } catch( err ) {

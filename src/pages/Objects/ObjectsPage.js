@@ -30,7 +30,7 @@ export default function ObjectsPage() {
                 <div className="row">
                     <div className='col-1'></div>
                     <div className='col-10 text-center'>
-                        <h4>Здесь вы можете <a href="/add">Добавить</a> | <a href="/edi">Удалить</a> объекты</h4>
+                        <h4>Здесь вы можете <a href="/add">Добавить</a> | Посмотреть объекты</h4>
                     </div>
                     <div className='col-1'></div>
                 </div>
@@ -47,7 +47,7 @@ export default function ObjectsPage() {
             <div className="row">
                 <div className='col-1'></div>
                 <div className='col-10 text-center '>
-                    <h4>Здесь вы можете <a href="/add">Добавить</a> | <a href="/edit">Удалить</a> объект</h4>
+                    <h4>Здесь вы можете <a href="/add">Добавить</a> | Посмотреть объекты</h4>
                 </div>
                 <div className='col-1'></div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import Spinner from '../../components/Spinner';
@@ -18,6 +18,8 @@ export default function ObjectPage( {} ) {
     ];
 
     const  params = useParams();
+    const navigate = useNavigate();
+
     const fieldId = parseInt( params.id );
     
     const [field, setField] = useState( null );
@@ -37,6 +39,27 @@ export default function ObjectPage( {} ) {
 
         fetchData();
     }, []);
+
+    const handleDelete = async ( e ) => {
+        e.preventDefault();
+        try {
+            const res = await fetch( 'http://localhost:8000/field/fields/' + fieldId + '/', {
+                method : "DELETE",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            } );
+
+            if (res.ok) {
+                navigate('/objects');
+                window.location.reload(false);
+            } else {
+                console.log('Failed to delete the field');
+            }
+        } catch( err ) {
+            console.log( err )
+        }
+    }
 
     if ( !field ) {
         return (
@@ -71,10 +94,15 @@ export default function ObjectPage( {} ) {
                         </p>
 
                         <Row className='mt-5'>
-                            <Col md={6} className="text-md-end">
+                            <Col md={4} className="text-md-end">
+                                <button type="button" class="btn btn-outline-danger form-control" data-bs-toggle="modal" data-bs-target="#delete_object">
+                                    Удалить
+                                </button>
+                            </Col>
+                            <Col md={4} className="text-md-end">
                                 <a className='btn btn-outline-success form-control' href={`/edit/${field.id}`}>Редактировать</a>
                             </Col>
-                            <Col md={6} className="text-md-end">
+                            <Col md={4} className="text-md-end">
                                 <a className='btn btn-outline-primary form-control' href='/time'>Аренда</a>
                             </Col>
                         </Row>
@@ -82,13 +110,30 @@ export default function ObjectPage( {} ) {
                     <Col md={6} className="text-md-end">
                         <div className="field-image-container">
                         <div className="field-image-ratio">
-                            <img src='https://fcastana.kz/img/stadion_g1.jpg' alt="Field" className="field-image" />
+                            <img src='https://rezcom.ru/upload/images/bask_1.jpg' alt="Field" className="field-image" />
                         </div>
                         </div>
                     </Col>
                 </Row>
             </Container>
+
+
+            <div class="modal fade" id="delete_object" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Удаление объекта [<span className='text-primary'>{field.name}</span>]</h5>
+                    </div>
+                    <div class="modal-body">
+                        Вы действительно хотите удалить объект <span className='text-primary'>{field.name}</span>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onClick={handleDelete} class="btn">Удалить</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Отмена</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      
     );
 }

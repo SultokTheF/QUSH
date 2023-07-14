@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddField() {
+    const navigate = useNavigate();
+
     const [name, setName] = useState( '' );
     const [location, setLocation] = useState( '' );
     const [timeFrom, setTimeFrom] = useState( '' );
@@ -58,16 +61,8 @@ export default function AddField() {
             const resJson = await res.json();
 
             if( res.status === 200 ) {
-                setName( '' );
-                setCategory(  );
-                setLocation( '' );
-                setTimeFrom( '' );
-                setTimeTo( '' );
-                setDescription( '' );
-                setPrice( '' );
-                setDimension( '' );
-                setSurface(  );
-                // setFacility( '' );
+                navigate('/objects');
+                window.location.reload(false);
             }
         } catch( err ) {
             console.log( err )
