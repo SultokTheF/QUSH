@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function Field() {
+export default function AddField() {
     const [name, setName] = useState( '' );
     const [location, setLocation] = useState( '' );
     const [timeFrom, setTimeFrom] = useState( '' );
@@ -39,12 +39,12 @@ export default function Field() {
                     name: name,
                     category_sport: parseInt( category ),
                     location: location,
-                    longitude: null,
-                    latitude: null,
+                    longitude: 1.01,
+                    latitude: 1.01,
                     time_from: parseInt( timeFrom ),
                     time_to: timeTo,
                     description: description,
-                    price: price.toString() + ' тг/час',
+                    price: price,
                     image: null,
                     dimensions: dimension,
                     surface_type: parseInt( surface ),
