@@ -1,39 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 import Status from './Status';
 import Checkbox from './Checkbox';
 
-import eye from '../static/images/icons/eye.png';
-import pen from '../static/images/icons/pen.png';
-import trash from '../static/images/icons/trash.png';
+export default function Rent( props ) {
+    const intToTime = ( timeInSec ) => {
+        let minutes = timeInSec % 60;
+        let hours = parseInt( timeInSec / 60 ).toString();
+  
+        if( parseInt( timeInSec / 60 ) < 10 ) {
+            hours = "0" + hours;
+        }
+        
+        if( timeInSec % 60 < 10 ) {
+            minutes = "0" + minutes;
+        }
+  
+        return hours + ":" + minutes;
+    }
 
-export default function Hisroty( props ) {
-    const hours = [
-        {'id': 1, 'hour': '00:00', 'available': true},
-        {'id': 2, 'hour': '01:00', 'available': false},
-        {'id': 3, 'hour': '02:00', 'available': true},
-        {'id': 4, 'hour': '03:00', 'available': true},
-        {'id': 5, 'hour': '04:00', 'available': true},
-        {'id': 6, 'hour': '05:00', 'available': true},
-        {'id': 7, 'hour': '06:00', 'available': true},
-        {'id': 8, 'hour': '07:00', 'available': true},
-        {'id': 9, 'hour': '08:00', 'available': true},
-        {'id': 10, 'hour': '09:00', 'available': true},
-        {'id': 11, 'hour': '10:00', 'available': true},
-        {'id': 12, 'hour': '11:00', 'available': true},
-        {'id': 13, 'hour': '12:00', 'available': true},
-        {'id': 14, 'hour': '13:00', 'available': true},
-        {'id': 15, 'hour': '14:00', 'available': true},
-        {'id': 16, 'hour': '15:00', 'available': true},
-        {'id': 17, 'hour': '16:00', 'available': true},
-        {'id': 18, 'hour': '17:00', 'available': true},
-        {'id': 19, 'hour': '18:00', 'available': true},
-        {'id': 20, 'hour': '19:00', 'available': true},
-        {'id': 21, 'hour': '20:00', 'available': true},
-        {'id': 22, 'hour': '21:00', 'available': true},
-        {'id': 23, 'hour': '22:00', 'available': true},
-        {'id': 24, 'hour': '23:00', 'available': true},
-    ];
+    const createTimeLine = ( timeFrom, timeTo ) => {
+        let tickets = []
+        let id = 1;
+
+        for( let i = timeFrom; i < timeTo; i+= 60 ) {
+            tickets.push(
+                {
+                    'id': id,
+                    'time_from': intToTime( i ),
+                    'time_to': intToTime( i + 60 )
+                }
+            )
+
+            id++;
+        }
+
+        return tickets;
+    }
+
+    const  params = useParams();
+    const fieldId = parseInt( params.id );
+
+    const [field, setField] = useState( null );
+    const [timeLine, setTimeLine] = useState( createTimeLine( 0, 1439 ) );
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch( 'http://localhost:8000/field/fields' );
+                const data = await response.json();
+                const foundField = data.data.find( field => field.id === fieldId );
+
+                setField( foundField );
+                setTimeLine( createTimeLine( foundField.time_from, foundField.time_to ) );
+            } catch ( error ) {
+                console.error( 'Error fetching data:', error );
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className='content'>
@@ -61,18 +88,18 @@ export default function Hisroty( props ) {
                             </tr>
                         </thead>
                         <tbody>
-                            {hours.map( hour => (
+                            {timeLine.map( time => (
                                 <tr>
-                                    <td> {hour.id} </td>
-                                    <td> {hour.hour} </td>
+                                    <td> {time.id} </td>
+                                    <td> {time.time_from} - {time.time_to} </td>
                                     <td>
                                         <div className='d-flex justify-content-center'>
-                                            <Status status = {hour.available} />
+                                            <Status status = {true} />
                                         </div>
                                     </td>
                                     <td>
                                         <div className='actions'>
-                                            <Checkbox status = {hour.available} />
+                                            <Checkbox status = {time.available} />
                                         </div>
                                     </td>
                                 </tr>

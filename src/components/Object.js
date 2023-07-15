@@ -22,6 +22,21 @@ export default function Object( props ) {
   const category = categoryOptions.find( ( obj ) => parseInt( obj.value ) === props.category_sport )
   const surface = surfaceOptions.find( ( obj ) => parseInt( obj.value ) === props.surface_type )
 
+  const intToTime = ( timeInSec ) => {
+      let minutes = timeInSec % 60;
+      let hours = parseInt( timeInSec / 60 ).toString();
+
+      if( parseInt( timeInSec / 60 ) < 10 ) {
+          hours = "0" + hours;
+      }
+      
+      if( timeInSec % 60 < 10 ) {
+          minutes = "0" + minutes;
+      }
+
+      return hours + ":" + minutes;
+  }
+
   return (
     <a href={`object/${props.id}`}>
       <navtext>
@@ -38,7 +53,7 @@ export default function Object( props ) {
               </div>
               <div className='item'>
                 <img src={shedule} width={40}/>
-                График работы: <span className='listContent'>{props.time_from}.00-{props.time_to}.00</span>
+                График работы: <span className='listContent'>{intToTime( props.time_from )}-{intToTime( props.time_to )}</span>
               </div>
               <div className='item'>
                 <img src={choice} width={40}/>

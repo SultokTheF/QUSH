@@ -103,7 +103,7 @@ export default function ObjectPage( {} ) {
                                 <a className='btn btn-outline-success form-control' href={`/edit/${field.id}`}>Редактировать</a>
                             </Col>
                             <Col md={4} className="text-md-end">
-                                <a className='btn btn-outline-primary form-control' href='/time'>Аренда</a>
+                                <a className='btn btn-outline-primary form-control' href={`/rent/${field.id}`}>Аренда</a>
                             </Col>
                         </Row>
                     </Col>

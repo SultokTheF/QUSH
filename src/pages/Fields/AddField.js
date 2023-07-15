@@ -29,18 +29,25 @@ export default function AddField() {
 
     const [surface, setSurface] = useState( surfaceOptions[0].value );
 
-    const handleDelete = async ( e ) => {
+    const timeToInt = ( time ) => {
+        const hours = time[0] + time[1];
+        const minutes = time[3] + time[4];
+
+        return parseInt( hours ) * 60 + parseInt( minutes );
+    }
+ 
+    const handleCreateTickets = async ( e ) => {
         try {
             const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom.toString() + '/' + timeTo.toString() + '/' + 1 + '/', {
-                method : "GET",
+                method : "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
             } );
 
             if ( res.status === 200 ) {
-                navigate( '/objects' );
-                // window.location.reload( false );
+                navigate('/objects');
+                window.location.reload( false);
             } else {
                 console.log( 'Failed to delete the field' );
             }
@@ -64,8 +71,8 @@ export default function AddField() {
                     location: location,
                     longitude: 1.01,
                     latitude: 1.01,
-                    time_from: parseInt( timeFrom ),
-                    time_to: timeTo,
+                    time_from: timeToInt( timeFrom ),
+                    time_to: timeToInt( timeTo ),
                     description: description,
                     price: price,
                     image: null,
@@ -77,14 +84,12 @@ export default function AddField() {
                     rules: null
                 } ),
             } );
-
-            const resJson = await res.json();
-
             if( res.status === 200 ) {
-                handleDelete();
+                // handleCreateTickets();
                 navigate('/objects');
             }
         } catch( err ) {
+            console.log( timeFrom );
             console.log( err )
         }
     }
@@ -170,25 +175,21 @@ export default function AddField() {
                             <div className='row'>
                                 <div className='col-6'>
                                     <input
-                                        type='number'
+                                        type='time'
                                         className='form-control'
                                         placeholder='Время начала'
                                         value={timeFrom}
                                         onChange={(e) => setTimeFrom( e.target.value )}
-                                        min={0}
-                                        max={23}
                                         required
                                     />
                                 </div>
                                 <div className='col-6'>
                                     <input
-                                        type='number'
+                                        type='time'
                                         className='form-control'
                                         placeholder='Время начала'
                                         value={timeTo}
                                         onChange={(e) => setTimeTo( e.target.value )}
-                                        min={0}
-                                        max={23}
                                         required
                                     />
                                 </div>

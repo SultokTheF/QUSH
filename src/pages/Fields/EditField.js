@@ -17,6 +17,21 @@ export default function EditField() {
     const [description, setDescription] = useState( '' );
     const [dimension, setDimension] = useState( '' );
 
+    const intToTime = ( timeInSec ) => {
+        let minutes = timeInSec % 60;
+        let hours = parseInt( timeInSec / 60 ).toString();
+  
+        if( parseInt( timeInSec / 60 ) < 10 ) {
+            hours = "0" + hours;
+        }
+        
+        if( timeInSec % 60 < 10 ) {
+            minutes = "0" + minutes;
+        }
+  
+        return hours + ":" + minutes;
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -194,26 +209,20 @@ export default function EditField() {
                             <div className='row'>
                                 <div className='col-6'>
                                     <input
-                                        type='number'
+                                        type='time'
                                         className='form-control'
                                         placeholder='Время начала'
-                                        value={timeFrom}
-                                        onChange={(e) => setTimeFrom( e.target.value )}
-                                        min={0}
-                                        max={23}
-                                        
+                                        value={intToTime( timeFrom )}
+                                        onChange={(e) => setTimeFrom( e.target.value )}  
                                     />
                                 </div>
                                 <div className='col-6'>
                                     <input
-                                        type='number'
+                                        type='time'
                                         className='form-control'
                                         placeholder='Время начала'
-                                        value={timeTo}
+                                        value={intToTime( timeTo )}
                                         onChange={(e) => setTimeTo( e.target.value )}
-                                        min={0}
-                                        max={23}
-                                        
                                     />
                                 </div>
                             </div>
