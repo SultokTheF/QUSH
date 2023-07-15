@@ -9,6 +9,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    window.location.href = '/';
 
     // Ваша логика для отправки данных формы на сервер
     const formData = {

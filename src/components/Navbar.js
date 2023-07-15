@@ -1,6 +1,17 @@
 import React from 'react';
 
 export default function Navbar() {
+    const token = localStorage.getItem('token');
+
+    const handleLogout = () => {
+        // Удаление токена из localstorage
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+
+        // Дополнительные действия после выхода, например, перенаправление на страницу входа
+        // window.location.href = '/login';
+    };
+
     return (
         <header>
         <div className="nav">
@@ -13,10 +24,18 @@ export default function Navbar() {
                 <a href="#" className="username">Aliba Kamilbully</a>
             </div> */}
             <div className='nav-profile'>
-                <div className=''>
-                    <a className='btn btn-outline-primary m-1' href='/login'>Войти</a>
-                    <a className='btn' href='/register'>Регистрация</a>
-                </div>
+                {token ? (
+                    // Если токен присутствует, рендерим кнопку "Выйти"
+                    <div className=''>
+                        <button className='btn' onClick={handleLogout}>Выйти</button>
+                    </div>
+                ) : (
+                    // Если токен отсутствует, рендерим кнопку "Войти" и "Регистрация"
+                    <div className=''>
+                        <a className='btn btn-outline-primary m-1' href='/login'>Войти</a>
+                        <a className='btn' href='/register'>Регистрация</a>
+                    </div>
+                )}
             </div>
         </div>
     </header>

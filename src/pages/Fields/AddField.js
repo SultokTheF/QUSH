@@ -29,6 +29,26 @@ export default function AddField() {
 
     const [surface, setSurface] = useState( surfaceOptions[0].value );
 
+    const handleDelete = async ( e ) => {
+        try {
+            const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom.toString() + '/' + timeTo.toString() + '/' + 1 + '/', {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            } );
+
+            if ( res.status === 200 ) {
+                navigate( '/objects' );
+                // window.location.reload( false );
+            } else {
+                console.log( 'Failed to delete the field' );
+            }
+        } catch( err ) {
+            console.log( err )
+        }
+    }
+
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         try {
@@ -61,8 +81,8 @@ export default function AddField() {
             const resJson = await res.json();
 
             if( res.status === 200 ) {
+                handleDelete();
                 navigate('/objects');
-                window.location.reload(false);
             }
         } catch( err ) {
             console.log( err )

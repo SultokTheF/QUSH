@@ -50,11 +50,11 @@ export default function ObjectPage( {} ) {
                 },
             } );
 
-            if (res.ok) {
+            if ( res.status === 200 ) {
                 navigate('/objects');
-                window.location.reload(false);
+                window.location.reload( false);
             } else {
-                console.log('Failed to delete the field');
+                console.log( 'Failed to delete the field' );
             }
         } catch( err ) {
             console.log( err )
