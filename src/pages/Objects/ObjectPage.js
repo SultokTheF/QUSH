@@ -21,8 +21,38 @@ export default function ObjectPage( {} ) {
     const navigate = useNavigate();
 
     const fieldId = parseInt( params.id );
-    
+
+    const timeToInt = ( time ) => {
+        const hours = time[0] + time[1];
+        const minutes = time[3] + time[4];
+
+        return parseInt( hours ) * 60 + parseInt( minutes );
+    }
+
+    const createTickets = async ( e ) => {
+        try {
+            const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom + '/' + timeTo + '/' + fieldId + '/', {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            } );
+
+            if ( res.status === 200 ) {
+                // navigate('/objects');
+                // window.location.reload( false);
+            } else {
+                console.log( 'Failed to delete the field' );
+            }
+        } catch( err ) {
+            console.log( err )
+        }
+    }
+
     const [field, setField] = useState( null );
+    
+    const [timeFrom, setTimeFrom] = useState( '' );
+    const [timeTo, setTimeTo] = useState( '' );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,6 +61,8 @@ export default function ObjectPage( {} ) {
                 const data = await response.json();
                 const foundField = data.data.find( field => field.id === fieldId );
 
+                setTimeFrom( foundField.time_from );
+                setTimeTo( foundField.time_to );
                 setField( foundField );
             } catch ( error ) {
                 console.error( 'Error fetching data:', error );
@@ -94,16 +126,22 @@ export default function ObjectPage( {} ) {
                         </p>
 
                         <Row className='mt-5'>
-                            <Col md={4} className="text-md-end">
-                                <button type="button" class="btn btn-outline-danger form-control" data-bs-toggle="modal" data-bs-target="#delete_object">
+                            <Col md={3} className="text-md-end">
+                                <button type="button" class="btn btn-outline-danger form-control p-2" data-bs-toggle="modal" data-bs-target="#delete_object">
                                     Удалить
                                 </button>
                             </Col>
-                            <Col md={4} className="text-md-end">
-                                <a className='btn btn-outline-success form-control' href={`/edit/${field.id}`}>Редактировать</a>
+                            <Col md={3} className="text-md-end">
+                                <a className='btn btn-outline-success form-control p-2' href={`/edit/${field.id}`}>Редактировать</a>
                             </Col>
-                            <Col md={4} className="text-md-end">
-                                <a className='btn btn-outline-primary form-control' href={`/rent/${field.id}`}>Аренда</a>
+                            <Col md={3} className="text-md-end">
+                                <a className='btn btn-outline-primary form-control p-2' href={`/rent/${field.id}`}>Аренда</a>
+                            </Col>
+                            <Col md={3} className="text-md-end">
+                                <button 
+                                    className='btn btn-outline-primary form-control p-2'
+                                    onClick={createTickets}
+                                    >Открыть для аренды</button>
                             </Col>
                         </Row>
                     </Col>

@@ -36,26 +36,6 @@ export default function AddField() {
         return parseInt( hours ) * 60 + parseInt( minutes );
     }
  
-    const handleCreateTickets = async ( e ) => {
-        try {
-            const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom.toString() + '/' + timeTo.toString() + '/' + 1 + '/', {
-                method : "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            } );
-
-            if ( res.status === 200 ) {
-                navigate('/objects');
-                window.location.reload( false);
-            } else {
-                console.log( 'Failed to delete the field' );
-            }
-        } catch( err ) {
-            console.log( err )
-        }
-    }
-
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         try {
@@ -85,7 +65,6 @@ export default function AddField() {
                 } ),
             } );
             if( res.status === 200 ) {
-                // handleCreateTickets();
                 navigate('/objects');
             }
         } catch( err ) {

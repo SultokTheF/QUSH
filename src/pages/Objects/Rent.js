@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
-import Status from './Status';
-import Checkbox from './Checkbox';
+import Status from '../../components/Status';
+import Checkbox from '../../components/Checkbox';
 
 export default function Rent( props ) {
     const intToTime = ( timeInSec ) => {

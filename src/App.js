@@ -16,7 +16,7 @@ import EditField from './pages/Fields/EditField';
 import About from './pages/About';
 import Main from './pages/Main';
 
-import Calendar from './components/Rent';
+import Calendar from './pages/Objects/Rent';
 
 import './css/main.css';
 
