@@ -17,42 +17,56 @@ export default function ObjectPage( {} ) {
         { value: '3', text: 'ПВХ' },
     ];
 
+    const [field, setField] = useState( null );
+    
+    const [timeFrom, setTimeFrom] = useState( '' );
+    const [timeTo, setTimeTo] = useState( '' );
+
+    const [isRentAvailable, setIsRentAvailable] = useState( true );
+
     const  params = useParams();
     const navigate = useNavigate();
 
     const fieldId = parseInt( params.id );
 
-    const timeToInt = ( time ) => {
-        const hours = time[0] + time[1];
-        const minutes = time[3] + time[4];
-
-        return parseInt( hours ) * 60 + parseInt( minutes );
-    }
-
     const createTickets = async ( e ) => {
-        try {
-            const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom + '/' + timeTo + '/' + fieldId + '/', {
-                method : "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            } );
-
-            if ( res.status === 200 ) {
-                // navigate('/objects');
-                // window.location.reload( false);
-            } else {
-                console.log( 'Failed to delete the field' );
+        if( isRentAvailable ) {
+            try {
+                const res = await fetch( 'http://localhost:8000/field/create-tickets/' + timeFrom + '/' + timeTo + '/' + fieldId + '/', {
+                    method : "GET",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                } );
+    
+                if ( res.status === 200 ) {
+                    window.location.reload( false );
+                } else {
+                    console.log( 'Failed to delete the field' );
+                }
+            } catch( err ) {
+                console.log( err )
             }
-        } catch( err ) {
-            console.log( err )
         }
     }
 
-    const [field, setField] = useState( null );
-    
-    const [timeFrom, setTimeFrom] = useState( '' );
-    const [timeTo, setTimeTo] = useState( '' );
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch( 'http://127.0.0.1:8001/rent/ticket/' );
+                const data = await response.json();
+                const foundRent = data.data.find( rent => rent.field_id === fieldId );
+
+                if( foundRent ) {
+                    setIsRentAvailable( false );
+                }
+            } catch ( error ) {
+                console.error( 'Error fetching data:', error );
+            }
+        };
+
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -126,22 +140,17 @@ export default function ObjectPage( {} ) {
                         </p>
 
                         <Row className='mt-5'>
-                            <Col md={3} className="text-md-end">
+                            <Col md={4} className="text-md-end">
                                 <button type="button" class="btn btn-outline-danger form-control p-2" data-bs-toggle="modal" data-bs-target="#delete_object">
                                     Удалить
                                 </button>
                             </Col>
-                            <Col md={3} className="text-md-end">
+                            <Col md={4} className="text-md-end">
                                 <a className='btn btn-outline-success form-control p-2' href={`/edit/${field.id}`}>Редактировать</a>
                             </Col>
-                            <Col md={3} className="text-md-end">
-                                <a className='btn btn-outline-primary form-control p-2' href={`/rent/${field.id}`}>Аренда</a>
-                            </Col>
-                            <Col md={3} className="text-md-end">
-                                <button 
-                                    className='btn btn-outline-primary form-control p-2'
-                                    onClick={createTickets}
-                                    >Открыть для аренды</button>
+                            <Col md={4} className="text-md-end">
+                                {isRentAvailable && <button className='btn btn-outline-primary form-control p-2' onClick={createTickets}>Активировать</button>}
+                                {!isRentAvailable && <a className='btn btn-outline-primary form-control p-2' href={`/rent/${field.id}`}>Аренда</a>}
                             </Col>
                         </Row>
                     </Col>

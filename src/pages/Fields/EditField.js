@@ -32,6 +32,13 @@ export default function EditField() {
         return hours + ":" + minutes;
     }
 
+    const timeToInt = ( time ) => {
+        const hours = time[0] + time[1];
+        const minutes = time[3] + time[4];
+
+        return parseInt( hours ) * 60 + parseInt( minutes );
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -44,8 +51,8 @@ export default function EditField() {
                 setName( foundField.name );
                 setCategory( foundField.category_sport );
                 setLocation( foundField.location );
-                setTimeFrom( foundField.time_from );
-                setTimeTo( foundField.time_to );
+                setTimeFrom( intToTime( foundField.time_from ) );
+                setTimeTo( intToTime( foundField.time_to ) );
                 setDescription( foundField.description );
                 setPrice( foundField.price );
                 setDimension( foundField.dimensions );
@@ -89,13 +96,13 @@ export default function EditField() {
                     location: location,
                     longitude: 1.01,
                     latitude: 1.01,
-                    time_from: parseInt( timeFrom ),
-                    time_to: timeTo,
+                    time_from: timeToInt( timeFrom ),
+                    time_to: timeToInt( timeTo ),
                     description: description,
                     price: price,
                     image: null,
                     dimensions: dimension,
-                    surface_type: parseInt( surface ),
+                    surface_type: surface,
                     capacity: null,
                     facilities: null,
                     lighting: null,
@@ -212,7 +219,7 @@ export default function EditField() {
                                         type='time'
                                         className='form-control'
                                         placeholder='Время начала'
-                                        value={intToTime( timeFrom )}
+                                        value={timeFrom}
                                         onChange={(e) => setTimeFrom( e.target.value )}  
                                     />
                                 </div>
@@ -221,7 +228,7 @@ export default function EditField() {
                                         type='time'
                                         className='form-control'
                                         placeholder='Время начала'
-                                        value={intToTime( timeTo )}
+                                        value={timeTo}
                                         onChange={(e) => setTimeTo( e.target.value )}
                                     />
                                 </div>

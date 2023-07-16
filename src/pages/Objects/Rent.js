@@ -43,17 +43,18 @@ export default function Rent( props ) {
     const fieldId = parseInt( params.id );
 
     const [field, setField] = useState( null );
-    const [timeLine, setTimeLine] = useState( createTimeLine( 0, 1439 ) );
+    const [rents, setRents] = useState( null );
+    const [timeLine, setTimeLine] = useState( createTimeLine( 0, 60 ) );
     
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch( 'http://localhost:8000/field/fields' );
+                const response = await fetch( 'http://localhost:8001/rent/ticket/' );
                 const data = await response.json();
-                const foundField = data.data.find( field => field.id === fieldId );
-
-                setField( foundField );
-                setTimeLine( createTimeLine( foundField.time_from, foundField.time_to ) );
+                // alert( data.data[0].field_id );
+                const foundRents = data.data.filter( rents => rents.field_id === fieldId );
+                // alert( foundRents[0].field_id );
+                setRents( foundRents );
             } catch ( error ) {
                 console.error( 'Error fetching data:', error );
             }
@@ -88,22 +89,24 @@ export default function Rent( props ) {
                             </tr>
                         </thead>
                         <tbody>
-                            {timeLine.map( time => (
-                                <tr>
-                                    <td> {time.id} </td>
-                                    <td> {time.time_from} - {time.time_to} </td>
-                                    <td>
-                                        <div className='d-flex justify-content-center'>
-                                            <Status status = {true} />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className='actions'>
-                                            <Checkbox status = {time.available} />
-                                        </div>
-                                    </td>
+                            {rents && rents.map( (rent, index) => (
+                                <tr key={rent.id}>
+                                    {!rent.is_rented && <>
+                                        <td>{index+1}</td>
+                                        <td>{intToTime(rent.time_from)} - {intToTime(rent.time_to)}</td>
+                                        <td>
+                                            <div className='d-flex justify-content-center'>
+                                                <Status status={rent.is_rented} />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className='actions'>
+                                                <Checkbox status={rent.is_rented} />
+                                            </div>
+                                        </td>
+                                    </>}
                                 </tr>
-                            ) )}
+                            ))}
                             <tr>
                                 <td></td>
                                 <td></td>
