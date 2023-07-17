@@ -5,6 +5,62 @@ import Status from '../../components/Status';
 import Checkbox from '../../components/Checkbox';
 
 export default function Rent( props ) {
+    const  params = useParams();
+    const fieldId = parseInt( params.id );
+
+    const [rents, setRents] = useState( null );
+
+    const [selectedIds, setSelectedIds] = useState([]);
+
+    const handleCheckboxChange = (event, id) => {
+        const { checked } = event.target;
+        if (checked) {
+            setSelectedIds([...selectedIds, id]);
+        } else {
+            setSelectedIds(selectedIds.filter((selectedId) => selectedId !== id));
+        }
+    };
+
+    const handleTicketChange = async ( e ) => {
+        for( const id of selectedIds ) {
+            try {
+                const response = await fetch( `http://127.0.0.1:8001/rent/ticket-change/${id}` );
+
+                if(response.ok) {
+                    console.log(`API request successful for ID ${id}`);
+                    // Do something with the successful response
+                } else {
+                    console.error(`API request failed for ID ${id}`);
+                    // Handle error case
+                } 
+            } catch (error) {
+                console.error(`Error occurred for ID ${id}:`, error);
+                // Handle error case
+            }
+        }
+
+        e.preventDefault();
+        try {
+            const res = await fetch( 'http://127.0.0.1:8001/rent/rent/', {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify( {
+                    client_id: 1,
+                    field_id: fieldId,
+                    num_tickets: selectedIds.length
+                } ),
+            } );
+            if( res.status === 200 ) {
+                alert( "doodosa" );
+            }
+        } catch( err ) {
+            // console.log( timeFrom );
+            console.log( err )
+        }
+    }
+
     const intToTime = ( timeInSec ) => {
         let minutes = timeInSec % 60;
         let hours = parseInt( timeInSec / 60 ).toString();
@@ -20,11 +76,6 @@ export default function Rent( props ) {
         return hours + ":" + minutes;
     }
 
-    const  params = useParams();
-    const fieldId = parseInt( params.id );
-
-    const [rents, setRents] = useState( null );
-    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -80,7 +131,14 @@ export default function Rent( props ) {
                                         </td>
                                         <td>
                                             <div className='actions'>
-                                                <Checkbox status={rent.is_rented} />
+                                                <div class="form-check form-switch d-flex justify-content-center">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="checkbox" 
+                                                        checked={selectedIds.includes(rent.id)}
+                                                        onChange={(event) => handleCheckboxChange(event, rent.id)}
+                                                        />
+                                                </div>
                                             </div>
                                         </td>
                                     </>}
@@ -90,7 +148,7 @@ export default function Rent( props ) {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td> <button className='btn btn-outline-primary'>Арендовать</button> </td>
+                                <td> <button onClick={handleTicketChange} className='btn btn-outline-primary'>Арендовать</button> </td>
                             </tr>
                         </tbody>
                     </table>
