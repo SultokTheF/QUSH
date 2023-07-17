@@ -20,31 +20,10 @@ export default function Rent( props ) {
         return hours + ":" + minutes;
     }
 
-    const createTimeLine = ( timeFrom, timeTo ) => {
-        let tickets = []
-        let id = 1;
-
-        for( let i = timeFrom; i < timeTo; i+= 60 ) {
-            tickets.push(
-                {
-                    'id': id,
-                    'time_from': intToTime( i ),
-                    'time_to': intToTime( i + 60 )
-                }
-            )
-
-            id++;
-        }
-
-        return tickets;
-    }
-
     const  params = useParams();
     const fieldId = parseInt( params.id );
 
-    const [field, setField] = useState( null );
     const [rents, setRents] = useState( null );
-    const [timeLine, setTimeLine] = useState( createTimeLine( 0, 60 ) );
     
     useEffect(() => {
         const fetchData = async () => {

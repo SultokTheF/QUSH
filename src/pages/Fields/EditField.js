@@ -17,6 +17,22 @@ export default function EditField() {
     const [description, setDescription] = useState( '' );
     const [dimension, setDimension] = useState( '' );
 
+    const categoryOptions = [
+        { value: '1', text: 'Футбол' },
+        { value: '2', text: 'Баскетбол' },
+        { value: '3', text: 'Волейбол' },
+    ];
+
+    const [category, setCategory] = useState( categoryOptions[0].value );
+
+    const surfaceOptions = [
+        { value: '1', text: 'Газон' },
+        { value: '2', text: 'Паркет' },
+        { value: '3', text: 'ПВХ' },
+    ];
+
+    const [surface, setSurface] = useState( surfaceOptions[0].value );
+
     const intToTime = ( timeInSec ) => {
         let minutes = timeInSec % 60;
         let hours = parseInt( timeInSec / 60 ).toString();
@@ -65,21 +81,25 @@ export default function EditField() {
         fetchData();
     }, []);
 
-    const categoryOptions = [
-        { value: '1', text: 'Футбол' },
-        { value: '2', text: 'Баскетбол' },
-        { value: '3', text: 'Волейбол' },
-    ];
+    const editTickets = async ( e ) => {
+        try {
+            const res1 = await fetch( 'http://127.0.0.1:8001/rent/ticket/' + fieldId, {
+                method : "DELETE",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            } );
 
-    const [category, setCategory] = useState( categoryOptions[0].value );
-
-    const surfaceOptions = [
-        { value: '1', text: 'Газон' },
-        { value: '2', text: 'Паркет' },
-        { value: '3', text: 'ПВХ' },
-    ];
-
-    const [surface, setSurface] = useState( surfaceOptions[0].value );
+            const res2 = await fetch( 'http://localhost:8000/field/create-tickets/' + timeToInt( timeFrom ) + '/' +  timeToInt( timeTo ) + '/' + fieldId + '/', {
+                method : "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            } );
+        } catch( err ) {
+            console.log( err )
+        }
+    }
 
     const handleSubmit = async ( e ) => {
         e.preventDefault();
@@ -122,7 +142,8 @@ export default function EditField() {
                 setPrice( price );
                 setDimension( dimension );
                 setSurface( surface );
-                // setFacility( '' );
+
+                editTickets();
             }
         } catch( err ) {
             console.log( err )
