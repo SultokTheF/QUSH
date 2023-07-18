@@ -13,8 +13,11 @@ import ObjectPage from './pages/Objects/ObjectPage';
 import AddField from './pages/Fields/AddField';
 import EditField from './pages/Fields/EditField';
 
+import Rents from './pages/User/Rents';
+
 import About from './pages/About';
 import Main from './pages/Main';
+import Profile from './pages/User/Profile';
 
 import Calendar from './pages/Objects/Rent';
 
@@ -74,6 +77,9 @@ export default class App extends Component {
           
           <Route path='/add' element={<AddField/>}/>
           <Route path='/edit/:id' element={<EditField/>}/>
+
+          <Route path='/manage_rents/:id' element={<Rents/>}/>
+          <Route path='/profile/:id' element={<Profile/>}/>
 
           <Route path='/rent/:id' element={<Calendar/>}/>
         </Routes>

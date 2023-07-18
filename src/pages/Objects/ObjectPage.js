@@ -147,6 +147,7 @@ export default function ObjectPage( {} ) {
                             </Col>
                             <Col md={4} className="text-md-end">
                                 <a className='btn btn-outline-success form-control p-2' href={`/edit/${field.id}`}>Редактировать</a>
+                                <a className='btn btn-outline-success form-control p-2' href={`/manage_rents/${field.id}`}>Заказы</a>
                             </Col>
                             <Col md={4} className="text-md-end">
                                 {isRentAvailable && <button className='btn btn-outline-primary form-control p-2' onClick={createTickets}>Активировать</button>}

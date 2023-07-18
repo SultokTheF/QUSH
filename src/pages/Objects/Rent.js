@@ -52,21 +52,18 @@ export default function Rent( props ) {
               
                     try {
                       const response = await fetch(`http://127.0.0.1:8001/rent/ticket-change/${timeFrom}/${timeTo}/${resJson.data.id}`);
-              
-                      if (response.ok) {
-                        console.log(`API request successful for ID ${id}`);
-                        // Do something with the successful response
-                      } else {
-                        console.error(`API request failed for ID ${id}`);
-                        // Handle error case
-                      }
-                    } catch (error) {
-                      console.error(`Error occurred for ID ${id}:`, error);
-                      // Handle error case
+                    } catch ( error ) {
+                        console.log( error );
                     }
                 }
 
-                // window.location.reload( false );
+                try {
+                    const response = await fetch(`http://127.0.0.1:8001/rent/rents-settime/${resJson.data.id}/`);
+                } catch ( error ) {
+                    console.log( error );
+                }
+
+                window.location.reload( false );
             }
         } catch( err ) {
             // console.log( timeFrom );
@@ -166,8 +163,8 @@ export default function Rent( props ) {
                         </tbody>
                     </table>
                 </div>
+                <div className='col-1'></div>
             </div>
-            <div className='col-1'></div>
         </div>
     )
 }
