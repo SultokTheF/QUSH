@@ -42,14 +42,16 @@ export default function Rent( props ) {
                     time_to: 0
                 } ),
             } );
-            if( res.status === 200 ) {
+
+            if( res.ok ) {
+                const resJson = await res.json();
                 for (const id of selectedIds) {
                     const index = selectedIds.indexOf(id);
                     const timeFrom = selectedTimeFroms[index];
                     const timeTo = selectedTimeTos[index];
               
                     try {
-                      const response = await fetch(`http://127.0.0.1:8001/rent/ticket-change/${timeFrom}/${timeTo}/${id}`);
+                      const response = await fetch(`http://127.0.0.1:8001/rent/ticket-change/${timeFrom}/${timeTo}/${resJson.data.id}`);
               
                       if (response.ok) {
                         console.log(`API request successful for ID ${id}`);
@@ -64,7 +66,7 @@ export default function Rent( props ) {
                     }
                 }
 
-                window.location.reload( false );
+                // window.location.reload( false );
             }
         } catch( err ) {
             // console.log( timeFrom );
