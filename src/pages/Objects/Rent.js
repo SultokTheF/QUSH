@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
 import Status from '../../components/Status';
-import Checkbox from '../../components/Checkbox';
 
 export default function Rent( props ) {
     const  params = useParams();
@@ -11,34 +10,23 @@ export default function Rent( props ) {
     const [rents, setRents] = useState( null );
 
     const [selectedIds, setSelectedIds] = useState([]);
+    const [selectedTimeFroms, setSelectedTimeFroms] = useState([]);
+    const [selectedTimeTos, setSelectedTimeTos] = useState([]);
 
-    const handleCheckboxChange = (event, id) => {
+    const handleCheckboxChange = (event, id, timeFrom, timeTo) => {
         const { checked } = event.target;
         if (checked) {
-            setSelectedIds([...selectedIds, id]);
+          setSelectedIds([...selectedIds, id]);
+          setSelectedTimeFroms([...selectedTimeFroms, timeFrom]);
+          setSelectedTimeTos([...selectedTimeTos, timeTo]);
         } else {
-            setSelectedIds(selectedIds.filter((selectedId) => selectedId !== id));
+          setSelectedIds(selectedIds.filter((selectedId) => selectedId !== id));
+          setSelectedTimeFroms(selectedTimeFroms.filter((selectedTime) => selectedTime !== timeFrom));
+          setSelectedTimeTos(selectedTimeTos.filter((selectedTime) => selectedTime !== timeTo));
         }
     };
 
     const handleTicketChange = async ( e ) => {
-        for( const id of selectedIds ) {
-            try {
-                const response = await fetch( `http://127.0.0.1:8001/rent/ticket-change/${id}` );
-
-                if(response.ok) {
-                    console.log(`API request successful for ID ${id}`);
-                    // Do something with the successful response
-                } else {
-                    console.error(`API request failed for ID ${id}`);
-                    // Handle error case
-                } 
-            } catch (error) {
-                console.error(`Error occurred for ID ${id}:`, error);
-                // Handle error case
-            }
-        }
-
         e.preventDefault();
         try {
             const res = await fetch( 'http://127.0.0.1:8001/rent/rent/', {
@@ -49,11 +37,34 @@ export default function Rent( props ) {
                 body: JSON.stringify( {
                     client_id: 1,
                     field_id: fieldId,
-                    num_tickets: selectedIds.length
+                    num_tickets: selectedIds.length,
+                    time_from: 0,
+                    time_to: 0
                 } ),
             } );
             if( res.status === 200 ) {
-                alert( "doodosa" );
+                for (const id of selectedIds) {
+                    const index = selectedIds.indexOf(id);
+                    const timeFrom = selectedTimeFroms[index];
+                    const timeTo = selectedTimeTos[index];
+              
+                    try {
+                      const response = await fetch(`http://127.0.0.1:8001/rent/ticket-change/${timeFrom}/${timeTo}/${id}`);
+              
+                      if (response.ok) {
+                        console.log(`API request successful for ID ${id}`);
+                        // Do something with the successful response
+                      } else {
+                        console.error(`API request failed for ID ${id}`);
+                        // Handle error case
+                      }
+                    } catch (error) {
+                      console.error(`Error occurred for ID ${id}:`, error);
+                      // Handle error case
+                    }
+                }
+
+                window.location.reload( false );
             }
         } catch( err ) {
             // console.log( timeFrom );
@@ -136,7 +147,7 @@ export default function Rent( props ) {
                                                         class="form-check-input" 
                                                         type="checkbox" 
                                                         checked={selectedIds.includes(rent.id)}
-                                                        onChange={(event) => handleCheckboxChange(event, rent.id)}
+                                                        onChange={(event) => handleCheckboxChange(event, rent.id, rent.time_from, rent.time_to)}
                                                         />
                                                 </div>
                                             </div>
