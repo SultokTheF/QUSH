@@ -86,7 +86,7 @@ export default function Rents() {
                             </tr>
                         </thead>
                         <tbody>
-                            {rents.map( (rent, index) => (
+                            {rents && rents.map( (rent, index) => (
                                 <tr key={rent.id}>
                                     {!rent.is_rented && <>
                                         <td>{index+1}</td>
