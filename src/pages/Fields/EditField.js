@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import mapboxgl from 'mapbox-gl';
 
 import Spinner from '../../components/Spinner';
 
@@ -16,6 +17,55 @@ export default function EditField() {
     const [price, setPrice] = useState( '' );
     const [description, setDescription] = useState( '' );
     const [dimension, setDimension] = useState( '' );
+
+    const [draggableMarkerCoords, setDraggableMarkerCoords] = useState({
+        longitude: 71.4306682,
+        latitude: 51.1282205,
+    });
+
+    const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState( 71.4306682 );
+    const [lat, setLat] = useState( 51.1282205 );
+    const [zoom, setZoom] = useState(14);
+
+    useEffect(() => {
+        if (!mapContainer.current) return;
+        if (map.current) return;
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [lng, lat],
+            zoom: zoom,
+            attributionControl: false
+        }).addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true,
+        }));
+
+        const marker = new mapboxgl.Marker({
+            draggable: true, // Set the marker to be draggable
+          })
+            .setLngLat([draggableMarkerCoords.longitude, draggableMarkerCoords.latitude]) // Set the initial marker position
+            .addTo(map.current);
+
+        marker.on('dragend', (event) => {
+            const { lng, lat } = event.target.getLngLat();
+            setDraggableMarkerCoords({ longitude: lng, latitude: lat });
+        });
+    });
+    
+    useEffect(() => {
+        if (!map.current) return;
+        map.current.on('move', () => {
+            setLng(map.current.getCenter().lng.toFixed(4));
+            setLat(map.current.getCenter().lat.toFixed(4));
+            setZoom(map.current.getZoom().toFixed(2));
+        });
+    });
 
     const categoryOptions = [
         { value: '1', text: 'Футбол' },
@@ -73,6 +123,10 @@ export default function EditField() {
                 setPrice( foundField.price );
                 setDimension( foundField.dimensions );
                 setSurface( foundField.surface_type );
+                setDraggableMarkerCoords({
+                    longitude: foundField.longitude,
+                    latitude: foundField.latitude
+                });
             } catch ( error ) {
                 console.error( 'Error fetching data:', error );
             }
@@ -114,8 +168,8 @@ export default function EditField() {
                     name: name,
                     category_sport: parseInt( category ),
                     location: location,
-                    longitude: 1.01,
-                    latitude: 1.01,
+                    longitude: draggableMarkerCoords.longitude,
+                    latitude: draggableMarkerCoords.latitude,
                     time_from: timeToInt( timeFrom ),
                     time_to: timeToInt( timeTo ),
                     description: description,
@@ -179,7 +233,7 @@ export default function EditField() {
                                 placeholder='Введите название поля' 
                                 value={name}
                                 onChange={(e) => setName( e.target.value )}
-                                
+                                required
                             />
                             
                             <label className='mt-2'>Описание</label>
@@ -188,18 +242,24 @@ export default function EditField() {
                                 placeholder='Введите описание поля'
                                 value={description}
                                 onChange={(e) => setDescription( e.target.value )}
-                                
+                                required
                             />
 
                             <label className='mt-2'>Адрес</label>
-                            <input 
-                                type='text'
-                                className='form-control' 
-                                placeholder='Введите адрес поля' 
-                                value={location}
-                                onChange={(e) => setLocation( e.target.value )}
+                            {/* <div className='form-control'> */}
+                                <input 
+                                    type='text'
+                                    className='form-control' 
+                                    placeholder='Введите адрес поля' 
+                                    value={location}
+                                    onChange={(e) => setLocation( e.target.value )}
+                                    required
+                                />
+                                <label className='mt-2'>Локация</label><br/>
+                                Долгота: {draggableMarkerCoords.longitude} Широта: {draggableMarkerCoords.latitude}
                                 
-                            />
+                                <div ref={mapContainer} className="map-container"/>
+                            {/* </div> */}
 
                             <label className='mt-2'>Цена аренды</label>
                             <input 
@@ -208,7 +268,7 @@ export default function EditField() {
                                 placeholder='Стоимость аренды в час (в тенге)' 
                                 value={price}
                                 onChange={(e) => setPrice( e.target.value )}
-                                
+                                required
                             />
                         </div>
                     </div>
@@ -241,7 +301,8 @@ export default function EditField() {
                                         className='form-control'
                                         placeholder='Время начала'
                                         value={timeFrom}
-                                        onChange={(e) => setTimeFrom( e.target.value )}  
+                                        onChange={(e) => setTimeFrom( e.target.value )}
+                                        required
                                     />
                                 </div>
                                 <div className='col-6'>
@@ -251,6 +312,7 @@ export default function EditField() {
                                         placeholder='Время начала'
                                         value={timeTo}
                                         onChange={(e) => setTimeTo( e.target.value )}
+                                        required
                                     />
                                 </div>
                             </div>
@@ -270,7 +332,7 @@ export default function EditField() {
                                 placeholder='Ширина и Длина поля'
                                 value={dimension}
                                 onChange={(e) => setDimension( e.target.value )}
-                                
+                                required
                             />
 
                             <h5 className='mt-4'>Фотография поля</h5>
@@ -312,7 +374,7 @@ export default function EditField() {
                     <div className='row'>
                         <div className='col-10'></div>
                         <div className='col-2'>
-                            <button type='submit' className='btn btn-outline-primary mt-3'>Сохранить</button>
+                            <button type='submit' className='btn btn-outline-primary mt-3'>Добавить</button>
                         </div>
                     </div>
                 </div>
