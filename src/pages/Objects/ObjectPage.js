@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import mapboxgl from 'mapbox-gl';
+
+import Map from '../../components/Map';
 
 import Spinner from '../../components/Spinner';
 
@@ -28,6 +31,55 @@ export default function ObjectPage( {} ) {
     const navigate = useNavigate();
 
     const fieldId = parseInt( params.id );
+
+    const [draggableMarkerCoords, setDraggableMarkerCoords] = useState({
+        longitude: 71.4306682,
+        latitude: 51.1282205,
+    });
+
+    const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState( 71.4306682 );
+    const [lat, setLat] = useState( 51.1282205 );
+    const [zoom, setZoom] = useState(14);
+
+    useEffect(() => {
+        if (!mapContainer.current) return;
+        if (map.current) return;
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [lng, lat],
+            zoom: zoom,
+            attributionControl: false
+        }).addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true,
+        }));
+
+        const marker = new mapboxgl.Marker({
+            draggable: true, // Set the marker to be draggable
+          })
+            .setLngLat([draggableMarkerCoords.longitude, draggableMarkerCoords.latitude]) // Set the initial marker position
+            .addTo(map.current);
+
+        marker.on('dragend', (event) => {
+            const { lng, lat } = event.target.getLngLat();
+            setDraggableMarkerCoords({ longitude: lng, latitude: lat });
+        });
+    });
+    
+    useEffect(() => {
+        if (!map.current) return;
+        map.current.on('move', () => {
+            setLng(map.current.getCenter().lng.toFixed(4));
+            setLat(map.current.getCenter().lat.toFixed(4));
+            setZoom(map.current.getZoom().toFixed(2));
+        });
+    });
 
     const createTickets = async ( e ) => {
         if( isRentAvailable ) {
@@ -158,7 +210,8 @@ export default function ObjectPage( {} ) {
                     <Col md={6} className="text-md-end">
                         <div className="field-image-container">
                         <div className="field-image-ratio">
-                            <img src='https://rezcom.ru/upload/images/bask_1.jpg' alt="Field" className="field-image" />
+                        <div ref={mapContainer} className="map-container"/>
+                            {/* <img src='https://rezcom.ru/upload/images/bask_1.jpg' alt="Field" className="field-image" /> */}
                         </div>
                         </div>
                     </Col>

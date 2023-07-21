@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/Navbar.css';
 
 export default function Navbar() {
     const token = localStorage.getItem('token');
@@ -14,8 +15,8 @@ export default function Navbar() {
 
     return (
         <header>
-        <div className="nav">
-            <a className="logo"></a>
+        <div className="navbar">
+            <a className="navbar-logo"></a>
             <a href="/"><navtext>Главная</navtext></a>
             <a href="/about"><navtext>О нас</navtext></a>
             <a href="/objects"><navtext>Мои объекты</navtext></a>
@@ -23,7 +24,7 @@ export default function Navbar() {
                 <img src="https://images.pexels.com/photos/3608263/pexels-photo-3608263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="avatar"/>
                 <a href="#" className="username">Aliba Kamilbully</a>
             </div> */}
-            <div className='nav-profile'>
+            <div className='navbar-profile'>
                 {token ? (
                     // Если токен присутствует, рендерим кнопку "Выйти"
                     <div className=''>

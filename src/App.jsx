@@ -19,9 +19,12 @@ import About from './pages/About';
 import Main from './pages/Main';
 import Profile from './pages/User/Profile';
 
+import Verification from './pages/Admin/Verification';
+
 import Calendar from './pages/Objects/Rent';
 
 import './css/main.css';
+
 
 export default class App extends Component {
   // constructor(props) {
@@ -82,6 +85,8 @@ export default class App extends Component {
           <Route path='/profile/:id' element={<Profile/>}/>
 
           <Route path='/rent/:id' element={<Calendar/>}/>
+
+          <Route path='/verification' element={<Verification/>}/>
         </Routes>
 
         {/* {isLoggedIn && role === 'ADMIN' && <h1>ADMIN ROLE</h1>}  */}

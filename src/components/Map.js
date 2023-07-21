@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VsdG9rIiwiYSI6ImNsZGlwZG1iZTBjMmYzdW55cTdlbDFweGsifQ.DXleX4LGMMyjPlgEBAsHZA';
 
-export default function Map() {
+export default function Map( props ) {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState( 71.4306682 );
@@ -11,6 +11,11 @@ export default function Map() {
     const [zoom, setZoom] = useState(14);
     
     const [fields, setFields] = useState( [] );
+
+    const [draggableMarkerCoords, setDraggableMarkerCoords] = useState({
+        longitude: 71.4206682,
+        latitude: 51.1482205,
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,19 +54,28 @@ export default function Map() {
         //     // Store the clicked coordinates in the array
         //     setCoordinates( { longitude: lng, latitude: lat } );
         // });
+        if( props.addDraggableMarker ) {
+            const marker = new mapboxgl.Marker({
+                draggable: true, // Set the marker to be draggable
+              })
+                .setLngLat([draggableMarkerCoords.longitude, draggableMarkerCoords.latitude]) // Set the initial marker position
+                .addTo(map.current);
+    
+            marker.on('dragend', (event) => {
+                const { lng, lat } = event.target.getLngLat();
+                setDraggableMarkerCoords({ longitude: lng, latitude: lat });
+            });
+        }
     });
 
-    fields.forEach((field) => {
-        const el = document.createElement('div');
-        el.id = 'marker';
-
-        const marker = new mapboxgl.Marker().setLngLat([field.longitude, field.latitude]).addTo(map.current);
-        // const popup = new mapboxgl.Popup().setLngLat([field.longitude, field.latitude]).setHTML(`<h3>${field.name}</h3>`).addTo(map.current);
-
-        // el.addEventListener( 'click', () => {
-        //     popup.addTo(map.current);
-        // } );
-    });
+    if( props.addMarkers ) {
+        fields.forEach((field) => {
+            const el = document.createElement('div');
+            el.id = 'marker';
+    
+            const marker = new mapboxgl.Marker().setLngLat([field.longitude, field.latitude]).addTo(map.current);
+        });
+    }
     
     useEffect(() => {
         if (!map.current) return;
