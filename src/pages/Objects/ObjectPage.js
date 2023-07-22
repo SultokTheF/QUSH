@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
 
-import Map from '../../components/Map';
+import Map from '../../components/Map/Map';
 
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 
 export default function ObjectPage( {} ) {
     const categoryOptions = [

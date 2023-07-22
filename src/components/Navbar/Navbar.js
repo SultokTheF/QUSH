@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Navbar.css';
+import './Navbar.css';
 
 export default function Navbar() {
     const token = localStorage.getItem('token');

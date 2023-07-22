@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
-import Status from '../../components/Status';
+import Status from '../../UI/Status/Status';
 
 export default function Rent( props ) {
     const  params = useParams();

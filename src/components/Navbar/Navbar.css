@@ -8,14 +8,14 @@ header img {
     display: inline-block;
     width: 80px;
     height: 80px;
-    background-image: url('../static/images/logo/Qush_logo_black.png');
+    background-image: url('../../assets/images/logo/Qush_logo_black.png');
     background-repeat: no-repeat;
     background-size: contain;
     transition: background-image .5s;
 }
 
 .navbar-logo:hover {
-    background-image: url('../static/images/logo/Qush_logo_blue.png');
+    background-image: url('../../assets/images/logo/Qush_logo_blue.png');
 }
 
 .navbar-logo:not(:hover) {

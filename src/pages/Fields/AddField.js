@@ -2,7 +2,7 @@ import React, { useEffect,useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 
-import Map from '../../components/Map';
+import Map from '../../components/Map/Map';
 
 export default function AddField() {
     const navigate = useNavigate();

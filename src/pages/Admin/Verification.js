@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import accept from '../../static/images/icons/accept.png';
-import decline from '../../static/images/icons/decline.png';
+import accept from '../../assets/images/icons/accept.png';
+import decline from '../../assets/images/icons/decline.png';
 
 export default function Verification() {
     const [ver, setVer] = useState( null );

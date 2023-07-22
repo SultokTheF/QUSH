@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Status from './Status';
+import Status from '../../UI/Status/Status';
 
-import location from '../static/images/icons/location.png';
-import shedule from '../static/images/icons/shedule.png';
-import choice from '../static/images/icons/choice.png';
+import location from '../../assets/images/icons/location.png';
+import shedule from '../../assets/images/icons/shedule.png';
+import choice from '../../assets/images/icons/choice.png';
 
 export default function Object( props ) {
   const categoryOptions = [

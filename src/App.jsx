@@ -3,7 +3,7 @@ import {Route, Routes, Navigate} from 'react-router-dom';
 
 import axios from 'axios';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 import Login from './pages/Fields/Login';
 import Register from './pages/Fields/Register';
@@ -23,7 +23,7 @@ import Verification from './pages/Admin/Verification';
 
 import Calendar from './pages/Objects/Rent';
 
-import './css/main.css';
+import './assets/styles/main.css';
 
 
 export default class App extends Component {
