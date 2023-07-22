@@ -1,4 +1,5 @@
 import React from 'react';
+import './ObjectCard.css';
 
 import Status from '../../UI/Status/Status';
 
@@ -6,7 +7,7 @@ import location from '../../assets/images/icons/location.png';
 import shedule from '../../assets/images/icons/shedule.png';
 import choice from '../../assets/images/icons/choice.png';
 
-export default function Object( props ) {
+export default function ObjectCard( props ) {
   const categoryOptions = [
       { value: '1', text: 'Футбол' },
       { value: '2', text: 'Баскетбол' },

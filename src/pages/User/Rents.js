@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { intToTime } from '../../utils/timeConverter';
 
 export default function Rents() {
     const [rents, setRents] = useState( null );
@@ -24,21 +25,6 @@ export default function Rents() {
 
         fetchData();
     }, []);
-
-    const intToTime = ( timeInSec ) => {
-        let minutes = timeInSec % 60;
-        let hours = parseInt( timeInSec / 60 ).toString();
-  
-        if( parseInt( timeInSec / 60 ) < 10 ) {
-            hours = "0" + hours;
-        }
-        
-        if( timeInSec % 60 < 10 ) {
-            minutes = "0" + minutes;
-        }
-  
-        return hours + ":" + minutes;
-    }
 
     const handleSubmit = async ( e ) => {
         let rentId = e.target.value;

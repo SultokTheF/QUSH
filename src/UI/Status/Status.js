@@ -1,4 +1,5 @@
 import React from 'react';
+import './Status.css';
 
 export default function Status( props ) {
     if( !props.status ) {

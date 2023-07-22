@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Object from '../../components/Object/Object';
+import Object from '../../components/ObjectCard/ObjectCard';
 import Spinner from "../../components/Spinner/Spinner";
 
 export default function ObjectsPage() {

@@ -2,7 +2,11 @@ import React, { useEffect,useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 
+import { timeToInt } from '../../utils/timeConverter';
+
 import Map from '../../components/Map/Map';
+
+import fieldAPIHandlers from '../../services/api/fieldAPIHandlers';
 
 export default function AddField() {
     const navigate = useNavigate();
@@ -78,42 +82,31 @@ export default function AddField() {
     ];
 
     const [surface, setSurface] = useState( surfaceOptions[0].value );
-
-    const timeToInt = ( time ) => {
-        const hours = time[0] + time[1];
-        const minutes = time[3] + time[4];
-
-        return parseInt( hours ) * 60 + parseInt( minutes );
-    }
  
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         try {
-            const res = await fetch( 'http://127.0.0.1:8000/field/fields/', {
-                method : "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify( {
-                    owner_id: 1,
-                    name: name,
-                    category_sport: parseInt( category ),
-                    location: location,
-                    longitude: draggableMarkerCoords.longitude,
-                    latitude: draggableMarkerCoords.latitude,
-                    time_from: timeToInt( timeFrom ),
-                    time_to: timeToInt( timeTo ),
-                    description: description,
-                    price: price,
-                    image: null,
-                    dimensions: dimension,
-                    surface_type: parseInt( surface ),
-                    capacity: null,
-                    facilities: null,
-                    lighting: null,
-                    rules: null
-                } ),
-            } );
+            const data = {
+                owner_id: 1,
+                name: name,
+                category_sport: parseInt( category ),
+                location: location,
+                longitude: draggableMarkerCoords.longitude,
+                latitude: draggableMarkerCoords.latitude,
+                time_from: timeToInt( timeFrom ),
+                time_to: timeToInt( timeTo ),
+                description: description,
+                price: price,
+                image: null,
+                dimensions: dimension,
+                surface_type: parseInt( surface ),
+                capacity: null,
+                facilities: null,
+                lighting: null,
+                rules: null
+            };
+
+            const res = await fieldAPIHandlers.createField( data );
             if( res.status === 200 ) {
                 navigate('/objects');
             }
