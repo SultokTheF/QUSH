@@ -2,7 +2,7 @@ import React, { useEffect,useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from '../../UI/Spinner/Spinner';
 
 import { intToTime, timeToInt } from '../../utils/timeConverter';
 

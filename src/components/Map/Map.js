@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 
+import './Map.css';
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VsdG9rIiwiYSI6ImNsZGlwZG1iZTBjMmYzdW55cTdlbDFweGsifQ.DXleX4LGMMyjPlgEBAsHZA';
 
 export default function Map( props ) {
@@ -40,13 +42,7 @@ export default function Map( props ) {
             center: [lng, lat],
             zoom: zoom,
             attributionControl: false
-        }).addControl(new mapboxgl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: true
-            },
-            trackUserLocation: true,
-            showUserHeading: true,
-        }));
+        });
 
         // map.current.on('click', (event) => {
         //     const { lng, lat } = event.lngLat;

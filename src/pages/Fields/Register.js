@@ -11,90 +11,85 @@ const Register = () => {
     e.preventDefault();
     window.location.href = '/';
 
-    // Ваша логика для отправки данных формы на сервер
+    // Your logic for sending form data to the server
     const formData = {
-      email:email,
+      email: email,
       password: password,
       firstName: firstName,
       lastName: lastName
-  };
+    };
 
-  fetch('http://localhost:8082/auth/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  })
-    .then(response => response)
-    .then(data => {
-      // Обработка ответа от сервера
-      console.log(data);
+    fetch('http://localhost:8082/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     })
-    .catch(error => {
-      // Обработка ошибок
-      console.error(error);
-    });
-  }
+      .then(response => response)
+      .then(data => {
+        // Handle the server response
+        console.log(data);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error(error);
+      });
+  };
 
   return (
     <div className="register-container">
-      <Container>
-        <Row className="justify-content-center">
-          <Col md={4}>
-            <h1 className="text-center">Регистрация</h1>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="firstName">
-                <Form.Label>Имя</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Имя"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </Form.Group>
+      <div className="register-content">
+        <h1>Регистрация</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="firstName">Имя</label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
 
-              <Form.Group controlId="lastName">
-                <Form.Label>Фамилия</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Фамилия"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </Form.Group>
+          <div className="form-group">
+            <label htmlFor="lastName">Фамилия</label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
 
-              <Form.Group controlId="email">
-                <Form.Label>Почта</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Почта"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Form.Group>
+          <div className="form-group">
+            <label htmlFor="email">Почта</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-              <Form.Group controlId="password" style={{ marginBottom: '15px' }}>
-                <Form.Label>Пароль</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Пароль"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
+          <div className="form-group">
+            <label htmlFor="password">Пароль</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-              <Button variant="outline-primary" type="submit">
-                Зарегистрироваться
-              </Button>
-
-              <p className="mt-3">
-                Уже есть аккаунт? <a href="/login">Войти</a>
-              </p>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+          <button type="submit" className="btn btn-primary">
+            Зарегистрироваться
+          </button>
+        </form>
+        <p className="login-link">
+          Уже есть аккаунт? <a href="/login">Войти</a>
+        </p>
+      </div>
     </div>
   );
 };

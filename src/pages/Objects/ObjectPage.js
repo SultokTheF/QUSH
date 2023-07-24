@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 
 import Map from '../../components/Map/Map';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from '../../UI/Spinner/Spinner';
 
 export default function ObjectPage( {} ) {
     const categoryOptions = [

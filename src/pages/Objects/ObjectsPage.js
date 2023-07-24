@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Object from '../../components/ObjectCard/ObjectCard';
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from '../../UI/Spinner/Spinner';
 
 export default function ObjectsPage() {
     const [fields, setFields] = useState( null );

@@ -23,6 +23,7 @@ header img {
 }
 
 .navbar {
+    z-index: 9999;
     flex: 0 0 100%;
     max-width: 1200px;
     max-height: 120px;
