@@ -209,10 +209,9 @@ export default function ObjectPage( {} ) {
                     </Col>
                     <Col md={6} className="text-md-end">
                         <div className="field-image-container">
-                        <div className="field-image-ratio">
-                        <div ref={mapContainer} className="map-container"/>
-                            {/* <img src='https://rezcom.ru/upload/images/bask_1.jpg' alt="Field" className="field-image" /> */}
-                        </div>
+                            <div className="field-image-ratio">
+                                <Map addMarkers/>
+                            </div>
                         </div>
                     </Col>
                 </Row>

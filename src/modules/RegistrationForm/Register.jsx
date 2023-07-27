@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import './Register.css';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -10,8 +10,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     window.location.href = '/';
-
-    // Your logic for sending form data to the server
+    
     const formData = {
       email: email,
       password: password,

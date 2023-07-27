@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Object from '../../components/ObjectCard/ObjectCard';
 import Spinner from '../../UI/Spinner/Spinner';
+import './ObjectList.css';
 
 export default function ObjectsPage() {
     const [fields, setFields] = useState( null );

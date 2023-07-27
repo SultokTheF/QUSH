@@ -1,0 +1,10 @@
+.objectList {
+  float: left;
+  margin-right: 10%;
+  margin-bottom: 5%;
+}
+
+.greeting { 
+  text-align: center;
+  margin-bottom: 5%;
+}

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom';
 
-import axios from 'axios';
-
 import Navbar from './components/Navbar/Navbar';
 
-import Login from './pages/Fields/Login';
-import Register from './pages/Fields/Register';
-import ObjectsPage from './pages/Objects/ObjectsPage';
-import ObjectPage from './pages/Objects/ObjectPage';
+import Login from './modules/LoginForm/Login';
+import Register from './modules/RegistrationForm/Register';
+import ObjectsPage from './modules/ObjectList/ObjectList';
+import ObjectPage from './modules/ObjectPage/ObjectPage';
 
 import AddField from './pages/Fields/AddField';
 import EditField from './pages/Fields/EditField';
@@ -86,7 +84,7 @@ export default class App extends Component {
 
           <Route path='/rent/:id' element={<Calendar/>}/>
 
-          <Route path='/verification' element={<Verification/>}/>
+          <Route path='/verification/:id' element={<Verification/>}/>
         </Routes>
 
         {/* {isLoggedIn && role === 'ADMIN' && <h1>ADMIN ROLE</h1>}  */}
