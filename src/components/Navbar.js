@@ -20,12 +20,12 @@ export default function Navbar() {
             <a href="/"><navtext>Главная</navtext></a>
             <a href="/about"><navtext>О нас</navtext></a>
             <a href="/objects"><navtext>Мои объекты</navtext></a>
-            {/* <div className="nav-profile">
+            <div className="navbar-profile">
                 <img src="https://images.pexels.com/photos/3608263/pexels-photo-3608263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="avatar"/>
-                <a href="#" className="username">Aliba Kamilbully</a>
-            </div> */}
-            <div className='navbar-profile'>
-                {token ? (
+                <a href="/profile/1" className="username">Aliba Kamilbully</a>
+            </div>
+            {/* <div className='navbar-profile'>
+                {!token ? (
                     // Если токен присутствует, рендерим кнопку "Выйти"
                     <div className=''>
                         <button className='btn' onClick={handleLogout}>Выйти</button>
@@ -37,7 +37,7 @@ export default function Navbar() {
                         <a className='btn' href='/register'>Регистрация</a>
                     </div>
                 )}
-            </div>
+            </div> */}
         </div>
     </header>
     )

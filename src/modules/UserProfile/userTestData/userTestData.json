@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "firstName": "Dias",
+  "lastName": "Karataev",
+  "email": "karataev020902@gmail.com",
+  "password": "$2a$10$W2UP4UWlJbq8GVzLtlB6GOXha4D2cKMZpfdQ0DkHin4Z4P60FBMIy",
+  "role": "ADMIN"
+}

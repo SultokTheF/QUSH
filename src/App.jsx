@@ -23,6 +23,8 @@ import Verification from './pages/Admin/Verification';
 
 import Calendar from './pages/Objects/Rent';
 
+import UserProfile from './modules/UserProfile/UserProfile';
+
 import './css/main.css';
 
 
@@ -82,7 +84,7 @@ export default class App extends Component {
           <Route path='/edit/:id' element={<EditField/>}/>
 
           <Route path='/manage_rents/:id' element={<Rents/>}/>
-          <Route path='/profile/:id' element={<Profile/>}/>
+          <Route path='/profile/:id' element={<UserProfile/>}/>
 
           <Route path='/rent/:id' element={<Calendar/>}/>
 
