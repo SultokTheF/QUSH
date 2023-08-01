@@ -1,0 +1,163 @@
+/* Navbar styles */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: var(--white-color);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Add this to center align all elements */
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  color: var(--grey-color);
+  font-size: 24px;
+  text-decoration: none;
+  display: flex; /* Add this to create a flex container */
+  align-items: center; /* Vertically center the content */
+}
+
+.logo-image {
+  width: 120px;
+  height: auto;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  /* margin-top: 1.5%; */
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-links {
+  color: var(--black-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.nav-active-links {
+  color: var(--light-blue-color);
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.nav-links:hover {
+  color: var(--light-blue-color);
+}
+
+.nav-lang {
+  background-color: var(--white-color);
+  color: var(--black-color);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 2px 10px 2px 10px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--black-color);
+  border-radius: 15%;
+  margin: 1px;
+}
+
+.nav-active-lang {
+  background-color: var(--white-color);
+  color: var(--light-blue-color);
+  text-decoration: none;
+  font-size: 16px;
+  padding: 2px 10px 2px 10px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--light-blue-color);
+  border-radius: 15%;
+  margin: 1px;
+}
+
+.nav-lang:hover {
+  color: var(--black-color);
+  border: 1px solid var(--black-color);
+}
+
+.nav-buttons {
+  /* margin-top: 1.5%; */
+  display: flex;
+  align-items: center;
+}
+
+
+/* select style */
+.select-city {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
