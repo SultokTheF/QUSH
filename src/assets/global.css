@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    box-sizing: border-box;
+}
+
+:root {
+  /* --bg-color: #909090;
+  --main-color: #1488CC;
+  --hovermain-color: #41a0ff;
+  --grey-color: #f0f0f0;
+  --loginhover-color: #d9d9d9;
+  --hovergrey-color: #808080;
+  --hovergrey-color: #41a0ff;
+  --black-color: #000000; */
+
+  /* Primary color  */
+  --dark-blue-color: #004080;
+  --light-blue-color: #1488CC;
+
+  /* Secondary colors  */
+  --blue-color: #2F80ED;
+  --green-color: #00A693;
+  --orange-color: #FF7F50;
+  --light-grey-color: #CCCCCC;
+
+  /* Accent color  */
+  --yellow-color:  #FFD700;
+  --light-blue-bg-color: #DEDEFA;
+
+  /* Background color */
+  --black-color: #000000;
+  --white-color: #FFFFFF;
+}
+
+a {
+  text-decoration: none;
+}

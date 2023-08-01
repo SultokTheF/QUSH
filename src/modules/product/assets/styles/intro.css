@@ -1,0 +1,36 @@
+.intro {
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--light-grey-color);
+}
+
+.intro-image-group {
+  width: 50%;
+}
+
+.intro-image-group img {
+  position: absolute;
+  right: 100px;
+  bottom: 10px;
+  width: 450px;
+}
+
+.intro-content {
+  width: 50%;
+}
+
+.intro-content h1 {
+  font-size: 50px;
+  margin-left: 50px;
+  margin-top: 210px;
+}
+
+.intro-button {
+  margin-left: 150px;
+  padding: 10px;
+  border: 1px solid var( --black-color );
+  color: var( --black-color );
+  border-radius: 15px;
+}
