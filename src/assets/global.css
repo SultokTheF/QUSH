@@ -5,6 +5,7 @@
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    /* overflow-x: hidden; */
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
     box-sizing: border-box;
@@ -32,8 +33,13 @@
 
   /* Accent color  */
   --yellow-color:  #FFD700;
+  --light-blue-bg-color: #DEDEFA;
 
   /* Background color */
   --black-color: #000000;
   --white-color: #FFFFFF;
+}
+
+a {
+  text-decoration: none;
 }

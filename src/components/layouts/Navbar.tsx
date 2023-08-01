@@ -21,27 +21,27 @@ const Navbar: React.FC = () => {
           <ul className="nav-menu">
             <li className="nav-item">
               <NavLink 
-                to="/" 
+                to="/clients" 
                 className={({ isActive, isPending }) =>
                   isPending ? "nav-links" : isActive ? "nav-active-links" : "nav-links"
                 }
               >
-                Главная
+                Клиентам
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink 
-                to="/about"
+                to="/business"
                 className={({ isActive, isPending }) =>
                   isPending ? "nav-links" : isActive ? "nav-active-links" : "nav-links"
                 }
               >
-                О нас
+                Бизнесу
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink 
-                to="/teamList" 
+                to="/map" 
                 className={({ isActive, isPending }) =>
                   isPending ? "nav-links" : isActive ? "nav-active-links" : "nav-links"
                 }
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="nav-buttons">
+          <div className="nav-buttons"> 
             <NavLink
               to="/kz"
               className={location.pathname === "/kz" ? "nav-active-lang" : "nav-links"}

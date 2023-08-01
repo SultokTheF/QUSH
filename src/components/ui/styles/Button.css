@@ -1,9 +1,13 @@
 .button {
+  /* margin-left: 200px; */
+  text-align: center;
+  width: 200px;
   margin-left: 20px;
   padding: 8px 16px;
-  border: none;
-  background-color: var( --green-color );
-  color: var( --light-grey-color ); 
+  border: 1px solid;
+  /* background-color: var( --light-blue-bg-color ); */
+  border-color: var( --blue-color );
+  color: var( --blue-color ); 
   font-size: 16px;
   text-decoration: none;
   border-radius: 4px;
@@ -11,5 +15,5 @@
 }
 
 .button:hover {
-  background-color: var( --yellow-color );
+  background-color: var(  --light-blue-color );
 }
