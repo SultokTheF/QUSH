@@ -6,15 +6,17 @@ import Navbar from "./components/layouts/Navbar";
 
 //pages
 import MainPage from "./pages/MainPage";
-import FieldLocation from "./pages/FieldsLocation";
+import MapPage from "./pages/MapPage";
+import FieldListPage from "./pages/FieldListPage";
 
 const App: React.FC = () => {
   return (
     <>
       <Navbar/>
       <Routes>
-        <Route index element={<MainPage />}/>
-        <Route path="/map" element={<FieldLocation />} />
+        <Route index element={<MainPage />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="/field" element={<FieldListPage />} />
       </Routes>
     </>
   );

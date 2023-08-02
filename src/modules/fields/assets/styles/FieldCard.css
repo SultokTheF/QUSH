@@ -1,0 +1,32 @@
+.field-card {
+  background-color: var( --white-color );
+  color: var( --black-color );
+  margin: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 1%;
+  width: 360px;
+  border: 2px solid var( --black-color );
+  border-radius: 5px;
+  font-family: 'Inter';
+}
+
+.field-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 3%;
+  padding-left: 3%;
+  padding-top: 3%;
+}
+
+.field-card-body {
+  font-size: 14px;
+}
+
+.field-card-item img {
+  width: 40px;
+}
+
+.field-card-label {
+  padding-top: 3%;
+  padding-right: 5%;
+  float: right;
+}

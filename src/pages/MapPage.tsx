@@ -2,7 +2,7 @@ import React from "react";
 
 import { RenderMap } from "../modules/map";
 
-const FieldLocation: React.FC = () => {
+const MapPage: React.FC = () => {
   return (
     <>
       <RenderMap/>
@@ -10,4 +10,4 @@ const FieldLocation: React.FC = () => {
   );
 };
 
-export default FieldLocation;
+export default MapPage;

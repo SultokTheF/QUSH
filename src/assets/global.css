@@ -43,3 +43,7 @@
 a {
   text-decoration: none;
 }
+
+html {
+  background-color: var( --light-grey-color );
+}
