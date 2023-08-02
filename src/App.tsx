@@ -8,6 +8,7 @@ import Navbar from "./components/layouts/Navbar";
 import MainPage from "./pages/MainPage";
 import MapPage from "./pages/MapPage";
 import FieldListPage from "./pages/FieldListPage";
+import FieldPage from "./pages/FieldPage";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route index element={<MainPage />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/field" element={<FieldListPage />} />
+        <Route path="/field/:id" element={<FieldPage />} />
       </Routes>
     </>
   );

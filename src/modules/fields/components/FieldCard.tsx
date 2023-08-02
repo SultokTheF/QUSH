@@ -2,9 +2,9 @@ import React from 'react';
 
 import '../assets/styles/FieldCard.css';
 
-import { timeToInt, intToTime } from '../../../helpers/timeConverter';
+import { intToTime } from '../../../helpers/timeConverter';
 import { categoryOptions } from '../store/constants';
-import Field from '../types/Field';
+import Field from '../../../types/Field';
 
 import location from '../assets/images/location.png';
 import shedule from '../assets/images/shedule.png';

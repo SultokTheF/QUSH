@@ -5,3 +5,5 @@ declare module "*.png" {
 
 
 declare module 'mapbox-gl';
+
+declare module 'react-bootstrap';

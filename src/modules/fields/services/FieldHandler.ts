@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import Field from '../types/Field';
+import Field from '../../../types/Field';
 
 const API_BASE_URL = 'http://localhost:8000/field/fields/'; // Replace with your API endpoint
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../assets/styles/FieldList.css';
 
 import FieldHandler from '../services/FieldHandler';
-import Field from "../types/Field";
+import Field from '../../../types/Field';
 
 import FieldCard from './FieldCard';
 
