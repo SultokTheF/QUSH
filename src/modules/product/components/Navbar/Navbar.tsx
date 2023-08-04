@@ -1,0 +1,1 @@
+export default "Пока не навбар"

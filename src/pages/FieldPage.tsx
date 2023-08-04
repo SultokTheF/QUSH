@@ -1,11 +1,11 @@
 import React from "react";
 
-import { SingleField } from "../modules/fields";
+import { FieldInfo } from "../modules/fields";
 
 const FieldPage: React.FC = () => {
   return (
     <>
-      <SingleField/>
+      <FieldInfo/>
     </>
   );
 }

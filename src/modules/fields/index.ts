@@ -1,4 +1,4 @@
 import InfiniteFieldList from "./components/InfiniteFieldList";
-import SingleField from "./components/SingleField";
+import FieldInfo from "./components/FieldInfo";
 
-export { InfiniteFieldList, SingleField };
+export { InfiniteFieldList, FieldInfo };

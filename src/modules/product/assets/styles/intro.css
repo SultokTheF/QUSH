@@ -3,7 +3,7 @@
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: var(--light-grey-color);
+  /* background-color: var(--light-grey-color); */
 }
 
 .intro-image-group {
@@ -12,9 +12,9 @@
 
 .intro-image-group img {
   position: absolute;
-  right: 100px;
-  bottom: 10px;
-  width: 450px;
+  right: 10%;
+  bottom: 1%;
+  width: 35%;
 }
 
 .intro-content {

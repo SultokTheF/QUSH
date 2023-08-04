@@ -9,7 +9,7 @@ interface ButtonBody {
 const Button: React.FC<ButtonBody> = ( { body } ) => {
   return (
     <>
-      <div className="button">
+      <div className="button m-1">
         { body }
       </div>
     </>

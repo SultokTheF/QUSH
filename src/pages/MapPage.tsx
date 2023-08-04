@@ -5,7 +5,9 @@ import { RenderMap } from "../modules/map";
 const MapPage: React.FC = () => {
   return (
     <>
-      <RenderMap/>
+      <div className="map">
+        <RenderMap/>
+      </div>
     </>
   );
 };

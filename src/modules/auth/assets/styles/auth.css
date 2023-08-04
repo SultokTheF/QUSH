@@ -1,0 +1,69 @@
+.auth {
+  height: 100vh;
+  background: linear-gradient(rgba(33, 33, 33, 0.552), rgba(33, 33, 33, 0.552)), url("../images/LoginRegiterBg.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.auth .secContainer .authCard {
+  width: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  justify-content: center;
+  gap: 1rem;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}
+.auth .secContainer .authCard .locationDiv, .auth .secContainer .authCard .distDiv, .auth .secContainer .authCard .priceDiv {
+  width: 100%;
+}
+.auth .secContainer .authCard .locationDiv label, .auth .secContainer .authCard .distDiv label, .auth .secContainer .authCard .priceDiv label {
+  display: block;
+  color: var(--textColor);
+  font-weight: 500;
+  font-size: 13px;
+  padding-bottom: 0.4rem;
+}
+.auth .secContainer .authCard .locationDiv input, .auth .secContainer .authCard .distDiv input, .auth .secContainer .authCard .priceDiv input {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.auth .secContainer .authCard .locationDiv input::-moz-placeholder, .auth .secContainer .authCard .distDiv input::-moz-placeholder, .auth .secContainer .authCard .priceDiv input::-moz-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.auth .secContainer .authCard .locationDiv input:-ms-input-placeholder, .auth .secContainer .authCard .distDiv input:-ms-input-placeholder, .auth .secContainer .authCard .priceDiv input:-ms-input-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.auth .secContainer .authCard .locationDiv input::placeholder, .auth .secContainer .authCard .distDiv input::placeholder, .auth .secContainer .authCard .priceDiv input::placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.auth .secContainer .authCard .locationDiv input:focus, .auth .secContainer .authCard .distDiv input:focus, .auth .secContainer .authCard .priceDiv input:focus {
+  outline: none;
+}
+.auth .secContainer .authCard .btn {
+  width: 100%;
+  padding: 0.6rem 1.5rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+}

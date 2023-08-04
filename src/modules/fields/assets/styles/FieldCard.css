@@ -1,12 +1,5 @@
 .field-card {
-  background-color: var( --white-color );
-  color: var( --black-color );
-  margin: 1% 1% 1% 1%;
-  padding: 1% 1% 1% 1%;
-  width: 360px;
-  border: 2px solid var( --black-color );
-  border-radius: 5px;
-  font-family: 'Inter';
+  flex: 1;
 }
 
 .field-title {
@@ -29,4 +22,33 @@
   padding-top: 3%;
   padding-right: 5%;
   float: right;
+}
+
+.field-image {
+  flex: 1;
+  text-align: right;
+}
+
+.field-image img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.view-details-btn {
+  background-color: #3447f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.view-details-btn:hover {
+  background-color: #4758f8;
 }

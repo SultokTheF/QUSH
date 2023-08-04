@@ -25,12 +25,15 @@ const InfiniteFieldList: React.FC = () => {
 
   return (
     <>
-      <div className='field-list'>
-        {fields.map(field => (
-          <div className='field-item' key={ field.id }>
-            <FieldCard key={field.id} field={field}/>
-          </div>
-        ))}
+      <div className='field-list-container'>
+        <h2>Список полей</h2>
+        <ul className='field-list'>
+            {fields.map(field => (
+              <li className='field-list-item' key={ field.id }>
+                <FieldCard key={field.id} field={field}/>
+              </li>
+            ))}
+        </ul>
       </div>
     </>
   );
