@@ -5,24 +5,25 @@ import {TbGridDots} from 'react-icons/tb'
 
 import Logo from '../../assets/images/logo/QUSH_logo_black_expanded.png'
 
-const Navbar: React.FC = () => {
+const LandLordNavbar: React.FC = () => {
 
-const [active, setActive]  = useState('navBar')
-const showNav = ()=>{
-setActive('navBar activeNavbar')
-}
-const removeNav = ()=>{
-setActive('navBar')
-}
+  const [active, setActive]  = useState('navBar')
 
-//code statement to add a background color to the header.
-const [transparent, setTransparent] = useState('header')
-const addBg = ()=>{
-  if(window.scrollY >= 10){
-  setTransparent('header activeHeader')
-  }else{
-  setTransparent('header')
+  const showNav = ()=>{
+    setActive('navBar activeNavbar')
   }
+  const removeNav = ()=>{
+    setActive('navBar')
+  }
+
+  //code statement to add a background color to the header.
+  const [transparent, setTransparent] = useState('header')
+  const addBg = ()=>{
+    if(window.scrollY >= 10){
+    setTransparent('header activeHeader')
+    }else{
+    setTransparent('header')
+    }
   }
   window.addEventListener('scroll', addBg)
 
@@ -31,19 +32,19 @@ const addBg = ()=>{
       <header className={transparent}>
 
         <div className="logoDiv">
-          <a href="#" className="logo flex"><h1><img src={Logo} className='qush-logo' /></h1></a>
+          <a href="/" className="logo flex"><h1><img src={Logo} className='qush-logo' /></h1></a>
         </div>
 
         <div className={active}>
           <ul onClick={removeNav} className="navLists flex">
             <li className="navItem">
-              <a href="#" className="navLink">Главная</a>
+              <a href="/#main" className="navLink">Главная</a>
             </li>
             <li className="navItem">
-              <a href="#" className="navLink">О нас</a>
+              <a href="/#about" className="navLink">О нас</a>
             </li>
             <li className="navItem">
-              <a href="#" className="navLink">Контакты</a>
+              <a href="/#contact" className="navLink">Контакты</a>
             </li>
 
             <div className="headerBtns flex">
@@ -68,4 +69,4 @@ const addBg = ()=>{
   )
 }
 
-export default Navbar
+export default LandLordNavbar

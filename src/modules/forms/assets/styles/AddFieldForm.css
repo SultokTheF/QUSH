@@ -1,0 +1,121 @@
+.addForm {
+  height: 100vh;
+  background: var( --blackColor);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.addForm .secContainer .addFormCard {
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  /* justify-content: center; */
+  gap: 1rem;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}
+.addForm .secContainer .addFormCard .locationDiv, .addForm .secContainer .addFormCard .distDiv, .addForm .secContainer .addFormCard .priceDiv {
+  width: 100%;
+}
+.addForm .secContainer .addFormCard .locationDiv label, .addForm .secContainer .addFormCard .distDiv label, .addForm .secContainer .addFormCard .priceDiv label {
+  display: block;
+  color: var(--textColor);
+  font-weight: 500;
+  font-size: 13px;
+  padding-bottom: 0.4rem;
+}
+.addForm .secContainer .addFormCard .locationDiv input, .addForm .secContainer .addFormCard .distDiv input, .addForm .secContainer .addFormCard .priceDiv input {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.addForm .secContainer .addFormCard .locationDiv input::-moz-placeholder, .addForm .secContainer .addFormCard .distDiv input::-moz-placeholder, .addForm .secContainer .addFormCard .priceDiv input::-moz-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv input:-ms-input-placeholder, .addForm .secContainer .addFormCard .distDiv input:-ms-input-placeholder, .addForm .secContainer .addFormCard .priceDiv input:-ms-input-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv input::placeholder, .addForm .secContainer .addFormCard .distDiv input::placeholder, .addForm .secContainer .addFormCard .priceDiv input::placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv input:focus, .addForm .secContainer .addFormCard .distDiv input:focus, .addForm .secContainer .addFormCard .priceDiv input:focus {
+  outline: none;
+}
+
+.addForm .secContainer .addFormCard .locationDiv textarea, .addForm .secContainer .addFormCard .distDiv textarea, .addForm .secContainer .addFormCard .priceDiv textarea {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.addForm .secContainer .addFormCard .locationDiv textarea::-moz-placeholder, .addForm .secContainer .addFormCard .distDiv textarea::-moz-placeholder, .addForm .secContainer .addFormCard .priceDiv textarea::-moz-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv textarea:-ms-input-placeholder, .addForm .secContainer .addFormCard .distDiv textarea:-ms-input-placeholder, .addForm .secContainer .addFormCard .priceDiv textarea:-ms-input-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv textarea::placeholder, .addForm .secContainer .addFormCard .distDiv textarea::placeholder, .addForm .secContainer .addFormCard .priceDiv textarea::placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.addForm .secContainer .addFormCard .locationDiv textarea:focus, .addForm .secContainer .addFormCard .distDiv textarea:focus, .addForm .secContainer .addFormCard .priceDiv input:focus {
+  outline: none;
+}
+
+.addForm .secContainer .addFormCard .locationDiv select, .addForm .secContainer .addFormCard .distDiv select, .addForm .secContainer .addFormCard .priceDiv select {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.addForm .secContainer .addFormCard .btn {
+  margin-top: 5%;
+  width: 100%;
+  padding: 0.6rem 1.5rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+}
+
+@media screen and (min-width: 480px) {
+  .home .secContainer .homeCard {
+    bottom: -18%;
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home .secContainer .homeCard .btn {
+    transform: translateY(15px);
+  }
+}

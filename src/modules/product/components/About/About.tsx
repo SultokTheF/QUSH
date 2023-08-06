@@ -22,7 +22,7 @@ const About: React.FC = () => {
   }, []) 
 
   return (
-    <section className='about  section'>
+    <section className='about  section' id={`about`}>
       <div className="secContainer">
 
         <h2 className='title'>

@@ -17,7 +17,7 @@ import 'aos/dist/aos.css'
   }, []) 
 
    return (
-     <div className='footer'>
+     <div className='footer' id={`contact`}>
       <div className="secCotainer container grid">
          <div data-aos="fade-up" data-aos-duration="2000" className="logoDiv">
          <div className="footerLogo">
@@ -34,17 +34,17 @@ import 'aos/dist/aos.css'
          <div data-aos="fade-up" data-aos-duration="2500" className="footerLinks">
           <span className="linkTitle">Информация</span>
             <li>
-              <a href="#">Главная</a>
+              <a href="/#main">Главная</a>
             </li>
             <li>
-              <a href="#">О нас</a>
+              <a href="/#about">О нас</a>
             </li>
           
          </div>
          <div data-aos="fade-up" data-aos-duration="3000" className="footerLinks">
           <span className="linkTitle">Полезные ссылки</span>
             <li>
-              <a href="#">Список полей</a>
+              <a href="/field">Список полей</a>
             </li>
             <li>
               <a href="#">Карта</a>

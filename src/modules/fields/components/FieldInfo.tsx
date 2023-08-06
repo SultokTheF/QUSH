@@ -56,7 +56,7 @@ const FieldInfo: React.FC = () => {
                 <strong className='text-color-blue'>Покрытие:</strong> {surface?.text}
               </p>
               <p className="mb-2 h5">
-                <strong className='text-color-blue'>Размеры:</strong> {field.dimensions}
+                <strong className='text-color-blue'>Размеры:</strong> {field.width} x {field.length}
               </p>
 
               <Row className='mt-5'>

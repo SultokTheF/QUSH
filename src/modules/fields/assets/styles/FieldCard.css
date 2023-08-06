@@ -1,54 +1,48 @@
-.field-card {
-  flex: 1;
+.offer .secContainter .mainContent .singleOffer .offerBody {
+  padding: 1rem;
 }
-
-.field-title {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 3%;
-  padding-left: 3%;
-  padding-top: 3%;
+.offer .secContainter .mainContent .singleOffer .offerBody .price {
+  justify-content: space-between;
 }
-
-.field-card-body {
-  font-size: 14px;
+.offer .secContainter .mainContent .singleOffer .offerBody .price h4 {
+  color: var(--blackColor);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
-
-.field-card-item img {
-  width: 40px;
+.offer .secContainter .mainContent .singleOffer .offerBody .price .status {
+  padding: 5px 10px;
+  color: var(--HoverColor);
+  background: var(--greyBg);
+  border-radius: 3rem;
+  font-size: 10px;
+  font-weight: 600;
 }
-
-.field-card-label {
-  padding-top: 3%;
-  padding-right: 5%;
-  float: right;
+.offer .secContainter .mainContent .singleOffer .offerBody .amenities {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 1rem 0;
+  gap: 0.5rem;
 }
-
-.field-image {
-  flex: 1;
-  text-align: right;
-}
-
-.field-image img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
+.offer .secContainter .mainContent .singleOffer .offerBody .amenities .singleAmenity {
+  padding: 5px 10px;
   border-radius: 5px;
+  background: var(--greyBg);
+  gap: 0.5rem;
 }
-
-.view-details-btn {
-  background-color: #3447f6;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  text-decoration: none;
-  display: inline-block;
+.offer .secContainter .mainContent .singleOffer .offerBody .btn {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 0.6rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+  gap: 0.5rem;
 }
-
-.view-details-btn:hover {
-  background-color: #4758f8;
+.offer .secContainter .mainContent .singleOffer .offerBody .btn .icon {
+  color: var(--whiteColor);
 }
+.offer .secContainter .mainContent .singleOffer:hover {
+  transform: translateY(-7px);
+}/*# sourceMappingURL=offer.css.map */

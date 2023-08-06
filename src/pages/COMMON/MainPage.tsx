@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar, Home, About, Footer } from '../modules/product/';
+import { Navbar, Home, About, Footer } from '../../modules/product';
 
 const MainPage: React.FC = () => {
   return (
