@@ -1,0 +1,121 @@
+.editForm {
+  height: 100vh;
+  background: var( --blackColor);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.editForm .secContainer .editFormCard {
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  /* justify-content: center; */
+  gap: 1rem;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}
+.editForm .secContainer .editFormCard .locationDiv, .editForm .secContainer .editFormCard .distDiv, .editForm .secContainer .editFormCard .priceDiv {
+  width: 100%;
+}
+.editForm .secContainer .editFormCard .locationDiv label, .editForm .secContainer .editFormCard .distDiv label, .editForm .secContainer .editFormCard .priceDiv label {
+  display: block;
+  color: var(--textColor);
+  font-weight: 500;
+  font-size: 13px;
+  padding-bottom: 0.4rem;
+}
+.editForm .secContainer .editFormCard .locationDiv input, .editForm .secContainer .editFormCard .distDiv input, .editForm .secContainer .editFormCard .priceDiv input {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.editForm .secContainer .editFormCard .locationDiv input::-moz-placeholder, .editForm .secContainer .editFormCard .distDiv input::-moz-placeholder, .editForm .secContainer .editFormCard .priceDiv input::-moz-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv input:-ms-input-placeholder, .editForm .secContainer .editFormCard .distDiv input:-ms-input-placeholder, .editForm .secContainer .editFormCard .priceDiv input:-ms-input-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv input::placeholder, .editForm .secContainer .editFormCard .distDiv input::placeholder, .editForm .secContainer .editFormCard .priceDiv input::placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv input:focus, .editForm .secContainer .editFormCard .distDiv input:focus, .editForm .secContainer .editFormCard .priceDiv input:focus {
+  outline: none;
+}
+
+.editForm .secContainer .editFormCard .locationDiv textarea, .editForm .secContainer .editFormCard .distDiv textarea, .editForm .secContainer .editFormCard .priceDiv textarea {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.editForm .secContainer .editFormCard .locationDiv textarea::-moz-placeholder, .editForm .secContainer .editFormCard .distDiv textarea::-moz-placeholder, .editForm .secContainer .editFormCard .priceDiv textarea::-moz-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv textarea:-ms-input-placeholder, .editForm .secContainer .editFormCard .distDiv textarea:-ms-input-placeholder, .editForm .secContainer .editFormCard .priceDiv textarea:-ms-input-placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv textarea::placeholder, .editForm .secContainer .editFormCard .distDiv textarea::placeholder, .editForm .secContainer .editFormCard .priceDiv textarea::placeholder {
+  font-size: 13px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+.editForm .secContainer .editFormCard .locationDiv textarea:focus, .editForm .secContainer .editFormCard .distDiv textarea:focus, .editForm .secContainer .editFormCard .priceDiv input:focus {
+  outline: none;
+}
+
+.editForm .secContainer .editFormCard .locationDiv select, .editForm .secContainer .editFormCard .distDiv select, .editForm .secContainer .editFormCard .priceDiv select {
+  width: 100%;
+  background: var(--inputColor);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.editForm .secContainer .editFormCard .btn {
+  margin-top: 5%;
+  width: 100%;
+  padding: 0.6rem 1.5rem;
+  color: var(--whiteColor);
+  font-weight: 600;
+}
+
+@media screen and (min-width: 480px) {
+  .home .secContainer .homeCard {
+    bottom: -18%;
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home .secContainer .homeCard .btn {
+    transform: translateY(15px);
+  }
+}

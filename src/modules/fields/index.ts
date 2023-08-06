@@ -1,4 +1,6 @@
 import InfiniteFieldList from "./components/InfiniteFieldList";
-import FieldInfo from "./components/FieldInfo";
 
-export { InfiniteFieldList, FieldInfo };
+import AddFieldForm from './components/Forms/AddFieldForm';
+import EditFieldForm from './components/Forms/EditFieldForm';
+
+export { InfiniteFieldList, AddFieldForm, EditFieldForm };

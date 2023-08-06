@@ -21,6 +21,14 @@
   color: var(--PrimaryColor);
   transform: translateY(5px);
 }
+
+.header .navBar .navLists .headerBtns .user-icon img {
+  background: var(--PrimaryColor);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 2px;
+}
 @media screen and (max-width: 768px) {
   .header .navBar {
     background: var(--greyBg);
@@ -59,6 +67,14 @@
   .header .navBar .navLists .headerBtns {
     flex-direction: column;
   }
+
+  .header .navBar .navLists .headerBtns .user-icon img {
+    background: var(--PrimaryColor);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 2px;
+  }
   .header .navBar .navLists .headerBtns .btn {
     margin-top: 1rem;
   }
@@ -82,6 +98,7 @@
   .header .navBar .navLists .headerBtns .loginBtn:hover a {
     color: var(--whiteColor);
   }
+  
   .header .navBar .closeNavbar {
     position: absolute;
     top: 1rem;

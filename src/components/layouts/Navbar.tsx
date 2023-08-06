@@ -4,8 +4,9 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import {TbGridDots} from 'react-icons/tb'
 
 import Logo from '../../assets/images/logo/QUSH_logo_black_expanded.png'
+import icon from '../../assets/images/icons/CV.jpg'
 
-const LandLordNavbar: React.FC = () => {
+const Navbar: React.FC = () => {
 
   const [active, setActive]  = useState('navBar')
 
@@ -47,13 +48,31 @@ const LandLordNavbar: React.FC = () => {
               <a href="/#contact" className="navLink">Контакты</a>
             </li>
 
-            <div className="headerBtns flex">
+            {/* <div className="headerBtns flex">
               <button className="btn loginBtn">
                 <a href="/login">Вход</a>
               </button>
               <button className="btn">
                 <a href="/register">Регистрация</a>
               </button>
+            </div> */}
+
+            <div className="headerBtns flex">
+              <div className='user-icon'>
+                <img src={icon}/>
+              </div>
+              <div className="dropdown">
+                <a className="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Султанияр Куандык
+                </a>
+
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a className="dropdown-item" href="#">Профиль</a></li>
+                  <li><a className="dropdown-item" href="#">Мои заказы</a></li>
+                  <li><a className="dropdown-item" href="#">Настройки</a></li>
+                  <li><a className="dropdown-item" href="#">Выход</a></li>
+                </ul>
+              </div>
             </div>
           </ul>
           <div onClick={removeNav} className="closeNavbar">
@@ -69,4 +88,4 @@ const LandLordNavbar: React.FC = () => {
   )
 }
 
-export default LandLordNavbar
+export default Navbar

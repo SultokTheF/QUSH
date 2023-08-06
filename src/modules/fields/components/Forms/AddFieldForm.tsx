@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
-import '../assets/styles/AddFieldForm.css';
+import '../../assets/styles/AddFieldForm.css';
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-import { categoryOptions, surfaceOptions } from '../store/constants';
+import { categoryOptions, surfaceOptions } from '../../store/constants';
 
 const AddFieldForm: React.FC = () => {
   useEffect(()=>{
@@ -11,7 +11,7 @@ const AddFieldForm: React.FC = () => {
   }, [])
 
   return (
-    <section className='addForm' id={`main`}>
+    <section className='addForm'>
       <div className="secContainer container">
         <div  className="addFormCard grid">
           <h1>Добавление поля</h1>
@@ -60,7 +60,7 @@ const AddFieldForm: React.FC = () => {
                 ) )}
               </select>
             </div>
-            <button className='btn'>Поиск</button>
+            <button className='btn'>Добавить поле</button>
           </form>
         </div>
       </div>

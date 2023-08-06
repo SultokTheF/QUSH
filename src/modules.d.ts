@@ -3,6 +3,11 @@ declare module "*.png" {
   export = value;
 }
 
+declare module "*.jpg" {
+  const value: any;
+  export = value;
+}
+
 declare module "*.MOV" {
   const value: any;
   export = value;

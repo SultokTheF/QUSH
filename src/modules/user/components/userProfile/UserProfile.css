@@ -1,0 +1,34 @@
+.user-profile {
+  height: 100vh;
+  background: var( --blackColor);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.user-profile .user-info {
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  /* justify-content: center; */
+  gap: 1rem;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}
+
+.user-profile .user-info .user-card{
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}

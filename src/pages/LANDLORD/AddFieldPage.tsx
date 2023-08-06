@@ -1,5 +1,5 @@
 import React from "react";
-import { AddFieldForm } from "../../modules/forms";
+import { AddFieldForm } from "../../modules/fields";
 
 const AddFieldPage: React.FC = () => {
   return (
