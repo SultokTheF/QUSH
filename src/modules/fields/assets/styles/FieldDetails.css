@@ -1,0 +1,29 @@
+.field-details {
+  height: 100vh;
+  background: var( --blackColor);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+
+.field-details .field-info .field-image{
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}
+
+.field-details .field-info .field-body {
+  width: 50%;
+  height: 60%;
+  position: absolute;
+  overflow: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+}

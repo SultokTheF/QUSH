@@ -1,6 +1,6 @@
 .editForm {
   height: 100vh;
-  background: var( --blackColor);
+  background: linear-gradient(rgba(33, 33, 33, 0.552), rgba(33, 33, 33, 0.552)), url("../images/voleyballBg.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -8,6 +8,7 @@
   justify-content: center;
   margin: auto;
   position: relative;
+  color: var( --whiteColor )
 }
 
 .editForm .secContainer .editFormCard {
@@ -16,7 +17,7 @@
   overflow: auto;
   border-radius: 1rem;
   padding: 2rem;
-  background: var(--whiteColor);
+  background: transparent;
   position: absolute;
   /* justify-content: center; */
   gap: 1rem;
@@ -30,7 +31,7 @@
 }
 .editForm .secContainer .editFormCard .locationDiv label, .editForm .secContainer .editFormCard .distDiv label, .editForm .secContainer .editFormCard .priceDiv label {
   display: block;
-  color: var(--textColor);
+  color: var(--whiteColor);
   font-weight: 500;
   font-size: 13px;
   padding-bottom: 0.4rem;
