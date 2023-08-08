@@ -17,25 +17,29 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 
+import icon from '../../../../assets/images/icons/CV.jpg'
+
 import './UserProfile.css';
 
 export default function UserProfile() {
   return (
     <section className='user-profile'>
       <MDBContainer className="py-5 user-info">
-        <MDBRow>
+        <MDBRow className='mt-5'>
           <MDBCol lg="4">
             <MDBCard className="mb-4 user-card">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={icon}
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: '150px' }}
+                  style={{ width: '150px', height: '150px' }}
                   fluid />
                 <div className="d-flex justify-content-center mb-2">
-                  <a className='btn mt-3'>Текущие заказы</a>
-                  <a className='btn mt-3'>История заказов</a>
+                  <a className='mt-2 btn'>История заказов</a>
+                </div>
+                <div className="d-flex justify-content-center mb-2">
+                  <a className='btn'>Текущие заказы</a>
                 </div>
               </MDBCardBody>
             </MDBCard>

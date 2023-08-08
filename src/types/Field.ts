@@ -4,23 +4,23 @@ interface Field {
   name: string;
   category_sport: number;
   location: string;
-  latitude?: number | null;
-  longitude: number;
+  latitude: number ;
+  longitude: number ;
   time_from: number;
   time_to: number;
   description: string;
   price: number;
-  image?: string | null;
-  width?: number | null;
-  length?: number | null;
+  image: string ;
+  width: number ;
+  length: number ;
   surface_type: number;
-  capacity?: number | null;
-  facilities?: string | null;
-  lighting?: string | null;
-  rules?: string | null;
+  capacity: number ;
+  facilities: string ;
+  lighting: string ;
+  rules: string ;
   bath: number;
-  cloakroom: number;
-  additional_services?: string | null;
+  сloakroom: number;
+  additional_services: string ;
 }
 
 export default Field;

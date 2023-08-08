@@ -1,7 +1,9 @@
 .offer .secContainter .mainContent {
+  min-height: 55vh;
   gap: 1rem;
 }
 .offer .secContainter .mainContent .singleOffer {
+  background: var(--whiteColor);
   border-radius: 1rem;
   overflow: hidden;
   padding: 0.5rem;

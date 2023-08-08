@@ -48,16 +48,16 @@ const Navbar: React.FC = () => {
               <a href="/#contact" className="navLink">Контакты</a>
             </li>
 
-            {/* <div className="headerBtns flex">
+            <div className="headerBtns flex">
               <button className="btn loginBtn">
                 <a href="/login">Вход</a>
               </button>
               <button className="btn">
                 <a href="/register">Регистрация</a>
               </button>
-            </div> */}
+            </div>
 
-            <div className="headerBtns flex">
+            {/* <div className="headerBtns flex">
               <div className='user-icon'>
                 <img src={icon}/>
               </div>
@@ -67,13 +67,13 @@ const Navbar: React.FC = () => {
                 </a>
 
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a className="dropdown-item" href="#">Профиль</a></li>
+                  <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
                   <li><a className="dropdown-item" href="#">Мои заказы</a></li>
                   <li><a className="dropdown-item" href="#">Настройки</a></li>
                   <li><a className="dropdown-item" href="#">Выход</a></li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </ul>
           <div onClick={removeNav} className="closeNavbar">
             <AiFillCloseCircle className='icon'/>

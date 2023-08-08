@@ -3,10 +3,10 @@ import React, {useEffect} from 'react'
 import '../assets/styles/FieldCard.css'
 
 import {BsArrowRightShort} from 'react-icons/bs'
-import {MdKingBed} from 'react-icons/md'
+import { GiClothes } from 'react-icons/gi'
 import {FaWifi} from 'react-icons/fa'
 import {MdBathtub} from 'react-icons/md'
-import {MdAirportShuttle} from 'react-icons/md'
+import {ImPriceTag} from 'react-icons/im'
 import {MdLocationOn} from 'react-icons/md'
 
 // Import Aos ======================>
@@ -36,47 +36,47 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
       <div data-aos="fade-up" data-aos-duration="3000" className="singleOffer">
         <div className="destImage">
           <img src={imgSrc} alt={field.name} />
-
-          <span className="discount">
-            30% Off
-          </span>
         </div>
 
         <div className="offerBody">
           <div className="price flex">
             <h4>
-            {field.price}
+            {field.name}
             </h4>
             <span className="status">
-            For Rent
+              {field.price} тг/час
             </span>
           </div>
 
           <div className="amenities flex">
-            <div className="singleAmenity flex">
-              <MdKingBed className="icon"/>
-              <small>2 Beds</small>
-            </div>
-            <div className="singleAmenity flex">
-              <MdBathtub className="icon"/>
-              <small>1 Bath</small>
-            </div>
+            {field.bath > 0 && (
+              <>
+                <div className="singleAmenity flex">
+                  <MdBathtub className="icon" />
+                  <small>{field.bath} Душевые кабинки</small>
+                </div>
+              </>
+            )} 
             <div className="singleAmenity flex">
               <FaWifi className="icon"/>
               <small>Wi-Fi</small>
             </div>
-            <div className="singleAmenity flex">
-              <MdAirportShuttle className="icon"/>
-              <small>Shuttle</small>
-            </div>
+
+            {field.сloakroom > 0 && (
+              <>
+                <div className="singleAmenity flex">
+                  <GiClothes className="icon"/>
+                  <small>{ field.сloakroom } Раздевалки</small>
+                </div>
+              </>
+            )} 
           </div>
 
           <div className="location flex">
             <MdLocationOn className="icon"/>
-            <small> 450 Vine St #310,{field.location}</small> 
+            <small>{field.location}</small> 
           </div>
-
-          <button className='btn flex'>View Details <BsArrowRightShort className='icon'/></button>
+          <a className='btn flex' href={`/field/${field.id}`}>Посмотреть детали <BsArrowRightShort className='icon'/></a>
 
         </div>
       </div>
