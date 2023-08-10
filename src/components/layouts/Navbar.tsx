@@ -3,7 +3,7 @@ import './styles/Navbar.css'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {TbGridDots} from 'react-icons/tb'
 
-import Logo from '../../assets/images/logo/QUSH_logo_black_expanded.png'
+import Logo from '../../assets/images/logo/QUSH_logo_white_expanded.png'
 import icon from '../../assets/images/icons/CV.jpg'
 
 const Navbar: React.FC = () => {

@@ -25,7 +25,7 @@ const InfiniteFieldList: React.FC = () => {
   
   return (
     <>
-      <div className='bg-dark'>
+      <div>
         <section className='offer section container'>
           <div className="secContainter">
 

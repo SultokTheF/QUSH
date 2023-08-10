@@ -1,6 +1,6 @@
 .home {
   height: 100vh;
-  background: linear-gradient(rgba(33, 33, 33, 0.552), rgba(33, 33, 33, 0.552)), url("../../assets/images/Banner.png");
+  background: var( --photoMask ), url("../../assets/images/banner.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +43,7 @@
   bottom: -35%;
   left: 50%;
   transform: translate(-50%);
-  box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.45);
+  box-shadow: var( --boxShadow );
 }
 .home .secContainer .homeCard .locationDiv, .home .secContainer .homeCard .distDiv, .home .secContainer .homeCard .priceDiv {
   width: 100%;

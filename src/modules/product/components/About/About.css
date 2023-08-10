@@ -1,3 +1,7 @@
+.about {
+  background-color: var( --whiteColor );
+}
+
 .about .secContainer .title {
   color: var(--blackColor);
   line-height: 1.5rem;
@@ -9,10 +13,11 @@
   gap: 1rem;
 }
 .about .secContainer .mainContent .singleItem {
+  min-height: 100%;
   text-align: center;
 }
 .about .secContainer .mainContent .singleItem img {
-  background: var(--PrimaryColor);
+  background: var(--blueColor);
   width: 100px;
   border-radius: 50%;
   padding: 1rem;
@@ -26,11 +31,11 @@
   font-size: 13px;
   font-weight: 500;
   padding-bottom: 0.5rem;
-  color: var(--textColor);
+  color: var(--blueColor);
 }
 .about .secContainer .videoCard {
   margin-top: 2rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0.609)), url(../../assets/images/CardBg.png);
+  background: var( --photoMask ), url(../../assets/images/CardBg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

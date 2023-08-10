@@ -1,6 +1,6 @@
 .auth {
   height: 100vh;
-  background: linear-gradient(rgba(33, 33, 33, 0.552), rgba(33, 33, 33, 0.552)), url("../images/LoginRegiterBg.webp");
+  background: var( --photoMask ), url("../images/LoginRegiterBg.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,6 +12,10 @@
 }
 
 .auth .secContainer .authCard {
+  width: 60%;
+  height: 60%;
+  overflow: auto;
+  overflow-x: hidden;
   width: auto;
   border-radius: 1rem;
   padding: 2rem;
@@ -66,4 +70,8 @@
   padding: 0.6rem 1.5rem;
   color: var(--whiteColor);
   font-weight: 600;
+}
+
+.auth .secContainer .authCard .btn:hover {
+  box-shadow: 0 2px 8px 2px var( --blackColor );;
 }

@@ -111,8 +111,6 @@ const RegisterForm: React.FC = () => {
                 />
               </div>
               <div
-                data-aos="fade-right"
-                data-aos-duration="3000"
                 className="priceDiv"
               >
                 <label htmlFor="passwordConfirmation">Подтверждение пароля</label>
@@ -125,8 +123,6 @@ const RegisterForm: React.FC = () => {
                 />
               </div>
               <button
-                data-aos="fade-left"
-                data-aos-duration="3500"
                 className="btn"
                 type="submit"
               >

@@ -34,28 +34,28 @@ const About: React.FC = () => {
 
           <div data-aos="fade-up" data-aos-duration="2000" className="singleItem">
             <img src={Field} alt="Image" />
-            <h3>Спортивные поля</h3>
-            <p>Благодаря нашей платформе ты сможешь найти удобное для тебя спортивное поле.</p>
+            <h3>Широкий выбор спортивных объектов</h3>
+            <p>QUSH предлагает разнообразные спортивные секции и площадки по всему Казахстану, позволяя вам выбирать именно то, что вам нужно.</p>
           </div>
 
           <div data-aos="fade-up" data-aos-duration="2500" className="singleItem">
             <img src={Development} alt="Image" />
-            <h3>Развитие</h3>
-            <p>Мы планируем расширять функционал нашей платформы.</p>
+            <h3>Подробная информация и отзывы</h3>
+            <p>Мы предоставляем полезную информацию о каждом спортивном объекте, включая фотографии, расписание, цены и отзывы от других пользователей.</p>
           </div>
 
           <div data-aos="fade-up" data-aos-duration="3000" className="singleItem">
             <img src={Support} alt="Image" />
-            <h3>Поддрежка</h3>
-            <p>Задавайте нам любой интересующий вопрос и мы вам ответим</p>
+            <h3>Удобное онлайн-бронирование</h3>
+            <p>С помощью QUSH вы можете легко бронировать спортивные объекты онлайн, выбирая удобное время и оплачивая заказ в удобной форме.</p>
           </div>
         </div>
 
         <div className="videoCard container">
           <div className=" cardContent grid">
             <div data-aos="fade-right" className="cardText">
-              <h2>Четатам Четатам</h2>
-              <p>Четатам текст </p>
+              <h2>QUSH</h2>
+              <p>Quantitative, Qualitative and Quick</p>
             </div>
 
             <div data-aos="fade-left" className="cardVideo">

@@ -16,7 +16,7 @@
 }
 .footer .secCotainer .logoDiv .logo .icon {
   font-size: 25px;
-  color: var(--PrimaryColor);
+  color: var(--blueColor);
   transform: translateY(5px);
 }
 .footer .secCotainer .logoDiv .socials {
@@ -26,7 +26,7 @@
 }
 .footer .secCotainer .logoDiv .socials .icon {
   font-size: 30px;
-  background: var(--PrimaryColor);
+  background: var(--blueColor);
   border-radius: 50%;
   padding: 8px;
   color: var(--whiteColor);
@@ -35,6 +35,7 @@
   background: var(--blackColor);
 }
 .footer .secCotainer .footerLinks {
+  min-height: 100%;
   display: grid;
   row-gap: 0.2rem;
 }
@@ -47,7 +48,7 @@
   transform: translateX(10px);
 }
 .footer .secCotainer .footerLinks li:hover a {
-  color: var(--PrimaryColor);
+  color: var(--blueColor);
 }
 .footer .secCotainer .footerLinks a, .footer .secCotainer .footerLinks .phone, .footer .secCotainer .footerLinks .email {
   color: var(--textColor);

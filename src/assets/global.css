@@ -8,17 +8,26 @@
     transition: .3s ease;
 }
 
+body {
+    background-color: var( --blackColor );
+}
+
 :root{
     --PrimaryColor: #640d5e7f;
     --HoverColor: #081b3077; 
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(0, 0%, 18%);
     --textColor: hsl(240, 1%, 48%);
     --whiteColorDeam: hsl(0, 0%, 93%);
     --greyBg: hsl(0, 0%, 96%);
     --greyText: rgb(190, 190, 190);
     --inputColor: hsl(330, 12%, 97%);
-    --boxShadow:  0 2px 8px 2px rgba(178, 178, 178, 0.189);
+    --boxShadow:  0 2px 8px 2px var( --whiteColor );
+
+    --whiteColor: #FFFFFF;
+    --blackColor: #000000;
+    --blueColor: #2C74B3;
+    --lightBlueColor: #F2F6FA;
+    --darkBlueColor: #11263A;
+    --photoMask: linear-gradient(rgba( 33, 33, 33, 0.552 ), rgba( 33, 33, 33, 0.552 ));
 }
 
 
@@ -57,24 +66,26 @@ li{
 
 .btn{
     padding: .4rem 1.5rem;
-    background: var(--PrimaryColor);
+    background: var(--blueColor);
+    color: var(--darkBlueColor);
     border: none;
     outline: none;
-    border-radius: 3rem;
+    border-radius: .5rem;
     cursor: pointer;
 }
 
 .btn a{
- color: var(--whiteColor);
+ color: var(--darkBlueColor);
  font-weight: 500;
 }
 
 .btn:hover{
-    background: var(--HoverColor);
+    background: var(--blueColor);
+    box-shadow: var(--boxShadow);
 }
 
 .btn:hover a{
-    color: var(--whiteColor);
+    color: var(--darkBlueColor);
 }
 
 .secIntro{
@@ -111,16 +122,16 @@ input{
 
 
 ::selection{
-    background: var(--PrimaryColor);
+    background: var(--blueColor);
     color: var(--whiteColor);
 }
 
 ::-webkit-scrollbar{
     width: 10px;
-    background: var(--greyBg);
+    background: var(--blackColor);
 }
 ::-webkit-scrollbar-thumb{
-    background: var(--PrimaryColor);
+    background: var(--blueColor);
     border-radius: 10px;
 }
 

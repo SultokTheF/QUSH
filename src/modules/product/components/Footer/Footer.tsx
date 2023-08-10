@@ -27,7 +27,7 @@ import 'aos/dist/aos.css'
           <div  className="socials flex">
               <ImFacebook className='icon'/>
               <BsTwitter className='icon'/>
-              <AiFillInstagram className="icon"/>
+              <a href='https://www.instagram.com/qush_kz/'><AiFillInstagram className="icon"/></a>
           </div>
          </div>
 

@@ -9,7 +9,7 @@
   z-index: 1000;
   padding: 1rem;
 }
-.header .logo {
+/* .header .logo {
   color: var(--whiteColor);
   font-weight: 500;
   cursor: pointer;
@@ -20,7 +20,7 @@
   font-size: 25px;
   color: var(--PrimaryColor);
   transform: translateY(5px);
-}
+} */
 
 .header .navBar .navLists .headerBtns .user-icon img {
   background: var(--PrimaryColor);
@@ -31,7 +31,7 @@
 }
 @media screen and (max-width: 768px) {
   .header .navBar {
-    background: var(--greyBg);
+    background: var(--blackColor);
     position: absolute;
     height: -webkit-max-content;
     height: -moz-max-content;
@@ -86,17 +86,17 @@
   }
   .header .navBar .navLists .headerBtns .loginBtn {
     background: none;
-    border: 1px solid var(--PrimaryColor);
-    color: var(--PrimaryColor);
+    border: 1px solid var(--blueColor);
+    color: var(--darkBlueColor);
   }
   .header .navBar .navLists .headerBtns .loginBtn a {
-    color: var(--PrimaryColor);
+    color: var(--darkBlueColor);
   }
   .header .navBar .navLists .headerBtns .loginBtn:hover {
-    background: var(--HoverColor);
+    background: var(--lightBlueColor);
   }
   .header .navBar .navLists .headerBtns .loginBtn:hover a {
-    color: var(--whiteColor);
+    color: var(--darkBlueColor);
   }
   
   .header .navBar .closeNavbar {
@@ -121,7 +121,7 @@
 }
 
 .activeHeader {
-  background: var(--textColor);
+  background: var(--blackColor);
   box-shadow: var(--boxShadow);
 }
 
@@ -145,7 +145,7 @@
     font-weight: 400;
   }
   .header .navBar .navLists .navItem .navLink:hover {
-    color: var(--PrimaryColor);
+    color: var(--blueColor);
   }
   .header .navBar .navLists .navItem .navLink .headerNumber {
     color: var(--primaryHover);
@@ -159,13 +159,7 @@
   }
   .header .navBar .navLists .loginBtn {
     background: none;
-    border: 1px solid var(--PrimaryColor);
-  }
-  .header .navBar .navLists .loginBtn:hover {
-    background: var(--PrimaryColor);
-  }
-  .header .navBar .navLists .loginBtn:hover a {
-    color: var(--whiteColor);
+    border: 1px solid var(--blueColor);
   }
 }
 @media screen and (min-width: 960px) {
