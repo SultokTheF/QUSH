@@ -17,24 +17,34 @@ const RegisterForm: React.FC = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    // window.location.href = '/';
 
-    try {
-      const response = await fetch('http://83.229.87.19:8090/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ firstName, lastName, email, password, passwordConfirmation }),
-      });
+    // Ваша логика для отправки данных формы на сервер
+    const formData = {
+      email:email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName
+    };
 
-      if (response.ok) {
-        // Registration successful, you can redirect or show a success message
-      } else {
-        setError('Registration failed. Please check your details.');
-      }
-    } catch (error) {
-      setError('An error occurred. Please try again later.');
-    }
+    fetch('http://83.229.87.19:8090/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response)
+    .then(data => {
+      alert( "Маладес" );
+      // Обработка ответа от сервера
+      console.log(data);
+    })
+    .catch(error => {
+      setError( "Неправильный логин или пароль" )
+      // Обработка ошибок
+      console.error(error);
+    });
   };
 
   return (

@@ -16,26 +16,34 @@ const LoginForm: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('http://83.229.87.19:8090/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const token = data;
-        setAccessToken(token);
-        alert( accessToken );
+    const formData = {
+      email:email,
+      password: password
+    };
+    fetch('http://83.229.87.19:8090/auth', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      console.log(response.status);
+      if (response.status === 200) {
+        return response.text();
       } else {
-        setError('Login failed. Please check your credentials.');
+        throw new Error('Ошибка: ' + response.status);
       }
-    } catch (error) {
-      setError('An error occurred. Please try again later.');
-    }
+    })
+    // вызываем response.text() для получения текстового содержимого
+    .then(data => {
+      localStorage.setItem('token', data);
+      window.location.href = '/';
+    })
+    .catch(error => {
+      // Обработка ошибок
+      console.error(error);
+    });
   };
 
   return (

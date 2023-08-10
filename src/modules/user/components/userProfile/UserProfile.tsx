@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MDBCol,
   MDBContainer,
@@ -20,6 +20,8 @@ import {
 import icon from '../../../../assets/images/icons/CV.jpg'
 
 import './UserProfile.css';
+
+import axios from 'axios';
 
 export default function UserProfile() {
   return (
