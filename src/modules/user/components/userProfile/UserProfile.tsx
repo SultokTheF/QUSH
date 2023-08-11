@@ -24,6 +24,34 @@ import './UserProfile.css';
 import axios from 'axios';
 
 export default function UserProfile() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.log('User token not found');
+          setIsLoading(false);
+          return;
+        }
+        
+        const endpointURL = `http://83.229.87.19:8090/auth/validate?token=${token}`;
+        const response = await axios.get(endpointURL);
+        alert( response )
+        
+        // Process the response data here
+        
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <section className='user-profile'>
       <MDBContainer className="py-5 user-info">

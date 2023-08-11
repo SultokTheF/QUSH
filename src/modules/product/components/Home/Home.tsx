@@ -13,10 +13,10 @@ const Home: React.FC = () => {
       <div className="secContainer container">
         <div className="homeText">
           <h1 data-aos="fade-up" data-aos-duration="2000" className="title">
-            QUSH - Будь активным с нами
+            Будь активным с нами
           </h1>
           <p data-aos="fade-up" data-aos-duration="2500" className="subTitle">
-            Найди удобное для себя спортивное поле
+            Найди удобное удобное для себя спортивное поле
           </p>
           <button data-aos="fade-up" data-aos-duration="3000" className="btn">
             <a href="/field">Начать</a>

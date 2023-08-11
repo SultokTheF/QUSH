@@ -1,6 +1,6 @@
 .auth {
   height: 100vh;
-  background: var( --photoMask ), url("../images/LoginRegiterBg.webp");
+  background: var( --photoMask ), url("../images/auth.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

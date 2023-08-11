@@ -27,13 +27,13 @@ body {
     --blueColor: #2C74B3;
     --lightBlueColor: #F2F6FA;
     --darkBlueColor: #11263A;
-    --photoMask: linear-gradient(rgba( 33, 33, 33, 0.552 ), rgba( 33, 33, 33, 0.552 ));
+    --photoMask: linear-gradient( #00000070, #00000070);
 }
 
 
 a{
     text-decoration: none;
-    color: var( --PrimaryColor );
+    color: var( --blueColor );
 }
 
 li{

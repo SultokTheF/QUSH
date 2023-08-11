@@ -6,8 +6,8 @@ import './About.css'
 // import video from '../../Assets/video.mp4'
 
 import Support from '../../assets/images/Support.png'
-import Development from '../../assets/images/Code.png'
-import Field from '../../assets/images/Ball.png'
+import Development from '../../assets/images/info.png'
+import Field from '../../assets/images/choice.png'
 
 import video from '../../assets/video/AldiyarFlex.MOV'
 
