@@ -9,8 +9,6 @@ import {
   MDBCardImage,
 } from 'mdb-react-ui-kit';
 
-import icon from '../../../../assets/images/icons/CV.jpg'
-
 import './UserProfile.css';
 
 import axios from 'axios';
@@ -35,25 +33,7 @@ export default function UserProfile() {
     <section className='user-profile'>
       <MDBContainer className="py-5 user-info">
         <MDBRow className='mt-5'>
-          <MDBCol lg="4">
-            <MDBCard className="mb-4 user-card">
-              <MDBCardBody className="text-center">
-                <MDBCardImage
-                  src={icon}
-                  alt="avatar"
-                  className="rounded-circle"
-                  style={{ width: '150px', height: '150px' }}
-                  fluid />
-                <div className="d-flex justify-content-center mb-2">
-                  <a className='mt-2 btn'>История заказов</a>
-                </div>
-                <div className="d-flex justify-content-center mb-2">
-                  <a className='btn'>Текущие заказы</a>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-          <MDBCol lg="8">
+          <MDBCol lg="12">
             <MDBCard className="mb-4 user-card">
               <MDBCardBody>
                 <MDBRow>

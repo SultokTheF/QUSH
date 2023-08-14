@@ -7,6 +7,7 @@ import Field from '../../../../types/Field';
 import { categoryOptions, surfaceOptions } from '../../store/constants';
 
 import { timeToInt, intToTime } from '../../../../helpers/timeConverter';
+import * as FieldHandler from '../../services/FieldHandler';
 
 const AddFieldForm: React.FC = () => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const AddFieldForm: React.FC = () => {
     latitude: 0,           // Set the default value for numeric fields
     longitude: 0,          // Set the default value for numeric fields
     time_from: 0,          // Set the default value for numeric fields
-    time_to: 720,            // Set the default value for numeric fields
+    time_to: 0,            // Set the default value for numeric fields
     description: '',
     price: 0,              // Set the default value for numeric fields
     image: '', 
@@ -37,7 +38,7 @@ const AddFieldForm: React.FC = () => {
     сloakroom: 0,          // Set the default value for numeric fields
     additional_services: '',
     for_rent: true,
-    dimensions: "23",
+    dimensions: 'dsad',
   };
 
   const [formData, setFormData] = useState<Field>(initialFieldState);
@@ -45,20 +46,9 @@ const AddFieldForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const accessToken = localStorage.getItem( 'token' ); // Replace with your actual access token
-      
-      const response = await axios.post(
-        'http://83.229.87.19:8000/field/fields/',
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json', // Set the appropriate content type
-          },
-        }
-      );
-      
-      console.log('Response:', response.data);
+      const response = await FieldHandler.createField(formData);
+      console.log('Response:', response);
+      console.log(JSON.stringify( formData ));
       // You can show a success message or perform other actions here
     } catch (error) {
       console.error('Error submitting form:', error);

@@ -7,7 +7,16 @@ const API_BASE_URL = 'http://83.229.87.19:8000/field/fields/'; // Replace with y
 // Create a new field
 export const createField = async (newField: Field): Promise<Field> => {
   try {
-    const response = await axios.post(API_BASE_URL, newField);
+    const response = await axios.post(
+      API_BASE_URL, 
+      newField,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+          'Content-Type': 'application/json', // Set the appropriate content type
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw error;
