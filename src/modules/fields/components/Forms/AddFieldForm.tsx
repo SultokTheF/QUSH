@@ -6,6 +6,8 @@ import 'aos/dist/aos.css';
 import Field from '../../../../types/Field';
 import { categoryOptions, surfaceOptions } from '../../store/constants';
 
+import { timeToInt, intToTime } from '../../../../helpers/timeConverter';
+
 const AddFieldForm: React.FC = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -15,18 +17,18 @@ const AddFieldForm: React.FC = () => {
     id: 0,
     owner_id: 0,
     name: '',
-    category_sport: 0,
+    category_sport: 1,
     location: '',
     latitude: 0,           // Set the default value for numeric fields
     longitude: 0,          // Set the default value for numeric fields
     time_from: 0,          // Set the default value for numeric fields
-    time_to: 0,            // Set the default value for numeric fields
+    time_to: 720,            // Set the default value for numeric fields
     description: '',
     price: 0,              // Set the default value for numeric fields
     image: '', 
     width: 0,              // Set the default value for numeric fields
     length: 0,             // Set the default value for numeric fields
-    surface_type: 0,
+    surface_type: 1,
     capacity: 0,           // Set the default value for numeric fields
     facilities: '',
     lighting: '',
@@ -34,7 +36,8 @@ const AddFieldForm: React.FC = () => {
     bath: 0,               // Set the default value for numeric fields
     сloakroom: 0,          // Set the default value for numeric fields
     additional_services: '',
-    for_rent: true
+    for_rent: true,
+    dimensions: "23",
   };
 
   const [formData, setFormData] = useState<Field>(initialFieldState);
@@ -42,7 +45,19 @@ const AddFieldForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/field/fields/', formData);
+      const accessToken = localStorage.getItem( 'token' ); // Replace with your actual access token
+      
+      const response = await axios.post(
+        'http://83.229.87.19:8000/field/fields/',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json', // Set the appropriate content type
+          },
+        }
+      );
+      
       console.log('Response:', response.data);
       // You can show a success message or perform other actions here
     } catch (error) {
@@ -50,6 +65,7 @@ const AddFieldForm: React.FC = () => {
       // You can show an error message or handle errors here
     }
   };
+  
 
   // Update formData when input values change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -57,6 +73,15 @@ const AddFieldForm: React.FC = () => {
     setFormData(prevData => ({
       ...prevData,
       [name]: value,
+    }));
+  };
+
+  // Update formData when time values change
+  const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: timeToInt( value ),
     }));
   };
 
@@ -144,8 +169,8 @@ const AddFieldForm: React.FC = () => {
               <input
                 type="time"
                 name="time_from"
-                value={formData.time_from}
-                onChange={handleInputChange}
+                value={intToTime( formData.time_from )}
+                onChange={handleTimeChange}
               />
             </div>
             <div className="priceDiv">
@@ -153,8 +178,8 @@ const AddFieldForm: React.FC = () => {
               <input
                 type="time"
                 name="time_to"
-                value={formData.time_to}
-                onChange={handleInputChange}
+                value={intToTime( formData.time_to )}
+                onChange={handleTimeChange}
               />
             </div>
             <div className="priceDiv">

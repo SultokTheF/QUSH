@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import Field from '../../../types/Field';
 
-const API_BASE_URL = 'http://localhost:8000/field/fields/'; // Replace with your API endpoint
+const API_BASE_URL = 'http://83.229.87.19:8000/field/fields/'; // Replace with your API endpoint
 
 // Create a new field
 export const createField = async (newField: Field): Promise<Field> => {
