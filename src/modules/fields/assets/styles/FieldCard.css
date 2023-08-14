@@ -40,9 +40,14 @@
   font-weight: 600;
   gap: 0.5rem;
 }
+
+.offer .secContainter .mainContent .singleOffer .offerBody .btn:hover {
+  box-shadow: 0 2px 8px 2px var( --blackColor );;
+}
+
 .offer .secContainter .mainContent .singleOffer .offerBody .btn .icon {
   color: var(--whiteColor);
 }
 .offer .secContainter .mainContent .singleOffer:hover {
-  transform: translateY(-7px);
+  transform: translateY(-14px);
 }/*# sourceMappingURL=offer.css.map */

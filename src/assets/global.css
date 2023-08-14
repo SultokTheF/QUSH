@@ -9,7 +9,12 @@
 }
 
 body {
+    overflow-x: hidden;
     background-color: var( --blackColor );
+}
+
+.greeting {
+    margin-top: 10%;
 }
 
 :root{

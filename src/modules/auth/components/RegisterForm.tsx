@@ -3,6 +3,8 @@ import '../assets/styles/auth.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+import axios from 'axios';
+
 const RegisterForm: React.FC = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -17,34 +19,29 @@ const RegisterForm: React.FC = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    // window.location.href = '/';
 
-    // Ваша логика для отправки данных формы на сервер
+    if (password !== passwordConfirmation) {
+      setError('Пароли не совпадают');
+      return;
+    }
+
     const formData = {
-      email:email,
+      email: email,
       password: password,
       firstName: firstName,
-      lastName: lastName
+      lastName: lastName,
     };
 
-    fetch('http://83.229.87.19:8090/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => response)
-    .then(data => {
-      alert( "Маладес" );
-      // Обработка ответа от сервера
-      console.log(data);
-    })
-    .catch(error => {
-      setError( "Неправильный логин или пароль" )
-      // Обработка ошибок
+    try {
+      const response = await axios.post('http://83.229.87.19:8090/auth/register', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      setError('Неправильный логин или пароль');
       console.error(error);
-    });
+    }
   };
 
   return (

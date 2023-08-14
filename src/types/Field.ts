@@ -21,6 +21,7 @@ interface Field {
   bath: number;
   сloakroom: number;
   additional_services: string ;
+  for_rent: boolean
 }
 
 export default Field;

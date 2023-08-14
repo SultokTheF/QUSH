@@ -35,7 +35,7 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
     <>
       <div data-aos="fade-up" data-aos-duration="3000" className="singleOffer">
         <div className="destImage">
-          <img src={imgSrc} alt={field.name} />
+          <img src={field.image} alt={field.name} />
         </div>
 
         <div className="offerBody">
@@ -43,9 +43,11 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
             <h4>
             {field.name}
             </h4>
-            <span className="status">
-              {field.price} тг/час
-            </span>
+            { field.for_rent && (
+              <span className="status">
+                {field.price} тг/час
+              </span>
+            ) }
           </div>
 
           <div className="amenities flex">
@@ -57,10 +59,12 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
                 </div>
               </>
             )} 
-            <div className="singleAmenity flex">
-              <FaWifi className="icon"/>
-              <small>Wi-Fi</small>
-            </div>
+            { field.for_rent && (
+              <div className="singleAmenity flex">
+                <FaWifi className="icon"/>
+                <small>Wi-Fi</small>
+              </div>
+            ) }
 
             {field.сloakroom > 0 && (
               <>

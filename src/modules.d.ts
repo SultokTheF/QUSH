@@ -19,8 +19,17 @@ declare module "*.webp" {
 }
 
 
-declare module 'mapbox-gl';
+declare module 'mapbox-gl' {
+  const value: any;
+  export = value;
+}
 
-declare module 'react-bootstrap';
+declare module 'react-bootstrap' {
+  const value: any;
+  export = value;
+}
 
-declare module 'aos';
+declare module 'aos' {
+  const value: any;
+  export = value;
+}

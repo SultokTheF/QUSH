@@ -3,6 +3,8 @@ import '../assets/styles/auth.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+import axios from "axios";
+
 const LoginForm: React.FC = () => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -17,33 +19,25 @@ const LoginForm: React.FC = () => {
     e.preventDefault();
 
     const formData = {
-      email:email,
-      password: password
+      email: email,
+      password: password,
     };
-    fetch('http://83.229.87.19:8090/auth', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      console.log(response.status);
+
+    try {
+      const response = await axios.post('http://83.229.87.19:8090/auth', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
       if (response.status === 200) {
-        return response.text();
+        localStorage.setItem('token', response.data);
       } else {
-        throw new Error('Ошибка: ' + response.status);
+        setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
       }
-    })
-    // вызываем response.text() для получения текстового содержимого
-    .then(data => {
-      localStorage.setItem('token', data);
-      window.location.href = '/';
-    })
-    .catch(error => {
-      // Обработка ошибок
-      console.error(error);
-    });
+    } catch (error) {
+      setError('Произошла ошибка. Пожалуйста, повторите попытку позже.');
+    }
   };
 
   return (

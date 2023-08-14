@@ -34,6 +34,7 @@ const AddFieldForm: React.FC = () => {
     bath: 0,               // Set the default value for numeric fields
     сloakroom: 0,          // Set the default value for numeric fields
     additional_services: '',
+    for_rent: true
   };
 
   const [formData, setFormData] = useState<Field>(initialFieldState);

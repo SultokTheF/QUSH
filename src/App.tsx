@@ -8,6 +8,8 @@ import AdminPages from "./pages/AdminPages";
 import LandLordPages from "./pages/LandLordPages";
 import UserPages from './pages/UserPages'
 
+import Rent from "./modules/rents/rents";
+
 const App: React.FC = () => {
   return (
     <>
@@ -17,6 +19,7 @@ const App: React.FC = () => {
         <Route path="admin/*" element={ <AdminPages/>} />
         <Route path="landlord/*" element={ <LandLordPages/>} />
         <Route path="user/*" element={ <UserPages/>} />
+        <Route path="rents/:id" element={  < Rent />} />
       </Routes>
     </>
   );
