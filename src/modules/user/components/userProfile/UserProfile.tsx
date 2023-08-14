@@ -7,14 +7,6 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 
 import icon from '../../../../assets/images/icons/CV.jpg'
@@ -22,34 +14,21 @@ import icon from '../../../../assets/images/icons/CV.jpg'
 import './UserProfile.css';
 
 import axios from 'axios';
+import User from '../../../../types/User';
 
 export default function UserProfile() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState<User | null>(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          console.log('User token not found');
-          setIsLoading(false);
-          return;
-        }
-        
-        const endpointURL = `http://83.229.87.19:8090/auth/validate?token=${token}`;
-        const response = await axios.get(endpointURL);
-        alert( response )
-        
-        // Process the response data here
-        
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    const token = localStorage.getItem( 'token' ); // Replace with your actual token
 
-    fetchUserData();
+    axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+      .then(response => {
+        setUserData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+      });
   }, []);
 
   return (
@@ -79,10 +58,10 @@ export default function UserProfile() {
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Полное имя</MDBCardText>
+                    <MDBCardText>{}</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Куандык Султанияр</MDBCardText>
+                    <MDBCardText className="text-muted">{userData?.firstName} {userData?.lastName}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -91,25 +70,7 @@ export default function UserProfile() {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">sultok.003@gmail.com</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Тел.номер</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">+7 707 109 8841</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Адрес</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Астана. Туран 56</MDBCardText>
+                    <MDBCardText className="text-muted">{userData?.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -118,7 +79,7 @@ export default function UserProfile() {
                     <MDBCardText>Статус</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Пользователь</MDBCardText>
+                    <MDBCardText className="text-muted">{userData?.role}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
