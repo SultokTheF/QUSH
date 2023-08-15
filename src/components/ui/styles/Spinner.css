@@ -1,0 +1,30 @@
+.spinner-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Adjust the value as needed */
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  border: 4px solid var( --blueColor ); /* Light gray border */
+  border-top: 4px solid var( --blackColor ); /* Blue border on top to create the spinning effect */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite; /* CSS animation to create the spinning effect */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
