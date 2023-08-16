@@ -14,19 +14,25 @@ import './UserProfile.css';
 import axios from 'axios';
 import User from '../../../../types/User';
 
-export default function UserProfile() {
+import Validate from '../../../../helpers/userValidation';
+
+const UserProfile: React.FC = () => {
   const [userData, setUserData] = useState<User | null>(null);
 
-  useEffect(() => {
-    const token = localStorage.getItem( 'token' ); // Replace with your actual token
-
-    axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
-      .then(response => {
-        setUserData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
+  useEffect( () => {
+    if( !localStorage.getItem( "token" ) ) {
+      window.location.replace( '/location' );
+    } else {
+      const token = localStorage.getItem( 'token' ); // Replace with your actual token
+    
+      axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+        .then(response => {
+          setUserData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+    }
   }, []);
 
   return (
@@ -42,6 +48,15 @@ export default function UserProfile() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">{userData?.firstName} {userData?.lastName}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Пользовательский ID</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{userData?.userId}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -70,3 +85,6 @@ export default function UserProfile() {
     </section>
   );
 }
+
+
+export default UserProfile;

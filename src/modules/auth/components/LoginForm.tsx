@@ -32,6 +32,7 @@ const LoginForm: React.FC = () => {
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data);
+        window.location.replace( "/" );
       } else {
         setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
       }

@@ -38,6 +38,13 @@ const RegisterForm: React.FC = () => {
           'Content-Type': 'application/json',
         },
       });
+
+      if (response.status === 200) {
+        alert( "Вы успешно зерегестрировались" );
+        window.location.replace( '/login' );
+      } else {
+        setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
+      }
     } catch (error) {
       setError('Неправильный логин или пароль');
       console.error(error);

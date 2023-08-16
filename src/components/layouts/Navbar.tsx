@@ -1,12 +1,36 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './styles/Navbar.css'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {TbGridDots} from 'react-icons/tb'
+import User from '../../types/User'
+
+import { Link } from "react-router-dom";
+
+import UserProfile from '../../modules/user/components/userProfile/UserProfile';
+
+import axios from 'axios'
 
 import Logo from '../../assets/images/logo/QUSH_logo_white_expanded.png'
 import icon from '../../assets/images/icons/CV.jpg'
 
 const Navbar: React.FC = () => {
+  const [userData, setUserData] = useState<User | null>(null);
+
+  useEffect( () => {
+    if( !localStorage.getItem( "token" ) ) {
+
+    } else {
+      const token = localStorage.getItem( 'token' ); // Replace with your actual token
+    
+      axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+        .then(response => {
+          setUserData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+    }
+  }, []);
 
   const [active, setActive]  = useState('navBar')
 
@@ -48,32 +72,42 @@ const Navbar: React.FC = () => {
               <a href="/#contact" className="navLink">Контакты</a>
             </li>
 
-            <div className="headerBtns flex">
-              <button className="btn loginBtn">
-                <a href="/login">Вход</a>
-              </button>
-              <button className="btn">
-                <a href="/register">Регистрация</a>
-              </button>
-            </div>
+            { localStorage.getItem( 'token' ) ? (
+              <div className="headerBtns flex">
+                <div className="dropdown">
+                  <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    { userData?.firstName } { userData?.lastName }
+                  </a>
 
-            {/* <div className="headerBtns flex">
-              <div className='user-icon'>
-                <img src={icon}/>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
+                    <li><a className="dropdown-item" href="#">Мои заказы</a></li>
+                    <li><a className="dropdown-item" href="#">Настройки</a></li>
+                    <li>
+                      <button 
+                        className="dropdown-item" 
+                        onClick={ () => {
+                          localStorage.removeItem( 'token' );
+                          window.location.reload();
+                        }}
+                        >
+                          Выход
+                        </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="dropdown">
-                <a className="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  Султанияр Куандык
-                </a>
+            ) : (
+              <div className="headerBtns flex">
+                <button className="btn loginBtn">
+                  <a href="/login">Вход</a>
+                </button>
+                <button className="btn">
+                  <a href="/register">Регистрация</a>
+                </button>
+              </div>
+            ) }
 
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
-                  <li><a className="dropdown-item" href="#">Мои заказы</a></li>
-                  <li><a className="dropdown-item" href="#">Настройки</a></li>
-                  <li><a className="dropdown-item" href="#">Выход</a></li>
-                </ul>
-              </div>
-            </div> */}
           </ul>
           <div onClick={removeNav} className="closeNavbar">
             <AiFillCloseCircle className='icon'/>
