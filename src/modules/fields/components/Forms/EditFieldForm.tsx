@@ -5,7 +5,42 @@ import 'aos/dist/aos.css'
 
 import { categoryOptions, surfaceOptions } from '../../store/constants';
 
+import { timeToInt, intToTime } from '../../../../helpers/timeConverter';
+import * as FieldHandler from '../../../../services/FieldHandler';
+
+import Validate from '../../../../helpers/userValidation';
+import Field from '../../../../types/Field';
+
 const EditFieldForm: React.FC = () => {
+  const UserData = Validate();
+
+  const initialFieldState: Field = {
+    id: 0,
+    owner_id: 0,
+    name: '',
+    category_sport: 1,
+    location: '',
+    latitude: 0,           // Set the default value for numeric fields
+    longitude: 0,          // Set the default value for numeric fields
+    time_from: 0,          // Set the default value for numeric fields
+    time_to: 0,            // Set the default value for numeric fields
+    description: '',
+    price: 0,              // Set the default value for numeric fields
+    image: '', 
+    width: 0,              // Set the default value for numeric fields
+    length: 0,             // Set the default value for numeric fields
+    surface_type: 1,
+    capacity: 0,           // Set the default value for numeric fields
+    facilities: '',
+    lighting: '',
+    rules: '',
+    bath: 0,               // Set the default value for numeric fields
+    сloakroom: 0,          // Set the default value for numeric fields
+    additional_services: '',
+    for_rent: true,
+    dimensions: 'dsad',
+  };
+
   useEffect(()=>{
     Aos.init({duration: 2000})
   }, [])

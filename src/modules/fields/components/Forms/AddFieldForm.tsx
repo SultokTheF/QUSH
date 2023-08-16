@@ -19,7 +19,7 @@ const AddFieldForm: React.FC = () => {
 
   const initialFieldState: Field = {
     id: 0,
-    owner_id: 0,
+    owner_id:0,
     name: '',
     category_sport: 1,
     location: '',
