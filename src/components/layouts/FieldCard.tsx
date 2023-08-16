@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-import '../assets/styles/FieldCard.css'
+import './styles/FieldCard.css'
 
 import {BsArrowRightShort} from 'react-icons/bs'
 import { GiClothes } from 'react-icons/gi'
@@ -13,9 +13,9 @@ import {MdLocationOn} from 'react-icons/md'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-import { intToTime } from '../../../helpers/timeConverter';
-import { categoryOptions, surfaceOptions } from '../store/constants';
-import Field from '../../../types/Field';
+import { intToTime } from '../../helpers/timeConverter';
+import { categoryOptions, surfaceOptions } from '../../modules/fields/store/constants';
+import Field from '../../types/Field';
 
 interface FieldCardProps {
   field: Field;
@@ -35,7 +35,7 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
     <>
       <div data-aos="fade-up" data-aos-duration="3000" className="singleOffer">
         <div className="destImage">
-          <img src={field.image} alt={field.name} />
+          <img src={field.image} alt={ field.owner_id?.toString() } />
         </div>
 
         <div className="offerBody">

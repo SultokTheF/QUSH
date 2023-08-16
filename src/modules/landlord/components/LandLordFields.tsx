@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-import '../assets/styles/FieldList.css';
+import '../../fields/assets/styles/FieldList.css';
 
 import FieldHandler from '../../../services/FieldHandler';
 import Field from '../../../types/Field';
 
 import FieldCard from '../../../components/layouts/FieldCard';
 
+import Validate from '../../../helpers/userValidation';
+
 import Spinner from '../../../components/ui/Spinner';
 
-const InfiniteFieldList: React.FC = () => {
+const LandLordFields: React.FC = () => {
+  const userData = Validate();
+
   const [fields, setFields] = useState<Field[]>();
-  
+
   useEffect(() => {
-    fetchFieldList();
-  }, []);
+    if (userData) {
+      fetchFieldList();
+    }
+  }, [userData]);
 
   const fetchFieldList = async () => {
     try {
+
       const fieldsData = await FieldHandler.fetchFields();
-      setFields(fieldsData);
+      const filteredFields = fieldsData.filter((field) => field.owner_id === userData?.userId);
+      setFields(filteredFields);
+
     } catch (error) {
       console.error('Error fetching fields:', error);
     }
@@ -33,10 +42,10 @@ const InfiniteFieldList: React.FC = () => {
 
             <div className="secIntro">
               <h2 className='secTitle text-light'>
-                Все доступные предложения
+                Здраствуйте { userData?.firstName } { userData?.lastName }
               </h2>
               <p className='text-light'>
-                Здесь предствлены все спортивные поля, доступные на данный момент
+                Здесь предствлены все ваши спортивные объекты
               </p>
 
             </div>
@@ -57,4 +66,4 @@ const InfiniteFieldList: React.FC = () => {
   );
 }
 
-export default InfiniteFieldList;
+export default LandLordFields;

@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
         localStorage.setItem('token', response.data);
         window.location.replace( "/" );
       } else {
-        setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
+        setError('Неправильный логин или пароль');
       }
     } catch (error) {
       setError('Произошла ошибка. Пожалуйста, повторите попытку позже.');

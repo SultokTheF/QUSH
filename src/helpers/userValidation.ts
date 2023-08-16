@@ -6,19 +6,22 @@ import User from "../types/User";
 const Validate = () => {
   const [userData, setUserData] = useState<User | null>(null);
 
-  if( !localStorage.getItem( "token" ) ) {
+  useEffect( () => {
+    if( !localStorage.getItem( "token" ) ) {
+      alert( 'Вы не авторизованы' )
+      window.location.replace( '/login' );
+    } else {
+      const token = localStorage.getItem( 'token' ); // Replace with your actual token
     
-  } else {
-    const token = localStorage.getItem( 'token' ); // Replace with your actual token
-  
-    axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
-      .then(response => {
-        setUserData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
-  }
+      axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+        .then(response => {
+          setUserData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+    }
+  }, []);
 
   return userData;
 }

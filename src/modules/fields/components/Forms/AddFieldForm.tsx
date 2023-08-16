@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/styles/AddFieldForm.css';
-import axios from 'axios';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Field from '../../../../types/Field';
 import { categoryOptions, surfaceOptions } from '../../store/constants';
 
 import { timeToInt, intToTime } from '../../../../helpers/timeConverter';
-import * as FieldHandler from '../../services/FieldHandler';
+import * as FieldHandler from '../../../../services/FieldHandler';
+
+import Validate from '../../../../helpers/userValidation';
 
 const AddFieldForm: React.FC = () => {
+  const UserData = Validate();
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);

@@ -12,7 +12,7 @@ import Spinner from '../../../components/ui/Spinner';
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { fetchFields } from '../services/FieldHandler';
+import { fetchFields } from '../../../services/FieldHandler';
 import Field from '../../../types/Field';
 import { intToTime } from '../../../helpers/timeConverter';
 import { categoryOptions, surfaceOptions } from '../store/constants';
