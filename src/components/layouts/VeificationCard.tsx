@@ -28,7 +28,7 @@ const VerificationCard: React.FC<VerificationCardProps> = ({ verification }) => 
             {verification.name}
             </h4>
           </div>
-          <a className='btn flex' href={`/verification/${verification.id}`}>Посмотреть детали <BsArrowRightShort className='icon'/></a>
+          <a className='btn flex' href={`admin/verification/${verification.id}`}>Посмотреть детали <BsArrowRightShort className='icon'/></a>
         </div>
       </div>
     </>

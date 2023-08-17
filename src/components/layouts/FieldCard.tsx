@@ -34,23 +34,25 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
   return (
     <>
       <div data-aos="fade-up" data-aos-duration="3000" className="singleOffer">
-        <div className="destImage">
-          <img src={field.image} alt={ field.owner_id?.toString() } />
-        </div>
-
         <div className="offerBody">
-          <div className="price flex">
+          <div className="price">
             <h4>
             {field.name}
+            </h4> <br/>
+            <h4>
+            График работы: { intToTime( field.time_from ) }-{ intToTime( field.time_to ) }
             </h4>
-            { field.for_rent && (
+            <h4>
+            Цена: {field.price} тг/час
+            </h4> <br/>
+            {/* { field.for_rent && (
               <span className="status">
                 {field.price} тг/час
               </span>
-            ) }
+            ) } */}
           </div>
 
-          <div className="amenities flex">
+          {/* <div className="amenities flex">
             {field.bath > 0 && (
               <>
                 <div className="singleAmenity flex">
@@ -74,7 +76,7 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
                 </div>
               </>
             )} 
-          </div>
+          </div> */}
 
           <div className="location flex">
             <MdLocationOn className="icon"/>

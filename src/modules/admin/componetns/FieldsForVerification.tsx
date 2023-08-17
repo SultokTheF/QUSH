@@ -5,10 +5,14 @@ import Verification from "../../../types/Verification";
 
 import VerificationCard from "../../../components/layouts/VeificationCard";
 
+import Validate from '../../../helpers/adminValidation';
+
 import Spinner from "../../../components/ui/Spinner";
 
 const FieldsForVerification: React.FC = () => {
   const [verifications, setVerifications] = useState<Verification[]>([]);
+
+  const adminData = Validate();
 
   useEffect(() => {
     fetchVerifications();

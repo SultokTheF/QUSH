@@ -3,6 +3,7 @@ import '../../assets/styles/AddFieldForm.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Field from '../../../../types/Field';
+import Verification from '../../../../types/Verification';
 import { categoryOptions, surfaceOptions } from '../../store/constants';
 
 import { timeToInt, intToTime } from '../../../../helpers/timeConverter';
@@ -17,7 +18,9 @@ const AddFieldForm: React.FC = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
-  const initialFieldState: Field = {
+  const initialFieldState: Verification = {
+    status: 1,
+    admin_id: 1,
     id: 0,
     owner_id:0,
     name: '',
@@ -28,32 +31,22 @@ const AddFieldForm: React.FC = () => {
     time_from: 0,          // Set the default value for numeric fields
     time_to: 0,            // Set the default value for numeric fields
     description: '',
-    price: 0,              // Set the default value for numeric fields
-    image: '', 
-    width: 0,              // Set the default value for numeric fields
-    length: 0,             // Set the default value for numeric fields
+    price: '',            // Set the default value for numeric fields
     surface_type: 1,
-    capacity: 0,           // Set the default value for numeric fields
-    facilities: '',
-    lighting: '',
-    rules: '',
-    bath: 0,               // Set the default value for numeric fields
-    сloakroom: 0,          // Set the default value for numeric fields
-    additional_services: '',
-    for_rent: true,
-    dimensions: 'dsad',
+    dimensions: '',
   };
 
-  const [formData, setFormData] = useState<Field>(initialFieldState);
+  const [formData, setFormData] = useState<Verification>(initialFieldState);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await FieldHandler.createField(formData);
+      const response = await FieldHandler.createVerification(formData);
       console.log('Response:', response);
       console.log(JSON.stringify( formData ));
       // You can show a success message or perform other actions here
     } catch (error) {
+      console.log(JSON.stringify( formData ));
       console.error('Error submitting form:', error);
       // You can show an error message or handle errors here
     }
@@ -92,18 +85,20 @@ const AddFieldForm: React.FC = () => {
                 placeholder='Сайран'
                 value={formData.name}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="distDiv">
+            <div className="distDiv mt-1">
               <label htmlFor="description">Описание поля</label>
               <textarea
                 name="description"
                 placeholder='Лучшее футбольное поле в стране'
                 value={formData.description}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="location">Адрес</label>
               <input
                 type="text"
@@ -111,85 +106,66 @@ const AddFieldForm: React.FC = () => {
                 placeholder='Астана. Туран 56'
                 value={formData.location}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="longitude">Longitude</label>
               <input
                 type="number"
                 name="longitude"
                 value={formData.longitude}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="latitude">Latitude</label>
               <input
                 type="number"
                 name="latitude"
                 value={formData.latitude}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
-              <label htmlFor="width">Ширина поля</label>
-              <input
-                type="number"
-                name="width"
-                value={formData.width}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="length">Длина поля</label>
-              <input
-                type="number"
-                name="length"
-                value={formData.length}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="image">Изображение</label>
-              <input
-                type="file"
-                name="image"
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="time_from">Время начала работы</label>
               <input
                 type="time"
                 name="time_from"
                 value={intToTime( formData.time_from )}
                 onChange={handleTimeChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="time_to">Время конца работы</label>
               <input
                 type="time"
                 name="time_to"
                 value={intToTime( formData.time_to )}
                 onChange={handleTimeChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="price">Цена аренды</label>
               <input
-                type="number"
+                type="text"
                 name="price"
                 value={formData.price}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="category_sport">Тип поля</label>
               <select
                 name="category_sport"
                 value={formData.category_sport}
                 onChange={handleInputChange}
+                required
               >
                 {categoryOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -198,12 +174,13 @@ const AddFieldForm: React.FC = () => {
                 ))}
               </select>
             </div>
-            <div className="priceDiv">
+            <div className="priceDiv mt-1">
               <label htmlFor="surface_type">Тип покрытия</label>
               <select
                 name="surface_type"
                 value={formData.surface_type}
                 onChange={handleInputChange}
+                required
               >
                 {surfaceOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -212,60 +189,17 @@ const AddFieldForm: React.FC = () => {
                 ))}
               </select>
             </div>
-            <div className="priceDiv">
-              <label htmlFor="lighting">Освещение</label>
+            <div className="priceDiv mt-1">
+              <label htmlFor="price">Размеры поля</label>
               <input
                 type="text"
-                name="lighting"
-                value={formData.lighting}
+                name="dimensions"
+                value={formData.dimensions}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className="priceDiv">
-              <label htmlFor="bath">Количество душевых кабинок</label>
-              <input
-                type="number"
-                name="bath"
-                value={formData.bath}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="сloakroom">Количество раздевалок</label>
-              <input
-                type="number"
-                name="сloakroom"
-                value={formData.сloakroom}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="rules">Правила пользования полем</label>
-              <textarea
-                name="rules"
-                value={formData.rules}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="capacity">Вместимость поля</label>
-              <input
-                type="number"
-                name="capacity"
-                value={formData.capacity}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="priceDiv">
-              <label htmlFor="additional_services">Дополнительные услуги</label>
-              <input
-                type="text"
-                name="additional_services"
-                value={formData.additional_services}
-                onChange={handleInputChange}
-              />
-            </div>
-            <button className='btn' type="submit">Сохранить изменения</button>
+            <button className='btn' type="submit">Добавить</button>
           </form>
         </div>
       </div>

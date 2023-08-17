@@ -12,39 +12,83 @@ import Spinner from '../../../components/ui/Spinner';
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { fetchFields } from '../../../services/FieldHandler';
-import Field from '../../../types/Field';
+import { fetchVerification } from '../../../services/FieldHandler';
+import Verification from '../../../types/Verification';
 import { intToTime } from '../../../helpers/timeConverter';
-import { categoryOptions, surfaceOptions } from '../store/constants';
+import { categoryOptions, surfaceOptions } from '../../fields/store/constants';
 
-import '../assets/styles/FieldDetails.css';
+import '../../fields/assets/styles/FieldDetails.css';
 
-export default function FieldDetails() {
+import Validate from '../../../helpers/adminValidation';
+
+import axios from 'axios';
+
+export default function VerificationDetails() {
   const params = useParams<{ id: string }>();
-  const fieldId = Number( params.id );
+  const verificationId = Number( params.id );
 
-  const [field, setField] = useState<Field>();
+  const adminData = Validate();
+
+  const [verification, setVerifications] = useState<Verification>();
   
   useEffect(() => {
-    fetchFieldList();
+    fetchVerificationList();
   }, []);
 
-  const fetchFieldList = async () => {
+  const fetchVerificationList = async () => {
     try {
-      const fieldsData = await fetchFields();
-      const foundField = fieldsData.find( field => field.id === fieldId );
-      setField(foundField);
+      const verificationData = await fetchVerification();
+      const foundVerification = verificationData.find( ver => ver.id === verificationId );
+      setVerifications(foundVerification);
     } catch (error) {
       console.error('Error fetching fields:', error);
     }
   };
 
-  const category = categoryOptions.find( ( obj ) => parseInt( obj.value ) === field?.category_sport )
-  const surface = surfaceOptions.find( ( obj ) => parseInt( obj.value ) === field?.surface_type )
+  const handleAccept = async () => {
+    try {
+      const response = await axios.get( `http://83.229.87.19:8001/verification/accept/${verificationId}/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+          'Content-Type': 'application/json', // Set the appropriate content type
+        },
+      } );
+      
+      if( response.status === 200 ) {
+        alert( "Поле поддтверждено" );
+        window.location.replace( '/field' );
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const handleDecline = async () => {
+    try {
+      const response = await axios.get( `http://83.229.87.19:8001/verification/decline/${verificationId}/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+          'Content-Type': 'application/json', // Set the appropriate content type
+        },
+      } );
+      alert( response )
+      window.location.replace( '/admin' );
+
+      if( response.status === 200 ) {
+        alert( "Отказано" );
+        window.location.replace( '/field' );
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const category = categoryOptions.find( ( obj ) => parseInt( obj.value ) === verification?.category_sport )
+  const surface = surfaceOptions.find( ( obj ) => parseInt( obj.value ) === verification?.surface_type )
 
   return (
     <section className='field-details'>
-      { field? (
+      { verification? (
         <MDBContainer className="py-5 field-info">
           <MDBRow className='field-main'>
             <MDBCol lg="4">
@@ -56,10 +100,10 @@ export default function FieldDetails() {
                     style={{ width: '350px' }}
                     fluid /> */}
                   <div className="d-flex justify-content-center mb-2">
-                    <a className='btn mt-3' href='/rents/43'>Арендовать</a>
+                    <button className='btn mt-3' onClick={handleAccept}>Принять</button>
                   </div>
                   <div className="d-flex justify-content-center mb-2">
-                    <a className='btn mt-3' href='/rents/43'>Удалить</a>
+                  <button className='btn mt-3' onClick={handleDecline}>Отказать</button>
                   </div>
                 </MDBCardBody>
               </MDBCard>
@@ -72,7 +116,7 @@ export default function FieldDetails() {
                       <MDBCardText>Название поля</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{field.name}</MDBCardText>
+                      <MDBCardText className="text-muted">{verification.name}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -81,7 +125,7 @@ export default function FieldDetails() {
                       <MDBCardText>Описание</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{field.description}</MDBCardText>
+                      <MDBCardText className="text-muted">{verification.description}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -90,7 +134,7 @@ export default function FieldDetails() {
                       <MDBCardText>Адрес</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{field.location}</MDBCardText>
+                      <MDBCardText className="text-muted">{verification.location}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -99,7 +143,7 @@ export default function FieldDetails() {
                       <MDBCardText>Размер поля</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{field.dimensions}</MDBCardText>
+                      <MDBCardText className="text-muted">{verification.dimensions}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -108,7 +152,7 @@ export default function FieldDetails() {
                       <MDBCardText>График работы</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{intToTime( field.time_from )} - {intToTime( field.time_to )}</MDBCardText>
+                      <MDBCardText className="text-muted">{intToTime( verification.time_from )} - {intToTime( verification.time_to )}</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                   <hr />
@@ -135,7 +179,7 @@ export default function FieldDetails() {
                       <MDBCardText> Цена</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">{field.price} тг/час</MDBCardText>
+                      <MDBCardText className="text-muted">{verification.price} тг/час</MDBCardText>
                     </MDBCol>
                   </MDBRow>
                 </MDBCardBody>

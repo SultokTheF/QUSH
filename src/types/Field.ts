@@ -9,19 +9,8 @@ interface Field {
   time_from: number;
   time_to: number;
   description: string;
-  price: number;
-  image: string ;
-  width: number ;
-  length: number ;
+  price: string;
   surface_type: number;
-  capacity: number ;
-  facilities: string ;
-  lighting: string ;
-  rules: string ;
-  bath: number;
-  сloakroom: number;
-  additional_services: string ;
-  for_rent: boolean,
   dimensions: string,
 }
 
