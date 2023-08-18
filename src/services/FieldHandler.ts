@@ -72,6 +72,15 @@ export const fetchVerification = async (): Promise<Verification[]> => {
   }
 };
 
+export const getSingleVerification = async (fieldId: number): Promise<Verification[]> => {
+  try {
+    const response = await axios.get(`${VER_BASE_URL}/${fieldId}/`);
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const createVerification = async (newVerification: Verification): Promise<Verification> => {
   try {
     const response = await axios.post(

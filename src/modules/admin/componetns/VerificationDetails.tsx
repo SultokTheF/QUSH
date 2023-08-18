@@ -12,7 +12,7 @@ import Spinner from '../../../components/ui/Spinner';
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { fetchVerification } from '../../../services/FieldHandler';
+import { fetchVerification, getSingleVerification } from '../../../services/FieldHandler';
 import Verification from '../../../types/Verification';
 import { intToTime } from '../../../helpers/timeConverter';
 import { categoryOptions, surfaceOptions } from '../../fields/store/constants';
@@ -38,48 +38,50 @@ export default function VerificationDetails() {
   const fetchVerificationList = async () => {
     try {
       const verificationData = await fetchVerification();
-      const foundVerification = verificationData.find( ver => ver.id === verificationId );
-      setVerifications(foundVerification);
+      const response = await axios.get(`http://83.229.87.19:8001/verification/fields-ver//${verificationId}/`);
+      setVerifications(response.data.data);
     } catch (error) {
       console.error('Error fetching fields:', error);
     }
   };
 
   const handleAccept = async () => {
-    try {
-      const response = await axios.get( `http://83.229.87.19:8001/verification/accept/${verificationId}/`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
-          'Content-Type': 'application/json', // Set the appropriate content type
-        },
-      } );
-      
-      if( response.status === 200 ) {
-        alert( "Поле поддтверждено" );
-        window.location.replace( '/field' );
+    if( window.confirm( "Вы дейстивтельно хотите Поддтвердить создание поля?" ) ) {
+      try {
+        const response = await axios.get( `http://83.229.87.19:8001/verification/accept/${verificationId}/`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+            'Content-Type': 'application/json', // Set the appropriate content type
+          },
+        } );
+        
+        if( response.status === 200 ) {
+          alert( "Поле поддтверждено" );
+          window.location.replace( '/admin' );
+        }
+      } catch (error) {
+        throw error;
       }
-    } catch (error) {
-      throw error;
     }
   };
 
   const handleDecline = async () => {
-    try {
-      const response = await axios.get( `http://83.229.87.19:8001/verification/decline/${verificationId}/`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
-          'Content-Type': 'application/json', // Set the appropriate content type
-        },
-      } );
-      alert( response )
-      window.location.replace( '/admin' );
-
-      if( response.status === 200 ) {
-        alert( "Отказано" );
-        window.location.replace( '/field' );
+    if( window.confirm( "Вы дейстивтельно хотите отказать в создании поля?" ) ) {
+      try {
+        const response = await axios.get( `http://83.229.87.19:8001/verification/decline/${verificationId}/`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+            'Content-Type': 'application/json', // Set the appropriate content type
+          },
+        } );
+  
+        if( response.status === 200 ) {
+          alert( "Отказано" );
+          window.location.replace( '/admin' );
+        }
+      } catch (error) {
+        throw error;
       }
-    } catch (error) {
-      throw error;
     }
   };
 

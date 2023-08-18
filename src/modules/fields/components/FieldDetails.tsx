@@ -5,7 +5,6 @@ import {
   MDBCard,
   MDBCardText,
   MDBCardBody,
-  MDBCardImage,
 } from 'mdb-react-ui-kit';
 
 import Spinner from '../../../components/ui/Spinner';
@@ -17,25 +16,60 @@ import Field from '../../../types/Field';
 import { intToTime } from '../../../helpers/timeConverter';
 import { categoryOptions, surfaceOptions } from '../store/constants';
 
+import { handleDelete, createTickets } from '../services/FieldActions';
+
+import Validate from '../../../helpers/userValidation';
+
 import '../assets/styles/FieldDetails.css';
 
 export default function FieldDetails() {
+  const userData = Validate();
+
+  const [isRentAvailable, setIsRentAvailable] = useState( true );
+
   const params = useParams<{ id: string }>();
   const fieldId = Number( params.id );
+
+  const [timeFrom, setTimeFrom] = useState( 0 );
+  const [timeTo, setTimeTo] = useState( 0 );
 
   const [field, setField] = useState<Field>();
   
   useEffect(() => {
-    fetchFieldList();
-  }, []);
+    if (userData) {
+      fetchFieldList();
+    }
+  }, [userData]);
+
+  const onDeleteClick = () => {
+    if (window.confirm('Вы дейтвительно хотите удалить это поле?')) {
+      handleDelete(fieldId);
+    }
+  };
+
+
+
+  const [owner, setOwner] = useState( false );
 
   const fetchFieldList = async () => {
     try {
       const fieldsData = await fetchFields();
       const foundField = fieldsData.find( field => field.id === fieldId );
       setField(foundField);
+      setTimeFrom( foundField?.time_from || 0 );
+      setTimeTo( foundField?.time_to || 0 );
+
+      if( userData?.userId == foundField?.owner_id ) {
+        setOwner( true );
+      }
     } catch (error) {
       console.error('Error fetching fields:', error);
+    }
+  };
+
+  const onCreateTicketsClick = () => {
+    if (window.confirm('Вы дейтвительно хотите удалить это поле?')) {
+      createTickets( timeFrom, timeTo, fieldId, isRentAvailable );
     }
   };
 
@@ -50,17 +84,35 @@ export default function FieldDetails() {
             <MDBCol lg="4">
               <MDBCard className="mb-4 field-card field-image">
                 <MDBCardBody className="text-center">
-                  {/* <MDBCardImage
-                    src={field.image}
-                    alt="avatar"
-                    style={{ width: '350px' }}
-                    fluid /> */}
-                  <div className="d-flex justify-content-center mb-2">
-                    <a className='btn mt-3' href='/rents/43'>Арендовать</a>
-                  </div>
-                  <div className="d-flex justify-content-center mb-2">
-                    <a className='btn mt-3' href='/rents/43'>Удалить</a>
-                  </div>
+                  { owner? (
+                    <>
+                      { isRentAvailable? (
+                        <>
+                          <div className="d-flex justify-content-center mb-2">
+                            <button className='btn mt-3' onClick={onCreateTicketsClick}>Активировать</button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="d-flex justify-content-center mb-2">
+                            <a className='btn mt-3' href={`/landlord/edit/${field.id}`}>Заказы</a>
+                          </div>
+                        </>
+                      ) }
+                      <div className="d-flex justify-content-center mb-2">
+                        <button className='btn mt-3' onClick={onDeleteClick}>Удалить</button>
+                      </div>
+                      <div className="d-flex justify-content-center mb-2">
+                        <a className='btn mt-3' href={`/landlord/edit/${field.id}`}>Редактировать</a>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="d-flex justify-content-center mb-2">
+                        <a className='btn mt-3' href='/rents/43'>Арендовать</a>
+                      </div>
+                    </>
+                  ) }
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

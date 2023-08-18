@@ -19,7 +19,7 @@ const AddFieldForm: React.FC = () => {
   }, []);
 
   const initialFieldState: Verification = {
-    status: 1,
+    status: 3,
     admin_id: 1,
     id: 0,
     owner_id:0,

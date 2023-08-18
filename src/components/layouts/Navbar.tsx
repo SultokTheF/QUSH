@@ -84,7 +84,8 @@ const Navbar: React.FC = () => {
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
                     <li><a className="dropdown-item" href="/landlord/add">Добавить поле</a></li>
-                    <li><a className="dropdown-item" href="#">Мои заказы</a></li>
+                    <li><a className="dropdown-item" href="#">Заказы</a></li>
+                    <li><a className="dropdown-item" href="#">Аренды</a></li>
                     <li><a className="dropdown-item" href="/landlord/fields">Мои поля</a></li>
                     <li><a className="dropdown-item" href="#">Настройки</a></li>
                     <li>

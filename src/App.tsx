@@ -10,8 +10,6 @@ import UserPages from './pages/UserPages'
 
 import Rent from "./modules/rents/rents";
 
-import MyFieldsPage from "./pages/LANDLORD/MyFieldsPage";
-
 const App: React.FC = () => {
   return (
     <>
