@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/qush-client/static/css/main.a4732367.css",
-    "main.js": "/qush-client/static/js/main.610a80bb.js",
+    "main.js": "/qush-client/static/js/main.ea4477b4.js",
     "static/media/auth.jpg": "/qush-client/static/media/auth.e3165e7796f82afecf7a.jpg",
     "static/media/AldiyarFlex.MOV": "/qush-client/static/media/AldiyarFlex.8807d3a8c6cbd1fd233b.MOV",
     "static/media/voleyballBg.jpg": "/qush-client/static/media/voleyballBg.be14b773d71867a0a104.jpg",
@@ -12,10 +12,10 @@
     "static/media/choice.png": "/qush-client/static/media/choice.2538644c87f031bafbec.png",
     "index.html": "/qush-client/index.html",
     "main.a4732367.css.map": "/qush-client/static/css/main.a4732367.css.map",
-    "main.610a80bb.js.map": "/qush-client/static/js/main.610a80bb.js.map"
+    "main.ea4477b4.js.map": "/qush-client/static/js/main.ea4477b4.js.map"
   },
   "entrypoints": [
     "static/css/main.a4732367.css",
-    "static/js/main.610a80bb.js"
+    "static/js/main.ea4477b4.js"
   ]
 }
