@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
-import { intToTime } from "../../helpers/timeConverter";
+import { intToTime } from "../../../helpers/timeConverter";
 
-import Validate from "../../helpers/userValidation";
+import Validate from "../../../helpers/userValidation";
 
 interface RentProps {
   // Define any props you expect to receive here
 }
 
-const Rent: React.FC<RentProps> = (props) => {
+const Tickets: React.FC<RentProps> = (props) => {
   const userData = Validate();
 
   const params = useParams<{ id: string }>();
@@ -42,62 +42,48 @@ const Rent: React.FC<RentProps> = (props) => {
   const handleTicketChange = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
+      const minTimeFrom = Math.min(...selectedTimeFroms);
+      const maxTimeTo = Math.max(...selectedTimeTos);
+  
       const res = await fetch('http://83.229.87.19:7999/rent/rents/', {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          client_id: 1,
+          client_id: userData?.userId,
           field_id: fieldId,
           num_tickets: selectedIds.length,
-          time_from: 0,
-          time_to: 0
+          time_from: minTimeFrom,
+          time_to: maxTimeTo
         }),
       });
-
+  
       if (res.ok) {
-        const resJson = await res.json();
-        for (const id of selectedIds) {
-          const index = selectedIds.indexOf(id);
-          const timeFrom = selectedTimeFroms[index];
-          const timeTo = selectedTimeTos[index];
-
-          try {
-            const response = await fetch(`http://localhost:8082/rent/ticket-change/${timeFrom}/${timeTo}/${resJson.data.id}`);
-          } catch (error) {
-            console.log(error);
-          }
-        }
-
-        try {
-          const response = await fetch(`http://localhost:8082/rent/rents-settime/${resJson.data.id}/`);
-        } catch (error) {
-          console.log(error);
-        }
-
-        window.location.reload();
+        console.log(res);
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://83.229.87.19:7999/rent/ticket/');
-        const data = await response.json();
-        const foundRents = data.data.filter((rents: any) => rents.field_id === fieldId);
-        setRents(foundRents);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    if (userData) {
+      fetchData();
+    }
+  }, [userData]);
 
-    fetchData();
-  }, []);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://83.229.87.19:7999/rent/ticket/');
+      const data = await response.json();
+      const foundRents = data.data.filter((rents: any) => rents.field_id === fieldId);
+      setRents(foundRents);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   return (
     <div className='content text-light'>
@@ -165,4 +151,4 @@ const Rent: React.FC<RentProps> = (props) => {
   )
 }
 
-export default Rent;
+export default Tickets;

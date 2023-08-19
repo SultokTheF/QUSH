@@ -43,7 +43,6 @@ const AddFieldForm: React.FC = () => {
     try {
       const response = await FieldHandler.createVerification(formData);
       console.log('Response:', response);
-      console.log(JSON.stringify( formData ));
       // You can show a success message or perform other actions here
     } catch (error) {
       console.log(JSON.stringify( formData ));

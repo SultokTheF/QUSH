@@ -19,6 +19,12 @@ export const createField = async (newField: Field): Promise<Field> => {
         },
       }
     );
+
+    if( response.status == 200 ) {
+      alert( 'Ваша завяка отправлена в обработку' );
+      window.location.replace( '/' );
+    } 
+
     return response.data;
   } catch (error) {
     throw error;
@@ -47,7 +53,11 @@ export const updateField = async (updatedField: Field): Promise<Field> => {
             'Content-Type': 'application/json', // Set the appropriate content type
           },
         }
-      );
+    );
+    if( response.status == 200 ) {
+      window.location.reload();
+    } 
+
     return response.data;
   } catch (error) {
     throw error;
@@ -93,6 +103,11 @@ export const createVerification = async (newVerification: Verification): Promise
         },
       }
     );
+
+    if( response.status == 200 ) {
+      alert( 'Ваша завяка отправлена в обработку' );
+      window.location.replace( '/' );
+    } 
     return response.data;
   } catch (error) {
     throw error;

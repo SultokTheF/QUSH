@@ -86,19 +86,6 @@ export default function FieldDetails() {
                 <MDBCardBody className="text-center">
                   { owner? (
                     <>
-                      { isRentAvailable? (
-                        <>
-                          <div className="d-flex justify-content-center mb-2">
-                            <button className='btn mt-3' onClick={onCreateTicketsClick}>Активировать</button>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="d-flex justify-content-center mb-2">
-                            <a className='btn mt-3' href={`/landlord/edit/${field.id}`}>Заказы</a>
-                          </div>
-                        </>
-                      ) }
                       <div className="d-flex justify-content-center mb-2">
                         <button className='btn mt-3' onClick={onDeleteClick}>Удалить</button>
                       </div>

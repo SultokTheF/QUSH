@@ -7,6 +7,7 @@ import FieldListPage from "../pages/COMMON/FieldListPage";
 import RegisterPage from "../pages/COMMON/RegisterPage";
 import LoginPage from "../pages/COMMON/LoginPage";
 import FieldDetailsPage from "./COMMON/FieldDetailsPage";
+import TicketPage from "./COMMON/TicketPage";
 
 const CommonPages: React.FC = () => {
   return (
@@ -19,6 +20,8 @@ const CommonPages: React.FC = () => {
         <Route path="/register" element={<RegisterPage />} />
 
         <Route path="/field/:id" element={<FieldDetailsPage />} />
+
+        <Route path="/rents/:id" element={<TicketPage />} />
       </Routes>
     </>
   );
