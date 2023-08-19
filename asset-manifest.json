@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.bf4d7368.css",
-    "main.js": "/static/js/main.067a968c.js",
-    "static/media/auth.jpg": "/static/media/auth.e3165e7796f82afecf7a.jpg",
-    "static/media/AldiyarFlex.MOV": "/static/media/AldiyarFlex.8807d3a8c6cbd1fd233b.MOV",
-    "static/media/voleyballBg.jpg": "/static/media/voleyballBg.be14b773d71867a0a104.jpg",
-    "static/media/CardBg.jpg": "/static/media/CardBg.1e31f7b24431d27c80f5.jpg",
-    "static/media/banner.jpg": "/static/media/banner.1a3943e1343be97196c2.jpg",
-    "static/media/info.png": "/static/media/info.fb108048cb81cdd9e8ce.png",
-    "static/media/Support.png": "/static/media/Support.b85114926160b17bed49.png",
-    "static/media/choice.png": "/static/media/choice.2538644c87f031bafbec.png",
-    "index.html": "/index.html",
-    "main.bf4d7368.css.map": "/static/css/main.bf4d7368.css.map",
-    "main.067a968c.js.map": "/static/js/main.067a968c.js.map"
+    "main.css": "/qush-client/static/css/main.a4732367.css",
+    "main.js": "/qush-client/static/js/main.610a80bb.js",
+    "static/media/auth.jpg": "/qush-client/static/media/auth.e3165e7796f82afecf7a.jpg",
+    "static/media/AldiyarFlex.MOV": "/qush-client/static/media/AldiyarFlex.8807d3a8c6cbd1fd233b.MOV",
+    "static/media/voleyballBg.jpg": "/qush-client/static/media/voleyballBg.be14b773d71867a0a104.jpg",
+    "static/media/CardBg.jpg": "/qush-client/static/media/CardBg.1e31f7b24431d27c80f5.jpg",
+    "static/media/banner.jpg": "/qush-client/static/media/banner.1a3943e1343be97196c2.jpg",
+    "static/media/info.png": "/qush-client/static/media/info.fb108048cb81cdd9e8ce.png",
+    "static/media/Support.png": "/qush-client/static/media/Support.b85114926160b17bed49.png",
+    "static/media/choice.png": "/qush-client/static/media/choice.2538644c87f031bafbec.png",
+    "index.html": "/qush-client/index.html",
+    "main.a4732367.css.map": "/qush-client/static/css/main.a4732367.css.map",
+    "main.610a80bb.js.map": "/qush-client/static/js/main.610a80bb.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf4d7368.css",
-    "static/js/main.067a968c.js"
+    "static/css/main.a4732367.css",
+    "static/js/main.610a80bb.js"
   ]
 }
