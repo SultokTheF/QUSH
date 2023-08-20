@@ -33,7 +33,7 @@ const RegisterForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://83.229.87.19:8090/auth/register', formData, {
+      const response = await axios.post('http://38.180.38.174:8090/auth/register', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import User from "../types/User";
 
-const API_BASE_URL = `http://83.229.87.19:8090/auth/validate?token=${localStorage.getItem( 'token' )}`;
+const API_BASE_URL = `http://38.180.38.174:8090/auth/validate?token=${localStorage.getItem( 'token' )}`;
 
 export const UserHandler = async (User: User): Promise<User> => {
   try {

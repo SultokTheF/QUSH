@@ -20,7 +20,7 @@ const RentList: React.FC = () => {
   const fetchrents = async () => {
     try {
       const response = await axios.get( 
-        'http://83.229.87.19:7999/rent/rents/', 
+        'http://38.180.38.174:7999/rent/rents/', 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,

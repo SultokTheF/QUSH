@@ -3,8 +3,8 @@ import axios from 'axios';
 import Field from '../types/Field';
 import Verification from '../types/Verification';
 
-const API_BASE_URL = 'http://83.229.87.19:8000/field/fields/'; // Replace with your API endpoint
-const VER_BASE_URL = 'http://83.229.87.19:8001/verification/fields-ver/';
+const API_BASE_URL = 'http://38.180.38.174:8000/field/fields/'; // Replace with your API endpoint
+const VER_BASE_URL = 'http://38.180.38.174:8001/verification/fields-ver/';
 
 // Create a new field
 export const createField = async (newField: Field): Promise<Field> => {

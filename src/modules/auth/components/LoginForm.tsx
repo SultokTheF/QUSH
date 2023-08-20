@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://83.229.87.19:8090/auth', formData, {
+      const response = await axios.post('http://38.180.38.174:8090/auth', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

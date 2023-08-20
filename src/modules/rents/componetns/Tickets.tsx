@@ -45,7 +45,7 @@ const Tickets: React.FC<RentProps> = (props) => {
       const minTimeFrom = Math.min(...selectedTimeFroms);
       const maxTimeTo = Math.max(...selectedTimeTos);
   
-      const res = await fetch('http://83.229.87.19:7999/rent/rents/', {
+      const res = await fetch('http://38.180.38.174:7999/rent/rents/', {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -76,7 +76,7 @@ const Tickets: React.FC<RentProps> = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://83.229.87.19:7999/rent/ticket/');
+      const response = await fetch('http://38.180.38.174:7999/rent/ticket/');
       const data = await response.json();
       const foundRents = data.data.filter((rents: any) => rents.field_id === fieldId);
       setRents(foundRents);

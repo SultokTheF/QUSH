@@ -21,7 +21,7 @@ const FieldsForVerification: React.FC = () => {
   const fetchVerifications = async () => {
     try {
       const response = await axios.get( 
-        'http://83.229.87.19:8001/verification/fields-ver/', 
+        'http://38.180.38.174:8001/verification/fields-ver/', 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
