@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import User from "../types/User";
 
+import { validate } from "../store/endpoints";
+
 const Validate = () => {
   const [userData, setUserData] = useState<User | null>(null);
 
@@ -13,7 +15,7 @@ const Validate = () => {
     } else {
       const token = localStorage.getItem( 'token' ); // Replace with your actual token
     
-      axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+      axios.post(validate + token)
         .then(response => {
           if( response.data.role == "USER" ) {
             setUserData(response.data);

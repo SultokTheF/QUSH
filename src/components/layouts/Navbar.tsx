@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
     } else {
       const token = localStorage.getItem( 'token' ); // Replace with your actual token
     
-      axios.post('http://83.229.87.19:8090/auth/validate?token=' + token)
+      axios.post('http://38.180.38.174:8090/auth/validate?token=' + token)
         .then(response => {
           setUserData(response.data);
         })
