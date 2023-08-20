@@ -5,6 +5,8 @@ import { intToTime } from "../../../helpers/timeConverter";
 
 import Validate from "../../../helpers/userValidation";
 
+import { rent, ticket } from "../../../store/endpoints";
+
 interface RentProps {
   // Define any props you expect to receive here
 }
@@ -45,7 +47,7 @@ const Tickets: React.FC<RentProps> = (props) => {
       const minTimeFrom = Math.min(...selectedTimeFroms);
       const maxTimeTo = Math.max(...selectedTimeTos);
   
-      const res = await fetch('http://83.229.87.19:7999/rent/rents/', {
+      const res = await fetch(rent, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -76,7 +78,7 @@ const Tickets: React.FC<RentProps> = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://83.229.87.19:7999/rent/ticket/');
+      const response = await fetch(ticket);
       const data = await response.json();
       const foundRents = data.data.filter((rents: any) => rents.field_id === fieldId);
       setRents(foundRents);

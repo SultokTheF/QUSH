@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+import { field } from '../../../store/endpoints';
+
   const createTickets = async (timeFrom: number, timeTo: number, fieldId: number,isRentAvailable:boolean) => {
     if (isRentAvailable) {
       try {
@@ -24,7 +26,7 @@ import { useState, useEffect } from 'react';
 
 const handleDelete = async (fieldId: number) => {
   try {
-    const res = await axios.delete(`http://83.229.87.19:8000/field/fields/${fieldId}`, {
+    const res = await axios.delete(`${field}${fieldId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
         'Content-Type': 'application/json', // Set the appropriate content type

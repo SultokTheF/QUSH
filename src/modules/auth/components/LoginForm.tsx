@@ -3,6 +3,9 @@ import '../assets/styles/auth.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+
+import { auth } from '../../../store/endpoints';
+
 import axios from "axios";
 
 const LoginForm: React.FC = () => {
@@ -24,7 +27,7 @@ const LoginForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://83.229.87.19:8090/auth', formData, {
+      const response = await axios.post(auth, formData, {
         headers: {
           'Content-Type': 'application/json',
         },

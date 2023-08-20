@@ -3,6 +3,8 @@ import '../assets/styles/auth.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
+import { register } from '../../../store/endpoints';
+
 import axios from 'axios';
 
 const RegisterForm: React.FC = () => {
@@ -33,7 +35,7 @@ const RegisterForm: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://83.229.87.19:8090/auth/register', formData, {
+      const response = await axios.post(register, formData, {
         headers: {
           'Content-Type': 'application/json',
         },

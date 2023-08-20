@@ -6,6 +6,8 @@ import Spinner from "../../../components/ui/Spinner";
 import RentCard from "../../../components/layouts/RentCard";
 import Validate from "../../../helpers/userValidation";
 
+import { rent } from "../../../store/endpoints";
+
 const RentList: React.FC = () => {
   const userData = Validate();
 
@@ -20,7 +22,7 @@ const RentList: React.FC = () => {
   const fetchrents = async () => {
     try {
       const response = await axios.get( 
-        'http://83.229.87.19:7999/rent/rents/', 
+        rent, 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,

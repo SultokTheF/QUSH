@@ -21,6 +21,8 @@ import '../../fields/assets/styles/FieldDetails.css';
 
 import Validate from '../../../helpers/adminValidation';
 
+import { verification, accept, decline } from '../../../store/endpoints';
+
 import axios from 'axios';
 
 export default function VerificationDetails() {
@@ -38,7 +40,7 @@ export default function VerificationDetails() {
   const fetchVerificationList = async () => {
     try {
       const verificationData = await fetchVerification();
-      const response = await axios.get(`http://83.229.87.19:8001/verification/fields-ver/${verificationId}/`);
+      const response = await axios.get(`${verification}${verificationId}/`);
       setVerifications(response.data.data);
     } catch (error) {
       console.error('Error fetching fields:', error);
@@ -48,7 +50,7 @@ export default function VerificationDetails() {
   const handleAccept = async () => {
     if( window.confirm( "Вы дейстивтельно хотите Поддтвердить создание поля?" ) ) {
       try {
-        const response = await axios.get( `http://83.229.87.19:8001/verification/accept/${verificationId}/`, {
+        const response = await axios.get( `${accept}${verificationId}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
             'Content-Type': 'application/json', // Set the appropriate content type
@@ -68,7 +70,7 @@ export default function VerificationDetails() {
   const handleDecline = async () => {
     if( window.confirm( "Вы дейстивтельно хотите отказать в создании поля?" ) ) {
       try {
-        const response = await axios.get( `http://83.229.87.19:8001/verification/decline/${verificationId}/`, {
+        const response = await axios.get( `${decline}${verificationId}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,
             'Content-Type': 'application/json', // Set the appropriate content type
