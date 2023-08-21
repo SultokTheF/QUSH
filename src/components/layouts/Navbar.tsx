@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import UserProfile from '../../modules/user/components/userProfile/UserProfile';
 
 import axios from 'axios'
+ 
+import { validate } from '../../store/endpoints'
 
 import Logo from '../../assets/images/logo/QUSH_logo_white_expanded.png'
 import icon from '../../assets/images/icons/CV.jpg'
@@ -22,7 +24,7 @@ const Navbar: React.FC = () => {
     } else {
       const token = localStorage.getItem( 'token' ); // Replace with your actual token
     
-      axios.post('http://38.180.38.174:8090/auth/validate?token=' + token)
+      axios.post(validate + token)
         .then(response => {
           setUserData(response.data);
         })
