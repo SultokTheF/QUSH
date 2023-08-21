@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { verification, field } from '../store/endpoints';
+import { verificationEndpoint, field } from '../store/endpoints';
 
 import Field from '../types/Field';
 import Verification from '../types/Verification';
 
 const API_BASE_URL = field; // Replace with your API endpoint
-const VER_BASE_URL = verification;
+const VER_BASE_URL = verificationEndpoint;
 
 // Create a new field
 export const createField = async (newField: Field): Promise<Field> => {

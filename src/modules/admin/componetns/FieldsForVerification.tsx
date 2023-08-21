@@ -9,7 +9,7 @@ import Validate from '../../../helpers/adminValidation';
 
 import Spinner from "../../../components/ui/Spinner";
 
-import { verification } from "../../../store/endpoints";
+import { verificationEndpoint } from "../../../store/endpoints";
 
 const FieldsForVerification: React.FC = () => {
   const [verifications, setVerifications] = useState<Verification[]>([]);
@@ -23,7 +23,7 @@ const FieldsForVerification: React.FC = () => {
   const fetchVerifications = async () => {
     try {
       const response = await axios.get( 
-        verification, 
+        verificationEndpoint, 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem( 'token' )}`,

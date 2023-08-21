@@ -21,7 +21,7 @@ import '../../fields/assets/styles/FieldDetails.css';
 
 import Validate from '../../../helpers/adminValidation';
 
-import { verification, accept, decline } from '../../../store/endpoints';
+import { verificationEndpoint, accept, decline } from '../../../store/endpoints';
 
 import axios from 'axios';
 
@@ -40,7 +40,7 @@ export default function VerificationDetails() {
   const fetchVerificationList = async () => {
     try {
       const verificationData = await fetchVerification();
-      const response = await axios.get(`${verification}${verificationId}/`);
+      const response = await axios.get(`${verificationEndpoint}${verificationId}/`);
       setVerifications(response.data.data);
     } catch (error) {
       console.error('Error fetching fields:', error);
