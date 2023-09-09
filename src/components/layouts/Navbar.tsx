@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
 
         <div className="logoDiv">
           <a href="/" className="logo flex"><h1><img src={Logo} className='qush-logo' /></h1></a>
-        </div>
+       </div>
 
         <div className={active}>
           <ul onClick={removeNav} className="navLists flex">
