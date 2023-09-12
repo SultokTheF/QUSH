@@ -28,7 +28,7 @@ const UserProfile: React.FC = () => {
                 <MDBCardBody>
                   <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>{}</MDBCardText>
+                      <MDBCardText>Имя и фамилия</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
                       <MDBCardText className="text-muted">{userData?.firstName} {userData?.lastName}</MDBCardText>
