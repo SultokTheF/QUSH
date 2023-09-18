@@ -17,6 +17,7 @@ const RegisterForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [role, setRole] = useState('');
   const [error, setError] = useState('');
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -32,6 +33,7 @@ const RegisterForm: React.FC = () => {
       password: password,
       firstName: firstName,
       lastName: lastName,
+      role: role
     };
 
     try {
@@ -42,6 +44,7 @@ const RegisterForm: React.FC = () => {
       });
 
       if (response.status === 200) {
+        alert( role );
         alert( "Вы успешно зерегестрировались" );
         window.location.replace( '/login' );
       } else {
@@ -127,6 +130,15 @@ const RegisterForm: React.FC = () => {
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
                   required
                 />
+              </div>
+              <div
+                className="priceDiv"
+              >
+                <label htmlFor="role">С какой целью вы создаете аккаунт?</label>
+                <select name="role" value={role} onChange={(e) => setRole(e.target.value)}>
+                  <option value="USER">Аренда полей</option>
+                  <option value="MODERATOR">Сдача полей в аренду</option>
+                </select>
               </div>
               <button
                 className="btn"
