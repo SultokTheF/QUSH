@@ -17,7 +17,7 @@ const RegisterForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState("USER");
   const [error, setError] = useState('');
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -51,6 +51,7 @@ const RegisterForm: React.FC = () => {
         setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
       }
     } catch (error) {
+      alert(role)
       setError('Произошла ошибка. Пожалуйста, повторите попытку позже.');
       console.error(error);
     }

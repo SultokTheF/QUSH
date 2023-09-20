@@ -10,7 +10,8 @@ import UserProfile from '../../modules/user/components/userProfile/UserProfile';
 
 import axios from 'axios'
  
-import { validate } from '../../store/endpoints'
+import { validate } from '../../store/endpoints';
+import Validate from '../../helpers/userValidation'
 
 import Logo from '../../assets/images/logo/QUSH_logo_white_expanded.png'
 import icon from '../../assets/images/icons/CV.jpg'
@@ -20,10 +21,9 @@ const Navbar: React.FC = () => {
 
   useEffect( () => {
     if( !localStorage.getItem( "token" ) ) {
-
     } else {
-      const token = localStorage.getItem( 'token' ); // Replace with your actual token
-    
+      const token = localStorage.getItem( 'token' ); 
+  
       axios.post(validate + token)
         .then(response => {
           setUserData(response.data);
@@ -84,12 +84,24 @@ const Navbar: React.FC = () => {
                   </a>
 
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
-                    <li><a className="dropdown-item" href="/landlord/add">Добавить поле</a></li>
-                    <li><a className="dropdown-item" href="#">Заказы</a></li>
-                    <li><a className="dropdown-item" href="#">Аренды</a></li>
-                    <li><a className="dropdown-item" href="/landlord/fields">Мои поля</a></li>
-                    <li><a className="dropdown-item" href="#">Настройки</a></li>
+                    {userData?.role === "MODERATOR" ? (
+                      <>
+                        <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
+                        <li><a className="dropdown-item" href="/landlord/add">Добавить поле</a></li>
+                        <li><a className="dropdown-item" href="/landlord/fields">Мои поля</a></li>
+                        <li><a className="dropdown-item" href="#">Заказы</a></li>
+                        <li><a className="dropdown-item" href="#">Настройки</a></li>
+                      </>
+                    ) : (
+                      <>
+                        <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
+                        <li><a className="dropdown-item" href="/landlord/fields">Список полей</a></li>
+                        <li><a className="dropdown-item" href="#">Аренды</a></li>
+                        <li><a className="dropdown-item" href="#">Настройки</a></li>
+                      </>
+                    )}
+
+                    
                     <li>
                       <button 
                         className="dropdown-item" 
