@@ -86,33 +86,40 @@ const Navbar: React.FC = () => {
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     {userData?.role === "MODERATOR" ? (
                       <>
-                        <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
-                        <li><a className="dropdown-item" href="/landlord/add">Добавить поле</a></li>
-                        <li><a className="dropdown-item" href="/landlord/fields">Мои поля</a></li>
-                        <li><a className="dropdown-item" href="#">Заказы</a></li>
+                        <li><a className="dropdown-item" href="/landlord/profile">Личный кабинет</a></li>
+                        <li><a className="dropdown-item" href="/field">Список полей</a></li>
                         <li><a className="dropdown-item" href="#">Настройки</a></li>
+                        <li>
+                          <button 
+                            className="dropdown-item" 
+                            onClick={ () => {
+                              localStorage.removeItem( 'token' );
+                              window.location.replace( '/' );
+                            }}
+                            >
+                              Выход
+                            </button>
+                        </li>
                       </>
                     ) : (
                       <>
                         <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
-                        <li><a className="dropdown-item" href="/landlord/fields">Список полей</a></li>
+                        <li><a className="dropdown-item" href="/field">Список полей</a></li>
                         <li><a className="dropdown-item" href="#">Аренды</a></li>
                         <li><a className="dropdown-item" href="#">Настройки</a></li>
+                        <li>
+                          <button 
+                            className="dropdown-item" 
+                            onClick={ () => {
+                              localStorage.removeItem( 'token' );
+                              window.location.replace( '/' );
+                            }}
+                            >
+                              Выход
+                            </button>
+                        </li>
                       </>
                     )}
-
-                    
-                    <li>
-                      <button 
-                        className="dropdown-item" 
-                        onClick={ () => {
-                          localStorage.removeItem( 'token' );
-                          window.location.replace( '/' );
-                        }}
-                        >
-                          Выход
-                        </button>
-                    </li>
                   </ul>
                 </div>
               </div>

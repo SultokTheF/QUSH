@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import AddFieldPage from './LANDLORD/AddFieldPage';
 import EditFieldPage from "./LANDLORD/EditFieldPage";
 import MyFieldsPage from "./LANDLORD/MyFieldsPage";
+import LandLordProfilePage from "./LANDLORD/LandLordProfilePage";
 
 const LandLordPages: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const LandLordPages: React.FC = () => {
         <Route path="/add" element={ <AddFieldPage /> } />
         <Route path="/edit/:id" element={ <EditFieldPage /> } />
         <Route path="/fields" element={ <MyFieldsPage /> } />
+        <Route path="/profile" element={ <LandLordProfilePage/> } />
       </Routes>
     </>
   );
