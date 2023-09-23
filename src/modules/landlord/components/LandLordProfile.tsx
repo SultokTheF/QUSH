@@ -1,9 +1,11 @@
 import React from "react";
 
+import "../assets/styles/LandLordProfile.css";
+
 const LandLordProfile: React.FC = () => {
 return (
   <>
-    <h1>Landlord profile</h1>
+    <h1></h1>
   </>
 );
 }

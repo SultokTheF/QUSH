@@ -44,14 +44,12 @@ const RegisterForm: React.FC = () => {
       });
 
       if (response.status === 200) {
-        alert( role );
         alert( "Вы успешно зерегестрировались" );
         window.location.replace( '/login' );
       } else {
         setError('Ошибка входа. Пожалуйста, проверьте свои учетные данные.');
       }
     } catch (error) {
-      alert(role)
       setError('Произошла ошибка. Пожалуйста, повторите попытку позже.');
       console.error(error);
     }
@@ -61,9 +59,10 @@ const RegisterForm: React.FC = () => {
     <>
       <section className="auth">
         <div className="secContainer container">
-          <h1 className="text-white"> Регистрация </h1>
+          {/* <h1 className="text-white"> Регистрация </h1> */}
           <form onSubmit={handleRegister}>
             <div className="authCard grid">
+              <h1>Регистрация</h1>
               <div
                 data-aos="fade-right"
                 data-aos-duration="2000"

@@ -1,6 +1,8 @@
 .home {
   height: 100vh;
-  background: var( --photoMask ), url("../../assets/images/banner.jpg");
+  background-color: var(--blackColor);
+  /* background: var( --photoMask ), url("../../assets/images/banner.jpg"); */
+  /* background-image: url("../../assets/images/banner.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +45,7 @@
   bottom: -35%;
   left: 50%;
   transform: translate(-50%);
-  box-shadow: var( --boxShadow );
+  box-shadow: var(--boxShadow);
 }
 .home .secContainer .homeCard .locationDiv, .home .secContainer .homeCard .distDiv, .home .secContainer .homeCard .priceDiv {
   width: 100%;
@@ -90,6 +92,9 @@
 }
 
 @media screen and (min-width: 480px) {
+  .home {
+    background-image: url("../../assets/images/banner.jpg");
+  }
   .home .secContainer .homeCard {
     bottom: -18%;
     width: 90%;

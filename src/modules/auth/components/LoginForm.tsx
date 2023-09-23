@@ -48,9 +48,9 @@ const LoginForm: React.FC = () => {
     <>
       <section className="auth">
         <div className="secContainer container">
-          <h1 className="text-white"> Вход </h1>
           <form onSubmit={handleLogin}>
             <div className="authCard grid">
+          <h1> Вход </h1>
               <div
                 data-aos="fade-right"
                 data-aos-duration="2000"
