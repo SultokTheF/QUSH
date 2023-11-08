@@ -53,7 +53,7 @@ import 'aos/dist/aos.css'
               <a href="#">Популярные места</a>
             </li>
          </div>
-         <div data-aos="fade-up" data-aos-duration="3500" className="footerLinks">
+         <div className="footerLinks">
           <span className="linkTitle">Контакты</span>
            <span className='phone'>+7 707 109 88 41</span>
            <span className="email">220548@astanait.edu.kz</span>

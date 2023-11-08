@@ -1,4 +1,5 @@
 .header {
+  max-width: 100%;
   position: fixed;
   display: flex;
   align-items: center;
@@ -9,9 +10,18 @@
   z-index: 1000;
   padding: 1rem;
 }
-.header .logo {
-  width: 20%;
+/* .header .logo {
+  color: var(--whiteColor);
+  font-weight: 500;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
+.header .logo .icon {
+  font-size: 25px;
+  color: var(--PrimaryColor);
+  transform: translateY(5px);
+} */
 
 .header .navBar .navLists .headerBtns .user-icon img {
   background: var(--PrimaryColor);
@@ -39,7 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%С;
+    width: 100%;
     align-items: center;
     margin: auto;
     padding: 0.5rem 0;
