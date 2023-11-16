@@ -17,24 +17,30 @@ import Logo from '../../assets/images/logo/QUSH_logo_white_expanded.png'
 import icon from '../../assets/images/icons/CV.jpg'
 
 const Navbar: React.FC = () => {
-  const [userData, setUserData] = useState<User | null>(null);
+  // const [userData, setUserData] = useState<User | null>(null);
 
-  useEffect( () => {
-    if( !localStorage.getItem( "token" ) ) {
-    } else {
-      const token = localStorage.getItem( 'token' ); 
+  // useEffect( () => {
+  //   if( !localStorage.getItem( "token" ) ) {
+  //   } else {
+  //     const token = localStorage.getItem( 'token' ); 
   
-      axios.post(validate + token)
-        .then(response => {
-          setUserData(response.data);
-        })
-        .catch(error => {
-          localStorage.removeItem( 'token' );
-          window.location.replace( '/' );
-          console.error('Error fetching user data:', error);
-        });
-    }
-  }, []);
+  //     axios.post(validate + token)
+  //       .then(response => {
+  //         setUserData(response.data);
+  //       })
+  //       .catch(error => {
+  //         localStorage.removeItem( 'token' );
+  //         window.location.replace( '/' );
+  //         console.error('Error fetching user data:', error);
+  //       });
+  //   }
+  // }, []);
+
+  const userData = {
+    firstName: "Sultok",
+    lastName: "TheF",
+    role: "ADMIN"
+  }
 
   const [active, setActive]  = useState('navBar')
 
@@ -84,42 +90,60 @@ const Navbar: React.FC = () => {
                   </a>
 
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {userData?.role === "MODERATOR" ? (
+                  {userData?.role === "MODERATOR" ? (
+                    <>
+                      <li><a className="dropdown-item" href="/landlord/profile">Личный кабинет</a></li>
+                      <li><a className="dropdown-item" href="/landlord/add">Добавить поле</a></li>
+                      <li><a className="dropdown-item" href="/field">Список полей</a></li>
+                      <li><a className="dropdown-item" href="#">Настройки</a></li>
+                      <li>
+                        <button 
+                          className="dropdown-item" 
+                          onClick={() => {
+                            localStorage.removeItem('token');
+                            window.location.replace('/');
+                          }}
+                        >
+                          Выход
+                        </button>
+                      </li>
+                    </>
+                  ) : userData?.role === "ADMIN" ? (
                       <>
-                        <li><a className="dropdown-item" href="/landlord/profile">Личный кабинет</a></li>
-                        <li><a className="dropdown-item" href="/field">Список полей</a></li>
+                        <li><a className="dropdown-item" href="/admin">Верификация</a></li>
                         <li><a className="dropdown-item" href="#">Настройки</a></li>
                         <li>
                           <button 
                             className="dropdown-item" 
-                            onClick={ () => {
-                              localStorage.removeItem( 'token' );
-                              window.location.replace( '/' );
+                            onClick={() => {
+                              localStorage.removeItem('token');
+                              window.location.replace('/');
                             }}
-                            >
-                              Выход
-                            </button>
+                          >
+                            Выход
+                          </button>
                         </li>
                       </>
-                    ) : (
-                      <>
-                        <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
-                        <li><a className="dropdown-item" href="/field">Список полей</a></li>
-                        <li><a className="dropdown-item" href="#">Аренды</a></li>
-                        <li><a className="dropdown-item" href="#">Настройки</a></li>
-                        <li>
-                          <button 
-                            className="dropdown-item" 
-                            onClick={ () => {
-                              localStorage.removeItem( 'token' );
-                              window.location.replace( '/' );
-                            }}
-                            >
-                              Выход
-                            </button>
-                        </li>
-                      </>
-                    )}
+                  ) : (
+                    <>
+                      <li><a className="dropdown-item" href="/user/profile">Профиль</a></li>
+                      <li><a className="dropdown-item" href="/field">Список полей</a></li>
+                      <li><a className="dropdown-item" href="#">Аренды</a></li>
+                      <li><a className="dropdown-item" href="#">Настройки</a></li>
+                      <li>
+                        <button 
+                          className="dropdown-item" 
+                          onClick={() => {
+                            localStorage.removeItem('token');
+                            window.location.replace('/');
+                          }}
+                        >
+                          Выход
+                        </button>
+                      </li>
+                    </>
+                  )}
+
                   </ul>
                 </div>
               </div>
@@ -133,7 +157,6 @@ const Navbar: React.FC = () => {
                 </button>
               </div>
             ) }
-
           </ul>
           <div onClick={removeNav} className="closeNavbar">
             <AiFillCloseCircle className='icon'/>
